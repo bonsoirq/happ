@@ -1,0 +1,8 @@
+{
+  "name": "happ",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Jarosław Bąk <jaroslaw.bak24@gmail.com>",
+  "license": "MIT",
+  "private": true
+}
