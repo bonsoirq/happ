@@ -1,4 +1,4 @@
-const { InvalidArgumentError } = require('./errors')
+const { InvalidArgumentError } = require('../errors')
 
 function toInt (value, radix = 10) {
   const result = parseInt(value, radix)

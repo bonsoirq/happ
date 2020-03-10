@@ -1,6 +1,6 @@
 const test = require('ava')
-const { toInt } = require('../src/util')
-const { InvalidArgumentError } = require('../src/errors')
+const { toInt } = require('../../src/utils')
+const { InvalidArgumentError } = require('../../src/errors')
 
 test('parses string representing a number to int', t => {
   const expected = 123
