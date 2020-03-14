@@ -1,6 +1,6 @@
 const test = require('ava')
 const { toInt } = require('../../src/utils')
-const { InvalidArgumentError } = require('../../src/errors')
+const { ArgumentError } = require('../../src/errors')
 
 test('parses string representing a number to int', t => {
   const expected = 123
@@ -18,7 +18,7 @@ test('throws error when input cannot be parsed', t => {
   t.throws(() => {
     toInt('foo')
   }, {
-    instanceOf: InvalidArgumentError,
+    instanceOf: ArgumentError,
     message: 'Value foo at radix 10 cannot be parsed into an interger.'
   })
 })

@@ -1,5 +1,5 @@
-const { InvalidArgumentError } = require('./invalid-argument-error')
+const { ArgumentError } = require('./argument-error')
 
 module.exports = {
-  InvalidArgumentError
+  ArgumentError
 }
