@@ -1,5 +1,5 @@
 require('dotenv').config()
-const { toInt } = require('./util')
+const { toInt } = require('./utils')
 
 class Environment {
   static isDevelopment () {
