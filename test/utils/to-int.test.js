@@ -1,5 +1,5 @@
 const test = require('ava')
-const { toInt } = require('../../src/utils')
+const { toInt } = require('../../src/utils/to-int')
 const { ArgumentError } = require('../../src/errors')
 
 test('parses string representing a number to int', t => {

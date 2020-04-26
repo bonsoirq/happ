@@ -1,5 +1,5 @@
 const test = require('ava')
-const { bcrypt } = require('../../src/utils')
+const bcrypt = require('../../src/utils/bcrypt')
 
 test('encrypted text is different from plain text', async t => {
   const input = 'some plain text'
