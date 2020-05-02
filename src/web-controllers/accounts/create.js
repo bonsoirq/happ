@@ -1,4 +1,4 @@
-const { CreateAccount } = require('../../interactors/create-account')
+const CreateAccount = require('../../interactors/create-account')
 
 async function create (req, res, next) {
   await CreateAccount.call({
@@ -6,8 +6,8 @@ async function create (req, res, next) {
     email: req.body.email,
     password: req.body.password
   })
+
+  res.status(201).send()
 }
 
-module.exports = {
-  create
-}
+module.exports = create

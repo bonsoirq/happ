@@ -1,15 +1,26 @@
 require('dotenv').config()
-const { toInt } = require('./utils')
+const { toInt } = require('./utils/to-int')
 
 class Environment {
-  static isDevelopment () {
+  static get isDevelopment () {
     const env = process.env.NODE_ENV
     return env === 'development' || env == null
   }
 
-  static webServerPort () {
+  static get isTesting () {
+    const env = process.env.NODE_ENV
+    return env === 'test'
+  }
+
+  static get webServerPort () {
     const DEFAULT_PORT = 3000
     return toInt(process.env.PORT || DEFAULT_PORT)
+  }
+
+  static get dbConnectionString () {
+    const testDb = process.env.TEST_DB_CONNECTION_STRING
+    const regularDb = process.env.DB_CONNECTION_STRING
+    return this.isTesting ? testDb : regularDb
   }
 }
 

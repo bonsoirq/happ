@@ -2,15 +2,18 @@ const { Environment } = require('./config')
 const express = require('express')
 
 const app = express()
-app.listen(Environment.webServerPort(), () => {
-  attachSwaggerToWebServer()
-  attach404Middleware()
+
+attachSwaggerToWebServer()
+attachBodyParser()
+attachRoutes()
+attach404Middleware()
+
+app.listen(Environment.webServerPort, () => {
   messageWebServerIsReady()
 })
 
-function attach404Middleware () {
-  const { urlNotFound } = require('./middlewares/url-not-found')
-  app.all('*', urlNotFound)
+function attachBodyParser () {
+  app.use(require('body-parser').json())
 }
 
 function attachSwaggerToWebServer () {
@@ -18,6 +21,15 @@ function attachSwaggerToWebServer () {
   swaggerify(app)
 }
 
+function attachRoutes () {
+  app.post('/accounts', require('./web-controllers/accounts/create'))
+}
+
+function attach404Middleware () {
+  const { urlNotFound } = require('./middlewares/url-not-found')
+  app.all('*', urlNotFound)
+}
+
 function messageWebServerIsReady () {
-  console.log(`server listening at ${Environment.webServerPort()}`)
+  console.log(`server listening at ${Environment.webServerPort}`)
 }
