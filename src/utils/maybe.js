@@ -29,8 +29,26 @@ class Maybe {
     return Maybe.of(this._value)
   }
 
+  ifSome (fn) {
+    if (this.isSome) {
+      fn(this._value)
+    }
+    return Maybe.of(this._value)
+  }
+
+  ifNone (fn) {
+    if (this.isNone) {
+      fn(this._value)
+    }
+    return Maybe.of(this._value)
+  }
+
   get isNone () {
     return this._value == null
+  }
+
+  get isSome () {
+    return !this.isNone
   }
 }
 
