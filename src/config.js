@@ -22,6 +22,10 @@ class Environment {
     const regularDb = process.env.DB_CONNECTION_STRING
     return this.isTesting ? testDb : regularDb
   }
+
+  static get jwtSecret () {
+    return process.env.JWT_SECRET
+  }
 }
 
 module.exports = { Environment }

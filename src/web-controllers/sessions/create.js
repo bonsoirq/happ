@@ -1,12 +1,6 @@
-const CreateAccount = require('../../interactors/create-account')
+// const AccountCredentialsAreValid = require('../../interactors/account-credentials-are-valid')
 
 async function create (req, res, next) {
-  await AccountCredentialsAreValid.call({
-    email: req.body.email,
-    password: req.body.password
-  })
-
-  res.status(200).send()
 }
 
 module.exports = create
