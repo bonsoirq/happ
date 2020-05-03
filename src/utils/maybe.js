@@ -3,7 +3,7 @@ class Maybe {
     this._value = value
   }
 
-  static get Nothing () {
+  static get None () {
     return Maybe.of(null)
   }
 
@@ -12,24 +12,24 @@ class Maybe {
   }
 
   get value () {
-    return this.isNothing ? null : this._value
+    return this.isNone ? null : this._value
   }
 
   map (fn) {
-    if (this.isNothing) {
-      return Maybe.Nothing
+    if (this.isNone) {
+      return Maybe.None
     }
     return Maybe.of(fn(this._value))
   }
 
   or (value) {
-    if (this.isNothing) {
+    if (this.isNone) {
       return Maybe.of(value)
     }
     return Maybe.of(this._value)
   }
 
-  get isNothing () {
+  get isNone () {
     return this._value == null
   }
 }

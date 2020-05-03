@@ -13,55 +13,55 @@ test('.value returns value', async t => {
   t.is(0, someZero.value)
 })
 
-test('.isNothing returns true for null', async t => {
+test('.isNone returns true for null', async t => {
   const maybe = Maybe.of(null)
 
-  t.true(maybe.isNothing)
+  t.true(maybe.isNone)
 })
 
-test('.isNothing returns true for undefined', async t => {
+test('.isNone returns true for undefined', async t => {
   const maybe = Maybe.of()
 
-  t.true(maybe.isNothing)
+  t.true(maybe.isNone)
 })
 
-test('.isNothing returns false for other falsy values', async t => {
+test('.isNone returns false for other falsy values', async t => {
   const zero = Maybe.of(0)
   const emptyString = Maybe.of('')
   const emptyArray = Maybe.of([])
   const nan = Maybe.of(NaN)
 
-  t.false(zero.isNothing)
-  t.false(emptyString.isNothing)
-  t.false(emptyArray.isNothing)
-  t.false(nan.isNothing)
+  t.false(zero.isNone)
+  t.false(emptyString.isNone)
+  t.false(emptyArray.isNone)
+  t.false(nan.isNone)
 })
 
 test('#map applies function to stored value if is not nothing', t => {
   const zero = Maybe.of(0)
-  const nothing = Maybe.Nothing
+  const nothing = Maybe.None
 
   const shouldBeOne = zero.map(x => x + 1).value
-  const shouldBeStillNothing = nothing.map(x => x.nonExistingMethod())
+  const shouldBeStillNone = nothing.map(x => x.nonExistingMethod())
 
   t.is(1, shouldBeOne)
-  t.true(shouldBeStillNothing.isNothing)
+  t.true(shouldBeStillNone.isNone)
 })
 
 test('#or replaces nothing with given value', t => {
-  const nothing = Maybe.Nothing
+  const nothing = Maybe.None
 
   const zero = nothing.or(0)
 
-  t.false(zero.isNothing)
+  t.false(zero.isNone)
   t.is(0, zero.value)
 })
 
-test('Maybe.Nothing is nothing', t => {
-  t.true(Maybe.Nothing.isNothing)
+test('Maybe.None is nothing', t => {
+  t.true(Maybe.None.isNone)
 })
 
-test('Maybe.Nothing value is always null', t => {
-  t.is(null, Maybe.Nothing.value)
+test('Maybe.None value is always null', t => {
+  t.is(null, Maybe.None.value)
   t.is(null, Maybe.of().value)
 })
