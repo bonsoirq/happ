@@ -8,13 +8,13 @@ class CreateAccount extends Interactor {
     super()
     this.plainPassword = password
     this.account = new Acccount({ name, email })
-    this.repo = repository
+    this._repo = repository
   }
 
   async call () {
     if (await this.emailAddressIsUnique()) {
       await this.hashPassword()
-      await this.repo.add(this.account)
+      await this._repo.add(this.account)
     }
   }
 
@@ -23,7 +23,7 @@ class CreateAccount extends Interactor {
   }
 
   async emailAddressIsUnique () {
-    return await this.repo.findByEmail(this.account.email) == null
+    return await this._repo.findByEmail(this.account.email) == null
   }
 }
 
