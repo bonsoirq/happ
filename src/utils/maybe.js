@@ -12,7 +12,7 @@ class Maybe {
   }
 
   get value () {
-    return this.isNone ? null : this._value
+    return this.isSome ? this._value : null
   }
 
   map (fn) {
