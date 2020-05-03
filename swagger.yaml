@@ -31,3 +31,35 @@ paths:
       responses:
         201:
           description: Account created successfully if email was not taken.
+  /sessions:
+    post:
+      tags:
+        - Auth
+      summary: Grants auth token if credentials are valid.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: example@example.com
+                password:
+                  type: string
+                  example: supersecret
+      responses:
+        200:
+          description: Token has been granted.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  authToken:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        400:
+          description: Invalid credentials.

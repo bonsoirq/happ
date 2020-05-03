@@ -4,7 +4,7 @@ const AccountRepo = require('../repositories/account-repo')
 const bcrypt = require('../utils/bcrypt')
 
 class AccountCredentialsAreValid extends Interactor {
-  constructor ({ email, password }, { repository = AccountRepo }) {
+  constructor ({ email, password }, { repository = AccountRepo } = {}) {
     super()
     this.password = password
     this.email = email
