@@ -1,10 +1,12 @@
 const test = require('ava')
 const Account = require('../../src/entities/account')
 const AccountRepo = require('../../src/repositories/account-repo')
-const { knex } = require('../../src/db/query-builder')
+const { slonik, sql } = require('../../src/db/connection-pool')
 
 test.after(async t => {
-  await knex.truncate('accounts')
+  await slonik.query(sql`
+    TRUNCATE TABLE accounts;
+  `)
 })
 
 test.serial('#add inserts data', async t => {

@@ -8,8 +8,8 @@
   "scripts": {
     "lint": "eslint {src,test}/**/*.js",
     "start:dev": "nodemon --watch 'src/*' ./src/index.js",
-    "test:all": "NODE_ENV=test yarn lint && nyc ava test/**/*.test.js",
-    "test:db:migrate": "NODE_ENV=test knex migrate:latest",
+    "test:all": "NODE_ENV=test yarn test:migrate && yarn lint && nyc ava test/**/*.test.js",
+    "test:migrate": "NODE_ENV=test node migrate up",
     "test:single": "NODE_ENV=test ava",
     "test:watch": "NODE_ENV=test ava --watch test/**/*.test.js"
   },
@@ -26,13 +26,14 @@
     "nyc": "^15.0.1"
   },
   "dependencies": {
+    "@slonik/migrator": "^0.5.0",
     "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "knex": "^0.21.1",
     "pg": "^8.0.3",
+    "slonik": "^22.4.8",
     "swagger-ui-express": "^4.1.4",
     "uuid": "^8.0.0",
     "yamljs": "^0.3.0"

@@ -1,24 +1,26 @@
-const { knex } = require('../db/query-builder')
+const { slonik, sql } = require('../db/connection-pool')
 const Account = require('../entities/account')
 
 class AccountRepo {
   static async add (account) {
-    const sql = knex.insert({
-      id: account.id,
-      name: account.name,
-      email: account.email,
-      password: account.password
-    }).into('accounts').toQuery()
+    const { id, name, email, password } = account
 
-    const result = await knex.raw(sql)
+    const result = await slonik.query(sql`
+      INSERT INTO accounts
+      (id, name, email, password)
+      VALUES
+      (${id},${name},${email},${password});
+    `)
 
     return result.rowCount > 0
   }
 
   static async findByEmail (email) {
-    const sql = knex.select().from('accounts').where({ email }).limit(1).toQuery()
-
-    const result = await knex.raw(sql)
+    const result = await slonik.query(sql`
+      SELECT * FROM accounts
+      WHERE email = ${email}
+      LIMIT 1;
+    `)
 
     if (result.rowCount === 0) {
       return null
