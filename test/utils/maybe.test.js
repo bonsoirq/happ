@@ -1,37 +1,68 @@
 const test = require('ava')
-const Maybe = require('../../src/utils/maybe')
+const { Maybe, None, Some } = require('../../src/utils/maybe')
 
-test('Maybe.of returns maybe instance', t => {
-  const value = 0
-
-  t.true(Maybe.of(value) instanceof Maybe)
+test('Some throws error when passed null', t => {
+  t.throws(() => {
+    Some(null)
+  }, {
+    instanceOf: Error,
+    message: 'Cannot wrap nullish value in Some()'
+  })
 })
 
-test('.value returns value', async t => {
-  const someZero = Maybe.of(0)
-
-  t.is(0, someZero.value)
+test('Some throws error when passed undefined', t => {
+  t.throws(() => {
+    Some(undefined)
+  }, {
+    instanceOf: Error,
+    message: 'Cannot wrap nullish value in Some()'
+  })
 })
 
-test('.isNone returns true for null', async t => {
-  const maybe = Maybe.of(null)
-
-  t.true(maybe.isNone)
-  t.false(maybe.isSome)
+test('Some returns Some() when passed non nullish value', t => {
+  t.notThrows(() => Some(0))
 })
 
-test('.isNone returns true for undefined', async t => {
-  const maybe = Maybe.of()
+test('#valueOr returns value', t => {
+  const someZero = Maybe(0)
+  const none = None()
 
-  t.true(maybe.isNone)
-  t.false(maybe.isSome)
+  t.is(0, someZero.valueOr(1))
+  t.is(1, none.valueOr(1))
 })
 
-test('.isNone returns false for other falsy values', async t => {
-  const zero = Maybe.of(0)
-  const emptyString = Maybe.of('')
-  const emptyArray = Maybe.of([])
-  const nan = Maybe.of(NaN)
+test('#value throws error for None()', t => {
+  t.throws(() => {
+    None().value()
+  }, {
+    instanceOf: Error,
+    message: 'Cannot unwrap value of None()'
+  })
+})
+
+test('#value returns value of Some()', t => {
+  t.is(0, Some(0).value())
+})
+
+test('.isNone is true for None(), Maybe(nullish value)', t => {
+  const expliciteNone = None()
+  const noneFromNull = Maybe(null)
+  const noneFromUndefined = Maybe(undefined)
+
+  t.true(expliciteNone.isNone)
+  t.true(noneFromNull.isNone)
+  t.true(noneFromUndefined.isNone)
+
+  t.false(expliciteNone.isSome)
+  t.false(noneFromNull.isSome)
+  t.false(noneFromUndefined.isSome)
+})
+
+test('.isNone is false for other falsy values', t => {
+  const zero = Maybe(0)
+  const emptyString = Maybe('')
+  const emptyArray = Maybe([])
+  const nan = Maybe(NaN)
 
   t.false(zero.isNone)
   t.true(zero.isSome)
@@ -43,71 +74,48 @@ test('.isNone returns false for other falsy values', async t => {
   t.true(nan.isSome)
 })
 
-test('#map applies function to stored value if is not none', t => {
-  const zero = Maybe.of(0)
-  const none = Maybe.None
+test('#map applies function to stored value if is not None()', t => {
+  const some = Some(0)
+  const none = None()
 
-  const shouldBeOne = zero.map(x => x + 1).value
-  const shouldBeStillNone = none.map(x => x.nonExistingMethod())
+  t.throws(() => {
+    some.map(x => {
+      throw new Error()
+    })
+  })
 
-  t.is(1, shouldBeOne)
-  t.true(shouldBeStillNone.isNone)
+  t.notThrows(() => {
+    none.map(x => {
+      throw new Error()
+    })
+  })
 })
 
-test('#or replaces none with given value', t => {
-  const none = Maybe.None
+test('#map wraps returned value back into Maybe()', t => {
+  const wrappedOne = Some(0).map(x => x + 1)
 
-  const zero = none.or(0)
-
-  t.false(zero.isNone)
-  t.is(0, zero.value)
+  t.not('number', typeof wrappedOne)
 })
 
-test('Maybe.None is none', t => {
-  t.true(Maybe.None.isNone)
+test('#bind applies function to stored value if is not None()', t => {
+  const some = Some(0)
+  const none = None()
+
+  t.throws(() => {
+    some.bind(x => {
+      throw new Error()
+    })
+  })
+
+  t.notThrows(() => {
+    none.bind(x => {
+      throw new Error()
+    })
+  })
 })
 
-test('Maybe.None value is always null', t => {
-  t.is(null, Maybe.None.value)
-  t.is(null, Maybe.of().value)
-})
+test('#bind returns returned value', t => {
+  const unwrappedOne = Some(0).bind(x => x + 1)
 
-test('#ifSome invokes function when maybe is not none', t => {
-  let shouldBecomeTrue = 0
-
-  Maybe
-    .of(shouldBecomeTrue)
-    .ifSome((currentValue) => { shouldBecomeTrue = currentValue === 0 })
-
-  t.true(shouldBecomeTrue)
-})
-
-test('#ifSome does nothing when maybe is none', t => {
-  let shouldStayFalse = false
-
-  Maybe
-    .None
-    .ifSome(() => { shouldStayFalse = true })
-
-  t.false(shouldStayFalse)
-})
-
-test('#ifNone invokes function when maybe is none', t => {
-  let shouldBecomeTrue = 0
-
-  Maybe
-    .None
-    .ifNone(() => { shouldBecomeTrue = true })
-
-  t.true(shouldBecomeTrue)
-})
-
-test('#ifNone does nothing when maybe is not none', t => {
-  let shouldStayFalse = false
-
-  Maybe
-    .of(0)
-    .ifNone(() => { shouldStayFalse = true })
-
-  t.false(shouldStayFalse)
+  t.is(1, unwrappedOne)
 })

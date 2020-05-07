@@ -3,44 +3,32 @@ class Maybe {
     this._value = value
   }
 
-  static get None () {
-    return Maybe.of(null)
-  }
-
-  static of (value) {
-    return new Maybe(value)
-  }
-
-  get value () {
-    return this.isSome ? this._value : null
+  bind (fn) {
+    if (this.isNone) {
+      return this
+    }
+    return fn(this._value)
   }
 
   map (fn) {
     if (this.isNone) {
-      return Maybe.None
+      return this
     }
-    return Maybe.of(fn(this._value))
+    return new Maybe(fn(this._value))
   }
 
-  or (value) {
+  valueOr (value) {
     if (this.isNone) {
-      return Maybe.of(value)
+      return value
     }
-    return Maybe.of(this._value)
+    return this._value
   }
 
-  ifSome (fn) {
+  value () {
     if (this.isSome) {
-      fn(this._value)
+      return this._value
     }
-    return Maybe.of(this._value)
-  }
-
-  ifNone (fn) {
-    if (this.isNone) {
-      fn(this._value)
-    }
-    return Maybe.of(this._value)
+    throw new Error('Cannot unwrap value of None()')
   }
 
   get isNone () {
@@ -52,4 +40,21 @@ class Maybe {
   }
 }
 
-module.exports = Maybe
+class MaybeFactory {
+  static Maybe (value) {
+    return new Maybe(value)
+  }
+
+  static None () {
+    return new Maybe()
+  }
+
+  static Some (value) {
+    if (value == null) {
+      throw Error('Cannot wrap nullish value in Some()')
+    }
+    return new Maybe(value)
+  }
+}
+
+module.exports = MaybeFactory
