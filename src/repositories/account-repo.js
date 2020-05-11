@@ -30,6 +30,22 @@ class AccountRepo {
       return new Account({ id, email, name, password })
     }
   }
+
+  static async findById (id) {
+    const result = await slonik.query(sql`
+      SELECT * FROM accounts
+      WHERE id = ${id}
+      LIMIT 1;
+    `)
+
+    if (result.rowCount === 0) {
+      return null
+    } else {
+      const [row] = result.rows
+      const { id, email, name, password } = row
+      return new Account({ id, email, name, password })
+    }
+  }
 }
 
 module.exports = AccountRepo

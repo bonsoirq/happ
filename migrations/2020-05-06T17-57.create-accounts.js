@@ -4,8 +4,8 @@ CREATE TABLE accounts (
   name varchar(255) NOT NULL,
   email varchar(255) NOT NULL,
   password varchar(255) NOT NULL,
-  created_at timestamptz DEFAULT CURRENT_TIMESTAMP,
-  updated_at timestamptz DEFAULT CURRENT_TIMESTAMP,
+  created_at timestamptz DEFAULT CURRENT_TIMESTAMP NOT NULL,
+  updated_at timestamptz DEFAULT CURRENT_TIMESTAMP NOT NULL,
   UNIQUE(email)
 );
 `)

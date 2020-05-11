@@ -8,7 +8,7 @@ test('generates JWT for valid account credentials', async t => {
     email: 'example@example.com'
   })
 
-  const token = await GrantAccountAuthToken.call({
+  const result = await GrantAccountAuthToken.call({
     email: 'example@example.com',
     password: 'valid-password'
   }, {
@@ -16,16 +16,16 @@ test('generates JWT for valid account credentials', async t => {
     credentialsValidator: { call: async () => true }
   })
 
-  t.is('string', typeof token)
+  t.is('string', typeof result.value())
 })
 
 test('returns null for invalid account credentials', async t => {
-  const token = await GrantAccountAuthToken.call({
+  const result = await GrantAccountAuthToken.call({
     email: 'example@example.com',
     password: 'invalid-password'
   }, {
     credentialsValidator: { call: async () => false }
   })
 
-  t.is(null, token)
+  t.true(result.isFailure)
 })

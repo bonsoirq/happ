@@ -2,6 +2,7 @@ const Interactor = require('./interactor')
 const AccountRepo = require('../repositories/account-repo')
 const AccountCredentialsAreValid = require('./account-credentials-are-valid')
 const GenerateAuthToken = require('./generate-auth-token')
+const { Success, Failure } = require('../utils/result')
 
 class GrantAccountAuthToken extends Interactor {
   constructor ({ email, password },
@@ -21,13 +22,14 @@ class GrantAccountAuthToken extends Interactor {
     if (credentialsValid) {
       const account = await this._repo.findByEmail(this.email)
 
-      return await GenerateAuthToken.call({
+      const token = await GenerateAuthToken.call({
         resourceId: account.id,
         expiresAt: new Date(Date.now() + 3600 * 1000)
       })
-    } else {
-      return null
+
+      return Success(token)
     }
+    return Failure()
   }
 }
 

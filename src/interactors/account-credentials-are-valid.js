@@ -1,5 +1,5 @@
 const Interactor = require('./interactor')
-const Maybe = require('../utils/maybe')
+const { Maybe } = require('../utils/maybe')
 const AccountRepo = require('../repositories/account-repo')
 const bcrypt = require('../utils/bcrypt')
 
@@ -12,11 +12,9 @@ class AccountCredentialsAreValid extends Interactor {
   }
 
   async call () {
-    return Maybe
-      .of(await this._repo.findByEmail(this.email))
+    return Maybe(await this._repo.findByEmail(this.email))
       .map(account => bcrypt.compare(this.password, account.password))
-      .or(false)
-      .value
+      .valueOr(false)
   }
 }
 
