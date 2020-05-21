@@ -27,7 +27,7 @@ function attachRoutes () {
 
   app.post('/accounts', require('./web-controllers/accounts/create'))
   app.post('/sessions', require('./web-controllers/sessions/create'))
-  app.post('/happenings', authenticateAccount)
+  app.post('/happenings', authenticateAccount, require('./web-controllers/happenings/create'))
 }
 
 function attach404Middleware () {

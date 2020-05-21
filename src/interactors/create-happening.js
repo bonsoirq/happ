@@ -6,7 +6,7 @@ const ValidateHappening = require('./validate-happening')
 
 class CreateHappening extends Interactor {
   constructor ({ name, accountId, description, organizerDescription, agenda },
-    { repository = HappeningRepo, accountRepository = AccountRepo, validator }) {
+    { repository = HappeningRepo, accountRepository = AccountRepo, validator } = {}) {
     super()
     this.happening = new Happening({ name, accountId, description, organizerDescription, agenda })
     this._repo = repository

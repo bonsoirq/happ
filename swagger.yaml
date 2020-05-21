@@ -69,3 +69,101 @@ paths:
                     example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
         400:
           description: Invalid credentials.
+  /happenings:
+    post:
+      tags:
+        - Happening
+      summary: Creates new happening.
+      security:
+        - JWT: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Fantastic Event
+                description:
+                  type: string
+                  example: The best event you are going to experience
+                organizerDescription:
+                  type: string
+                  example: By John Appleseed
+                agenda:
+                  type: string
+                  example: 10AM to 1PM @ the library
+      responses:
+        201:
+          description: Happening has been created.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: string
+                        format: uuid
+                        example: 728f10a1-94a5-4049-b25e-4eadce9be938
+                      name:
+                        type: string
+                        example: Fantastic Event
+                      accountId:
+                        type: string
+                        format: uuid
+                        example: 6d9a48b6-310c-4cde-9483-9614658f2ce8
+                      description:
+                        type: string
+                        example: The best event you are going to experience
+                      organizerDescription:
+                        type: string
+                        example: By John Appleseed
+                      agenda:
+                        type: string
+                        example: 10AM to 1PM @ the library
+        422:
+          description: Invalid happening params.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - not-string
+                            - empty
+                      description:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - not-string
+                            - empty
+                      organizerDescription:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - not-string
+                            - empty
+                      agenda:
+                        type: array
+                        items:
+                          type: string
+                          enum:
+                            - not-string
+                            - empty
+
+        401:
+          description: Unauthorized.
