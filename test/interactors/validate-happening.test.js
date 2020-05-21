@@ -9,7 +9,7 @@ test('succeeds for valid Happening', async t => {
   const result = await new ValidateHappening({
     happening: new Happening({
       name: 'Fantastic Event',
-      accountId: Helper.emptyUUID,
+      accountId: Helper.nilUUID,
       description: 'The best event you are going to experience',
       organizerDescription: 'By John Appleseed',
       agenda: '10AM to 1PM @ the library'
@@ -28,7 +28,7 @@ test('fails for missing Account', async t => {
   const result = await new ValidateHappening({
     happening: new Happening({
       name: 'Fantastic Event',
-      accountId: Helper.emptyUUID,
+      accountId: Helper.nilUUID,
       description: 'The best event you are going to experience',
       organizerDescription: 'By John Appleseed',
       agenda: '10AM to 1PM @ the library'
@@ -50,7 +50,7 @@ test('fails for empty name', async t => {
   const result = await new ValidateHappening({
     happening: new Happening({
       name: '',
-      accountId: Helper.emptyUUID,
+      accountId: Helper.nilUUID,
       description: 'The best event you are going to experience',
       organizerDescription: 'By John Appleseed',
       agenda: '10AM to 1PM @ the library'
@@ -73,7 +73,7 @@ test('fails for invalid name', async t => {
   const result = await new ValidateHappening({
     happening: new Happening({
       name: true,
-      accountId: Helper.emptyUUID,
+      accountId: Helper.nilUUID,
       description: 'The best event you are going to experience',
       organizerDescription: 'By John Appleseed',
       agenda: '10AM to 1PM @ the library'

@@ -9,7 +9,7 @@ test('creates happening when it is valid', async t => {
 
   await new CreateHappening({
     name: 'Fantastic Event',
-    accountId: Helper.emptyUUID,
+    accountId: Helper.nilUUID,
     description: 'The best event you are going to experience',
     organizerDescription: 'By John Appleseed',
     agenda: '10AM to 1PM @ the library'

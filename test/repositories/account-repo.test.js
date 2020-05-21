@@ -44,7 +44,7 @@ test.serial('#findById returns entity for valid id', async t => {
 })
 
 test.serial('#findById returns null for invalid id', async t => {
-  const account = await AccountRepo.findById(Helper.emptyUUID)
+  const account = await AccountRepo.findById(Helper.nilUUID)
 
   t.is(null, account)
 })

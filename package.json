@@ -15,14 +15,14 @@
   },
   "devDependencies": {
     "@ava/typescript": "^1.1.1",
-    "ava": "^3.8.1",
-    "eslint": "^6.8.0",
+    "ava": "^3.8.2",
+    "eslint": "^7.0.0",
     "eslint-config-standard": "^14.1.1",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "nodemon": "^2.0.3",
+    "nodemon": "^2.0.4",
     "nyc": "^15.0.1"
   },
   "dependencies": {
@@ -32,10 +32,10 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
-    "pg": "^8.0.3",
-    "slonik": "^22.4.8",
+    "pg": "^8.2.1",
+    "slonik": "^22.4.9",
     "swagger-ui-express": "^4.1.4",
-    "uuid": "^8.0.0",
+    "uuid": "^8.1.0",
     "yamljs": "^0.3.0"
   }
 }
