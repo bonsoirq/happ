@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken')
 const Interactor = require('./interactor')
-const { Environment } = require('../config')
+const { Auth } = require('../config')
 
 class GenerateAuthToken extends Interactor {
-  constructor ({ resourceId, expiresAt, secret = Environment.jwtSecret }) {
+  constructor ({ resourceId, expiresAt, secret = Auth.jwtSecret }) {
     super()
     this.resourceId = resourceId
     this.secret = secret

@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 
 attachSwaggerToWebServer()
-attachBodyParser()
+attachParsers()
 attachRoutes()
 attach404Middleware()
 
@@ -12,8 +12,9 @@ app.listen(Environment.webServerPort, () => {
   messageWebServerIsReady()
 })
 
-function attachBodyParser () {
+function attachParsers () {
   app.use(require('body-parser').json())
+  app.use(require('cookie-parser')())
 }
 
 function attachSwaggerToWebServer () {
@@ -22,8 +23,11 @@ function attachSwaggerToWebServer () {
 }
 
 function attachRoutes () {
+  const { authenticateAccount } = require('./middlewares/auth-account')
+
   app.post('/accounts', require('./web-controllers/accounts/create'))
   app.post('/sessions', require('./web-controllers/sessions/create'))
+  app.post('/happenings', authenticateAccount)
 }
 
 function attach404Middleware () {

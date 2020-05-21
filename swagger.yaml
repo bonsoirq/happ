@@ -5,6 +5,12 @@ info:
 servers:
   - url: http://localhost:3000
     description: Your local machine.
+components:
+  securitySchemes:
+    JWT:
+      type: apiKey
+      name: _happ_auth
+      in: cookie
 paths:
   /accounts:
     post:

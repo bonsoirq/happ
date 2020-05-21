@@ -4,7 +4,7 @@ const AccountRepo = require('../repositories/account-repo')
 const bcrypt = require('../utils/bcrypt')
 
 class CreateAccount extends Interactor {
-  constructor ({ name, email, password }, { repository = AccountRepo }) {
+  constructor ({ name, email, password }, { repository = AccountRepo } = {}) {
     super()
     this.plainPassword = password
     this.account = new Account({ name, email })
