@@ -11,6 +11,30 @@ components:
       type: apiKey
       name: _happ_auth
       in: cookie
+  schemas:
+    Happening:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 728f10a1-94a5-4049-b25e-4eadce9be938
+        name:
+          type: string
+          example: Fantastic Event
+        accountId:
+          type: string
+          format: uuid
+          example: 6d9a48b6-310c-4cde-9483-9614658f2ce8
+        description:
+          type: string
+          example: The best event you are going to experience
+        organizerDescription:
+          type: string
+          example: By John Appleseed
+        agenda:
+          type: string
+          example: 10AM to 1PM @ the library
 paths:
   /accounts:
     post:
@@ -104,28 +128,7 @@ paths:
                 type: object
                 properties:
                   data:
-                    type: object
-                    properties:
-                      id:
-                        type: string
-                        format: uuid
-                        example: 728f10a1-94a5-4049-b25e-4eadce9be938
-                      name:
-                        type: string
-                        example: Fantastic Event
-                      accountId:
-                        type: string
-                        format: uuid
-                        example: 6d9a48b6-310c-4cde-9483-9614658f2ce8
-                      description:
-                        type: string
-                        example: The best event you are going to experience
-                      organizerDescription:
-                        type: string
-                        example: By John Appleseed
-                      agenda:
-                        type: string
-                        example: 10AM to 1PM @ the library
+                    $ref: '#/components/schemas/Happening'
         422:
           description: Invalid happening params.
           content:
@@ -167,3 +170,21 @@ paths:
 
         401:
           description: Unauthorized.
+    get:
+      tags:
+        - Happening
+      summary: Lists happenings.
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Happening'
