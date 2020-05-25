@@ -1,4 +1,5 @@
 const { slonik, sql } = require('../db/connection-pool')
+const Happening = require('../entities/happening')
 
 class HappeningRepo {
   static async add (happening) {
@@ -12,6 +13,28 @@ class HappeningRepo {
     `)
 
     return result.rowCount > 0
+  }
+
+  static async findByAccountId (accountId) {
+    const result = await slonik.query(sql`
+      SELECT * FROM happenings
+      WHERE account_id =${accountId}
+    `)
+
+    const happenings = result.rows.map(row => {
+      const {
+        id,
+        name,
+        account_id: accountId,
+        description,
+        organizer_description: organizerDescription,
+        agenda
+      } = row
+
+      return new Happening({ id, name, accountId, description, organizerDescription, agenda })
+    })
+
+    return happenings
   }
 }
 
