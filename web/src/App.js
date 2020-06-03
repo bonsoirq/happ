@@ -1,20 +1,27 @@
 import React from 'react';
-import logo from './images/logo-transparent.png';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
 import 'bulma/css/bulma.min.css';
 
 import Navbar from './components/navbar'
+import Welcome from './pages/welcome'
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <Switch>
+          <Route path="">
+            <Welcome />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

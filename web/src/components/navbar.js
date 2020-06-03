@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import NavbarItem from 'components/navbar-item'
 import logo from 'images/logo-navbar.png'
 
@@ -7,16 +8,16 @@ export default function Navbar() {
   <nav className="navbar" role="navigation" aria-label="main navigation">
     <div className="navbar-brand">
       <NavbarItem>
-        <a href="https://bulma.io">
+        <Link to="/">
           <img alt="logo" src={logo} width="112" height="28" />
-        </a>
+        </Link>
       </NavbarItem>
     </div>
 
     <div className="navbar-menu">
       <section className="navbar-start">
         <NavbarItem>
-            Home
+          <Link to="/">Home</Link>
         </NavbarItem>
       </section>
       <section className="navbar-end">
