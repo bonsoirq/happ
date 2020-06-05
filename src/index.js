@@ -4,7 +4,7 @@ const express = require('express')
 const app = express()
 
 attachSwaggerToWebServer()
-attachParsers()
+attachMiddlewares()
 attachRoutes()
 attach404Middleware()
 
@@ -12,9 +12,11 @@ app.listen(Environment.webServerPort, () => {
   messageWebServerIsReady()
 })
 
-function attachParsers () {
+function attachMiddlewares () {
+  app.use(require('cors')())
   app.use(require('body-parser').json())
   app.use(require('cookie-parser')())
+  app.use(require('pino-http')())
 }
 
 function attachSwaggerToWebServer () {
