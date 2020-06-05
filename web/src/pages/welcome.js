@@ -2,7 +2,7 @@ import React from 'react';
 import logo from 'images/logo-transparent.png';
 import Title from 'components/title'
 import Subtitle from 'components/subtitle'
-import Registration from 'views/registration';
+import LoginView from 'views/login';
 
 export default function Welcome () {
   return (
@@ -15,7 +15,7 @@ export default function Welcome () {
         <div className="column">
           <Title>Welcome to happ</Title>
           <Subtitle>A tool for event organization</Subtitle>
-          <Registration />
+          <LoginView />
         </div>
       </div>
     </div>

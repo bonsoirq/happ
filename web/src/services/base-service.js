@@ -1,6 +1,6 @@
 export default class BaseService {
   static get url () {
-    return  process.env.API_URL
+    return process.env.REACT_APP_API_URL
   }
 
   static get(path) {
@@ -14,6 +14,8 @@ export default class BaseService {
     return fetch(`${this.url}/${path}`, {
       method: 'POST',
       headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': '*',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)

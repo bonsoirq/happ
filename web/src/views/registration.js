@@ -13,7 +13,7 @@ import reject from 'lib/reject';
 import isEmpty from 'lib/is-empty';
 import pipe from 'lib/pipe';
 
-export default class Registration extends Component {
+export default class RegistrationView extends Component {
   state = {
     name: null,
     email: null,
