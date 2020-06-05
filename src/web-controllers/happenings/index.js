@@ -5,7 +5,7 @@ async function index (req, res, next) {
 
   const happenings = await ListHappenings.call({ accountId })
 
-  res.status(200).json(happenings)
+  res.status(200).json({ data: happenings })
 }
 
 module.exports = index

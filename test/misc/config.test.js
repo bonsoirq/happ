@@ -7,9 +7,9 @@ test('Environment#isDevelopment returns true for development NODE_ENV', t => {
   t.true(Environment.isDevelopment)
 })
 
-test('Environment#webServerPort returns 3000 by default', t => {
+test('Environment#webServerPort returns 4000 by default', t => {
   process.env.NODE_ENV = 'development'
-  const expected = 3000
+  const expected = 4000
 
   t.is(expected, Environment.webServerPort)
 })

@@ -26,7 +26,9 @@ function attachRoutes () {
   const { authenticateAccount } = require('./middlewares/auth-account')
 
   app.post('/accounts', require('./web-controllers/accounts/create'))
+  app.get('/accounts/my', authenticateAccount, require('./web-controllers/accounts/my'))
   app.post('/sessions', require('./web-controllers/sessions/create'))
+  app.delete('/sessions', require('./web-controllers/sessions/destroy'))
   app.post('/happenings', authenticateAccount, require('./web-controllers/happenings/create'))
   app.get('/happenings', authenticateAccount, require('./web-controllers/happenings/index'))
 }

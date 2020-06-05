@@ -1,9 +1,9 @@
 openapi: 3.0.0
 info:
-  title: hApp JSON API
-  version: 0.1.0
+  title: happ JSON API
+  version: 0.2.0
 servers:
-  - url: http://localhost:3000
+  - url: http://localhost:4000
     description: Your local machine.
 components:
   securitySchemes:
@@ -12,6 +12,20 @@ components:
       name: _happ_auth
       in: cookie
   schemas:
+    Account:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 6d9a48b6-310c-4cde-9483-9614658f2ce8
+        name:
+          type: string
+          example: John Appleseed
+        email:
+          type: string
+          format: email
+          example: example@example.com
     Happening:
       type: object
       properties:
@@ -61,6 +75,23 @@ paths:
       responses:
         201:
           description: Account created successfully if email was not taken.
+  /accounts/my:
+    get:
+      tags:
+        - Account
+      summary: Shows logged in account details.
+      security:
+        - JWT: []
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Account'
   /sessions:
     post:
       tags:
@@ -93,6 +124,13 @@ paths:
                     example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
         400:
           description: Invalid credentials.
+    delete:
+      tags:
+        - Auth
+      summary: Removes auth cookie if set.
+      responses:
+        200:
+          description: Logout succeeded.
   /happenings:
     post:
       tags:
@@ -167,9 +205,6 @@ paths:
                           enum:
                             - not-string
                             - empty
-
-        401:
-          description: Unauthorized.
     get:
       tags:
         - Happening
