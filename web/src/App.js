@@ -11,6 +11,7 @@ import Navbar from './components/navbar'
 import Welcome from './pages/welcome'
 import AccountContext from 'contexts/account-context';
 import AccountService from 'services/account-service';
+import { noop } from 'lib/noop';
 
 function App() {
   const [currentAccount, setCurrentAccount] = useState(null)
@@ -19,7 +20,7 @@ function App() {
     AccountService
       .current()
       .then(setCurrentAccount)
-      .catch(() => {})
+      .catch(noop)
   }, [])
 
   return (
