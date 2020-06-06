@@ -4,11 +4,16 @@ export default class BaseService {
   }
 
   static get(path) {
-    return fetch(`${this.url}/${path}`)
+    return fetch(`${this.url}/${path}`, {
+        credentials: 'include',
+        headers: {
+          'Access-Control-Allow-Origin': this.url,
+          'Access-Control-Allow-Headers': '*'
+        }
+      })
       .then(response => response.json())
       .then(({ data }) => data)
   }
-
 
   static post(path, data) {
     return fetch(`${this.url}/${path}`, {
@@ -23,5 +28,17 @@ export default class BaseService {
     })
     .then(response => response.json())
     .then(({ data }) => data)
+  }
+
+  static delete(path) {
+    return fetch(`${this.url}/${path}`, {
+      method: 'DELETE',
+      credentials: 'include',
+      headers: {
+        'Access-Control-Allow-Origin': this.url,
+        'Access-Control-Allow-Headers': '*',
+        'Content-Type': 'application/json'
+      },
+    })
   }
 }

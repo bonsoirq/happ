@@ -9,6 +9,7 @@ import Validation from 'components/form/validation';
 import SessionService from 'services/session-service';
 import reject from 'lib/reject';
 import extend from 'lib/extend';
+import AccountService from 'services/account-service';
 
 export default class LoginView extends Component {
   state = {
@@ -63,6 +64,9 @@ export default class LoginView extends Component {
 
     SessionService.logIn({ email, password })
       .then(() => {
+        AccountService
+          .current()
+          .then(account => console.log(account))
       })
       .catch(() => {
         this.setState(s => extend(s, { errors: { base: 'Invalid email or password'} }))
