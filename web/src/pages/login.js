@@ -2,9 +2,9 @@ import React from 'react';
 import logo from 'images/logo-transparent.png';
 import Title from 'components/title'
 import Subtitle from 'components/subtitle'
-import RegisterView from 'views/register';
+import LoginView from 'views/login';
 
-export default function Welcome () {
+export default function Login () {
   return (
   <section>
     <div className="container">
@@ -15,7 +15,7 @@ export default function Welcome () {
         <div className="column">
           <Title>Welcome to happ</Title>
           <Subtitle>A tool for event organization</Subtitle>
-          <RegisterView />
+          <LoginView />
         </div>
       </div>
     </div>

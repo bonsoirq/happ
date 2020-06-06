@@ -7,7 +7,7 @@ async function create (req, res, next) {
     password: req.body.password
   })
 
-  res.status(201).send()
+  res.status(201).json({ data: {} })
 }
 
 module.exports = create

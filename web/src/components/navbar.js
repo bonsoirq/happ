@@ -6,8 +6,7 @@ import AccountContext from 'contexts/account-context';
 import SessionService from 'services/session-service';
 
 export default function Navbar() {
-  const context = useContext(AccountContext);
-
+  const { currentAccount } = useContext(AccountContext);
   return (
   <nav className="navbar" role="navigation" aria-label="main navigation">
     <div className="navbar-brand">
@@ -27,34 +26,52 @@ export default function Navbar() {
       <section className="navbar-end">
         <NavbarItem>
           <div className="buttons">
-            <AccountContext.Consumer>
-              {({ currentAccount, setCurrentAccount }) => {
-                return currentAccount != null ?
-                <button
-                  className="button is-light"
-                  onClick={() => {
-                    SessionService
-                      .logOut()
-                      .then(() => setCurrentAccount(null))
-                  }}>
-                  Log out
-                </button>
-                :
-                <>
-                <button className="button is-primary">
-                  <strong>Sign up</strong>
-                </button>
-                <button className="button is-light">
-                  Log in
-                </button>
+            { currentAccount != null
+              ? <LogoutButton />
+              : <>
+                  <SignupButton />
+                  <LoginButton />
                 </>
-              }}
-            </AccountContext.Consumer>
-
+            }
           </div>
         </NavbarItem>
       </section>
     </div>
   </nav>
+  )
+}
+
+function LogoutButton () {
+  const { setCurrentAccount } = useContext(AccountContext);
+  return (
+    <button
+      className="button is-light"
+      onClick={() => {
+        SessionService
+          .logOut()
+          .then(() => setCurrentAccount(null))
+    }}>
+      Log out
+    </button>
+  )
+}
+
+function SignupButton () {
+  return (
+    <Link to="/" >
+      <button className="button is-primary">
+        <strong>Sign up</strong>
+      </button>
+    </Link>
+  )
+}
+
+function LoginButton () {
+  return (
+    <Link to="/login" >
+      <button className="button is-light">
+        Log in
+      </button>
+    </Link>
   )
 }

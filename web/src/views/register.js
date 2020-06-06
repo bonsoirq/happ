@@ -12,8 +12,10 @@ import isEmail from 'validator/es/lib/isEmail'
 import reject from 'lib/reject';
 import isEmpty from 'lib/is-empty';
 import pipe from 'lib/pipe';
+import AccountService from 'services/account-service';
+import { withRouter } from 'react-router-dom';
 
-export default class RegistrationView extends Component {
+class RegisterView extends Component {
   state = {
     name: null,
     email: null,
@@ -24,6 +26,7 @@ export default class RegistrationView extends Component {
   }
 
   render() {
+    const { errors } = this.state
     return (
       <form>
       <span>Create an account</span>
@@ -34,7 +37,7 @@ export default class RegistrationView extends Component {
             id="name"
             isDanger={this.state.errors.name != null}
             disabled={this.state.loading}
-            onBlur={this.validate}
+            onBlur={() => this.setState({ errors: extend(errors, this.validateName())})}
             onFocus={() => this.clearValidation('name')}
             onChange={e => this.setState({ name: e.target.value })}
           />
@@ -48,7 +51,7 @@ export default class RegistrationView extends Component {
             id="email"
             isDanger={this.state.errors.email != null}
             disabled={this.state.loading}
-            onBlur={this.validate}
+            onBlur={() => this.setState({ errors: extend(errors, this.validateEmail())})}
             onFocus={() => this.clearValidation('email')}
             onChange={e => this.setState({ email: e.target.value })}
           />
@@ -62,7 +65,7 @@ export default class RegistrationView extends Component {
             id="password"
             isDanger={this.state.errors.password != null}
             disabled={this.state.loading}
-            onBlur={this.validate}
+            onBlur={() => this.setState({ errors: extend(errors, this.validatePassword())})}
             onFocus={() => this.clearValidation('password')}
             onChange={e => this.setState({ password: e.target.value })}
           />
@@ -76,7 +79,7 @@ export default class RegistrationView extends Component {
             id="confirm-password"
             isDanger={this.state.errors.passwordConfirmation != null}
             disabled={this.state.loading}
-            onBlur={this.validate}
+            onBlur={() => this.setState({ errors: extend(errors, this.validatePasswordConfirmation())})}
             onFocus={() => this.clearValidation('passwordConfirmation')}
             onChange={e => this.setState({ passwordConfirmation: e.target.value })}
           />
@@ -104,7 +107,6 @@ export default class RegistrationView extends Component {
       return { name: "Name may be max 255 characters long" }
     }
   }
-
 
   validateEmail = () => {
     const { email } = this.state
@@ -157,8 +159,15 @@ export default class RegistrationView extends Component {
   submit = () => {
     if (this.isValid()) {
       this.setState({ loading: true })
+      const { name, email, password } = this.state
+      AccountService
+        .create({ name, email, password })
+        .then(() => {
+          this.props.history.push('/register/success')
+        })
     }
   }
 
   isValid = () => isEmpty(this.validate())
 }
+export default withRouter(RegisterView)
