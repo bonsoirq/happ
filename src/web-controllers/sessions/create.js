@@ -2,6 +2,12 @@ const GrantAccountAuthToken = require('../../interactors/grant-account-auth-toke
 const { Auth } = require('../../config')
 
 async function create (req, res, next) {
+  const { email, password } = req.body
+
+  if (email == null || password == null) {
+    return res.status(400).send()
+  }
+
   const result = await GrantAccountAuthToken.call({
     email: req.body.email,
     password: req.body.password

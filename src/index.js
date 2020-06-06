@@ -13,7 +13,10 @@ app.listen(Environment.webServerPort, () => {
 })
 
 function attachMiddlewares () {
-  app.use(require('cors')())
+  app.use(require('cors')({
+    origin: true,
+    credentials: true
+  }))
   app.use(require('body-parser').json())
   app.use(require('cookie-parser')())
   app.use(require('pino-http')())

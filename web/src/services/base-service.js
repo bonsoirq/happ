@@ -13,8 +13,9 @@ export default class BaseService {
   static post(path, data) {
     return fetch(`${this.url}/${path}`, {
       method: 'POST',
+      credentials: 'include',
       headers: {
-        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Origin': this.url,
         'Access-Control-Allow-Headers': '*',
         'Content-Type': 'application/json'
       },
