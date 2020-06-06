@@ -10,8 +10,10 @@ import SessionService from 'services/session-service';
 import reject from 'lib/reject';
 import extend from 'lib/extend';
 import AccountService from 'services/account-service';
+import AccountContext from 'contexts/account-context';
 
 export default class LoginView extends Component {
+  static contextType = AccountContext
   state = {
     email: null,
     password: null,
@@ -66,7 +68,7 @@ export default class LoginView extends Component {
       .then(() => {
         AccountService
           .current()
-          .then(account => console.log(account))
+          .then(this.context.setCurrentAccount)
       })
       .catch(() => {
         this.setState(s => extend(s, { errors: { base: 'Invalid email or password'} }))
