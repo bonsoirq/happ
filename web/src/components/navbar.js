@@ -1,11 +1,12 @@
 import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import NavbarItem from 'components/navbar-item'
 import logo from 'images/logo-navbar.png'
 import AccountContext from 'contexts/account-context';
 import SessionService from 'services/session-service';
 
-export default function Navbar() {
+export default withRouter(Navbar)
+function Navbar(props) {
   const { currentAccount } = useContext(AccountContext);
   return (
   <nav className="navbar" role="navigation" aria-label="main navigation">
@@ -27,7 +28,7 @@ export default function Navbar() {
         <NavbarItem>
           <div className="buttons">
             { currentAccount != null
-              ? <LogoutButton />
+              ? <LogoutButton history={props.history} />
               : <>
                   <SignupButton />
                   <LoginButton />
@@ -41,7 +42,7 @@ export default function Navbar() {
   )
 }
 
-function LogoutButton () {
+function LogoutButton (props) {
   const { setCurrentAccount } = useContext(AccountContext);
   return (
     <button
@@ -49,7 +50,10 @@ function LogoutButton () {
       onClick={() => {
         SessionService
           .logOut()
-          .then(() => setCurrentAccount(null))
+          .then(() => {
+            setCurrentAccount(null)
+            props.history.push("/login")
+          })
     }}>
       Log out
     </button>

@@ -16,6 +16,7 @@ import { noop } from 'lib/noop';
 import Login from 'pages/login';
 import Dashboard from 'pages/dashboard';
 import RegisterSuccess from 'pages/register-success';
+import Account from 'pages/account';
 
 function App() {
   const [currentAccount, setCurrentAccount] = useState(null)
@@ -36,21 +37,23 @@ function App() {
         <div className="App">
           <Navbar />
           <Switch>
-            <Route path="/login">
-            { currentAccount != null
-                ? <Redirect to="/" />
-                : <Login />
-              }
-            </Route>
-            <Route path="/register/success">
-              <RegisterSuccess />
-            </Route>
-            <Route path="/">
-              { currentAccount != null
-                ? <Dashboard />
-                : <Welcome />
-              }
-            </Route>
+            { currentAccount == null &&
+              <>
+                <Route exact path="/" component={Welcome} />
+                <Route path="/login" component={Login} />
+                <Route path="/register/success" component={RegisterSuccess} />
+              </>
+            }
+            { currentAccount != null &&
+              <>
+                <Route exact path="/">
+                  <Redirect to="/dashboard" />
+                </Route>
+                <Route path="/dashboard" component={Dashboard} />
+                <Route path="/account" component={Account} />
+              </>
+            }
+            {/* TODO: Default redirect to "/" */}
           </Switch>
         </div>
       </AccountContext.Provider>

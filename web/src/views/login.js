@@ -11,8 +11,9 @@ import reject from 'lib/reject';
 import extend from 'lib/extend';
 import AccountService from 'services/account-service';
 import AccountContext from 'contexts/account-context';
+import { withRouter } from 'react-router-dom';
 
-export default class LoginView extends Component {
+class LoginView extends Component {
   static contextType = AccountContext
   state = {
     email: null,
@@ -69,6 +70,9 @@ export default class LoginView extends Component {
         AccountService
           .current()
           .then(this.context.setCurrentAccount)
+          .then(() => {
+            this.props.history.push("/")
+          })
       })
       .catch(() => {
         this.setState(s => extend(s, { errors: { base: 'Invalid email or password'} }))
@@ -78,3 +82,4 @@ export default class LoginView extends Component {
       })
   }
 }
+export default withRouter(LoginView)

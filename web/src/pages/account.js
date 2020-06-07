@@ -1,10 +1,10 @@
 import React from 'react';
 import DashboardLayout from 'layouts/dashboard-layout';
 
-export default function Dashboard () {
+export default function Account () {
   return (
     <DashboardLayout>
-      TODO: Happenings list
+      TODO: Display account info
     </DashboardLayout>
   )
 }
