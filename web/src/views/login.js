@@ -12,6 +12,7 @@ import extend from 'lib/extend';
 import AccountService from 'services/account-service';
 import AccountContext from 'contexts/account-context';
 import { withRouter } from 'react-router-dom';
+import Paths from 'paths';
 
 class LoginView extends Component {
   static contextType = AccountContext
@@ -71,7 +72,7 @@ class LoginView extends Component {
           .current()
           .then(this.context.setCurrentAccount)
           .then(() => {
-            this.props.history.push("/")
+            this.props.history.push(Paths.Root)
           })
       })
       .catch(() => {

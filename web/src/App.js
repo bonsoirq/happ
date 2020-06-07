@@ -17,6 +17,7 @@ import Login from 'pages/login';
 import Dashboard from 'pages/dashboard';
 import RegisterSuccess from 'pages/register-success';
 import Account from 'pages/account';
+import Paths from 'paths';
 
 function App() {
   const [currentAccount, setCurrentAccount] = useState(null)
@@ -39,20 +40,20 @@ function App() {
           <Switch>
             { currentAccount == null &&
               <>
-                <Route exact path="/" component={Welcome} />
-                <Route path="/login" component={Login} />
-                <Route path="/register/success" component={RegisterSuccess} />
-                <Redirect to="/" />
+                <Route exact path={Paths.Root} component={Welcome} />
+                <Route path={Paths.Login} component={Login} />
+                <Route path={Paths.RegisterSuccess} component={RegisterSuccess} />
+                <Redirect to={Paths.Root} />
               </>
             }
             { currentAccount != null &&
               <>
-                <Route exact path="/">
-                  <Redirect to="/dashboard" />
+                <Route exact path={Paths.Root}>
+                  <Redirect to={Paths.Dashboard} />
                 </Route>
-                <Route path="/dashboard" component={Dashboard} />
-                <Route path="/account" component={Account} />
-                <Redirect to="/" />
+                <Route path={Paths.Dashboard} component={Dashboard} />
+                <Route path={Paths.Account} component={Account} />
+                <Redirect to={Paths.Root} />
               </>
             }
           </Switch>

@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import Title from 'components/title'
 import AccountContext from 'contexts/account-context';
 import { NavLink } from 'react-router-dom';
+import Paths from 'paths';
 
 export default function DashboardLayout (props) {
   const { currentAccount } = useContext(AccountContext);
@@ -29,8 +30,8 @@ function Sidemenu () {
         General
       </p>
       <ul class="menu-list">
-        <li><NavLink to="/dashboard" activeClassName="is-active">Happenings</NavLink></li>
-        <li><NavLink to="/account" activeClassName="is-active">Account</NavLink></li>
+        <li><NavLink to={Paths.Dashboard} activeClassName="is-active">Happenings</NavLink></li>
+        <li><NavLink to={Paths.Account} activeClassName="is-active">Account</NavLink></li>
       </ul>
     </aside>
   )

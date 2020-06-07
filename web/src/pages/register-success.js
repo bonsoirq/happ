@@ -2,13 +2,14 @@ import React, { useEffect } from 'react';
 import Title from 'components/title'
 import Subtitle from 'components/subtitle'
 import { withRouter } from 'react-router-dom';
+import Paths from 'paths';
 
 export default withRouter(RegisterSuccess)
 function RegisterSuccess (props) {
   useEffect(() => {
     const TIME_TILL_REDIRECT_IN_MS = 10_000
     const timeout = setTimeout(() => {
-      props.history.push("/login")
+      props.history.push(Paths.Login)
     }, TIME_TILL_REDIRECT_IN_MS)
     return () => clearTimeout(timeout)
   })

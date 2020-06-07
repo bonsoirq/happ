@@ -14,6 +14,7 @@ import isEmpty from 'lib/is-empty';
 import pipe from 'lib/pipe';
 import AccountService from 'services/account-service';
 import { withRouter } from 'react-router-dom';
+import Paths from 'paths';
 
 class RegisterView extends Component {
   state = {
@@ -163,7 +164,7 @@ class RegisterView extends Component {
       AccountService
         .create({ name, email, password })
         .then(() => {
-          this.props.history.push('/register/success')
+          this.props.history.push(Paths.RegisterSuccess)
         })
     }
   }

@@ -4,6 +4,7 @@ import NavbarItem from 'components/navbar-item'
 import logo from 'images/logo-navbar.png'
 import AccountContext from 'contexts/account-context';
 import SessionService from 'services/session-service';
+import Paths from 'paths';
 
 export default withRouter(Navbar)
 function Navbar(props) {
@@ -12,7 +13,7 @@ function Navbar(props) {
   <nav className="navbar" role="navigation" aria-label="main navigation">
     <div className="navbar-brand">
       <NavbarItem>
-        <Link to="/">
+        <Link to={Paths.Root}>
           <img alt="logo" src={logo} width="112" height="28" />
         </Link>
       </NavbarItem>
@@ -21,7 +22,7 @@ function Navbar(props) {
     <div className="navbar-menu">
       <section className="navbar-start">
         <NavbarItem>
-          <Link to="/">Home</Link>
+          <Link to={Paths.Root}>Home</Link>
         </NavbarItem>
       </section>
       <section className="navbar-end">
@@ -52,7 +53,7 @@ function LogoutButton (props) {
           .logOut()
           .then(() => {
             setCurrentAccount(null)
-            props.history.push("/login")
+            props.history.push(Paths.Login)
           })
     }}>
       Log out
@@ -62,7 +63,7 @@ function LogoutButton (props) {
 
 function SignupButton () {
   return (
-    <Link to="/" >
+    <Link to={Paths.Root} >
       <button className="button is-primary">
         <strong>Sign up</strong>
       </button>
@@ -72,7 +73,7 @@ function SignupButton () {
 
 function LoginButton () {
   return (
-    <Link to="/login" >
+    <Link to={Paths.Login} >
       <button className="button is-light">
         Log in
       </button>
