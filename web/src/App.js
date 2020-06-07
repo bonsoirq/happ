@@ -42,6 +42,7 @@ function App() {
                 <Route exact path="/" component={Welcome} />
                 <Route path="/login" component={Login} />
                 <Route path="/register/success" component={RegisterSuccess} />
+                <Redirect to="/" />
               </>
             }
             { currentAccount != null &&
@@ -51,9 +52,9 @@ function App() {
                 </Route>
                 <Route path="/dashboard" component={Dashboard} />
                 <Route path="/account" component={Account} />
+                <Redirect to="/" />
               </>
             }
-            {/* TODO: Default redirect to "/" */}
           </Switch>
         </div>
       </AccountContext.Provider>
