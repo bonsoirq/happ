@@ -26,10 +26,10 @@ export default function DashboardLayout (props) {
 function Sidemenu () {
   return (
     <aside className="menu">
-      <p class="menu-label">
+      <p className="menu-label">
         General
       </p>
-      <ul class="menu-list">
+      <ul className="menu-list">
         <li><NavLink to={Paths.Dashboard} activeClassName="is-active">Happenings</NavLink></li>
         <li><NavLink to={Paths.Account} activeClassName="is-active">Account</NavLink></li>
       </ul>
