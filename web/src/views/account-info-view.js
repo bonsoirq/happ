@@ -3,7 +3,7 @@ import AccountContext from 'contexts/account-context';
 import SmallTitle from 'components/small-title';
 import SmallSubtitle from 'components/small-subtitle';
 
-export default function AccountInfoView () {
+export default function AccountInfoView() {
   const { currentAccount } = useContext(AccountContext);
   return (
     <div>
@@ -13,12 +13,11 @@ export default function AccountInfoView () {
   )
 }
 
-function AccountInfoField({title, content}) {
-    return (
-      <div>
-        <SmallTitle>{title}</SmallTitle>
-        <SmallSubtitle>{content}</SmallSubtitle>
-      </div>
-    )
-  }
-  
+function AccountInfoField({ title, content }) {
+  return (
+    <div>
+      <SmallTitle>{title}</SmallTitle>
+      <SmallSubtitle>{content}</SmallSubtitle>
+    </div>
+  )
+}
