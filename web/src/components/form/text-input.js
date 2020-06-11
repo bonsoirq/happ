@@ -1,5 +1,5 @@
 import React from 'react';
-import addModifiers, { modifiers } from 'modifiers/color'
+import addModifiers, { modifiers } from 'modifiers'
 import reject from 'lib/reject';
 
 export default function TextInput (props) {
