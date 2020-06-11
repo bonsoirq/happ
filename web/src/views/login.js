@@ -13,6 +13,7 @@ import AccountContext from 'contexts/account-context';
 import { withRouter } from 'react-router-dom';
 import Paths from 'paths';
 import SubmitButton from 'components/submit-button';
+import Form from 'components/form/form';
 
 class LoginView extends Component {
   static contextType = AccountContext
@@ -25,7 +26,7 @@ class LoginView extends Component {
 
   render() {
     return (
-      <form onSubmit={e => {e.preventDefault(); this.submit()}}>
+      <Form onSubmit={this.submit}>
         <span>Log in</span>
         <Field>
           <Label htmlFor="email">Email</Label>
@@ -60,7 +61,7 @@ class LoginView extends Component {
         >
           Submit
         </SubmitButton>
-      </form>
+      </Form>
     )
   }
 

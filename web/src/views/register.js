@@ -15,6 +15,7 @@ import AccountService from 'services/account-service';
 import { withRouter } from 'react-router-dom';
 import Paths from 'paths';
 import SubmitButton from 'components/submit-button';
+import Form from 'components/form/form';
 
 class RegisterView extends Component {
   state = {
@@ -29,7 +30,7 @@ class RegisterView extends Component {
   render() {
     const { errors } = this.state
     return (
-      <form onSubmit={e => {e.preventDefault(); this.submit()}}>
+      <Form onSubmit={this.submit}>
         <span>Create an account</span>
         <Field>
           <Label htmlFor="name">Name</Label>
@@ -95,7 +96,7 @@ class RegisterView extends Component {
         >
           Submit
         </SubmitButton>
-      </form>
+      </Form>
     )
   }
 
