@@ -44,5 +44,5 @@ function attach404Middleware () {
 }
 
 function messageWebServerIsReady () {
-  console.log(`server listening at ${Environment.webServerPort}`)
+  console.log(`INFO: Web server listening at :${Environment.webServerPort}`)
 }
