@@ -7,4 +7,3 @@ export default function PasswordInput (props) {
     {props.children}
   </input>
 }
-
