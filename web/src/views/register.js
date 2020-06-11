@@ -4,7 +4,6 @@ import Label from 'components/form/label';
 import Control from 'components/form/control';
 import TextInput from 'components/form/text-input';
 import PasswordInput from 'components/form/password-input';
-import Button from 'components/button';
 import Validation from 'components/form/validation';
 
 import extend from 'lib/extend'
@@ -15,6 +14,8 @@ import pipe from 'lib/pipe';
 import AccountService from 'services/account-service';
 import { withRouter } from 'react-router-dom';
 import Paths from 'paths';
+import SubmitButton from 'components/submit-button';
+import Form from 'components/form/form';
 
 class RegisterView extends Component {
   state = {
@@ -29,73 +30,73 @@ class RegisterView extends Component {
   render() {
     const { errors } = this.state
     return (
-      <form>
-      <span>Create an account</span>
-      <Field>
-        <Label htmlFor="name">Name</Label>
-        <Control>
-          <TextInput
-            id="name"
-            isDanger={this.state.errors.name != null}
-            disabled={this.state.loading}
-            onBlur={() => this.setState({ errors: extend(errors, this.validateName())})}
-            onFocus={() => this.clearValidation('name')}
-            onChange={e => this.setState({ name: e.target.value })}
-          />
-        </Control>
-        <Validation error={this.state.errors.name} />
-      </Field>
-      <Field>
-        <Label htmlFor="email">Email</Label>
-        <Control>
-          <TextInput
-            id="email"
-            isDanger={this.state.errors.email != null}
-            disabled={this.state.loading}
-            onBlur={() => this.setState({ errors: extend(errors, this.validateEmail())})}
-            onFocus={() => this.clearValidation('email')}
-            onChange={e => this.setState({ email: e.target.value })}
-          />
-        </Control>
-        <Validation error={this.state.errors.email} />
-      </Field>
-      <Field>
-        <Label htmlFor="password">Password</Label>
-        <Control>
-          <PasswordInput
-            id="password"
-            isDanger={this.state.errors.password != null}
-            disabled={this.state.loading}
-            onBlur={() => this.setState({ errors: extend(errors, this.validatePassword())})}
-            onFocus={() => this.clearValidation('password')}
-            onChange={e => this.setState({ password: e.target.value })}
-          />
-        </Control>
-        <Validation error={this.state.errors.password} />
-      </Field>
-      <Field>
-        <Label htmlFor="confirm-password">Confirm Password</Label>
-        <Control>
-          <PasswordInput
-            id="confirm-password"
-            isDanger={this.state.errors.passwordConfirmation != null}
-            disabled={this.state.loading}
-            onBlur={() => this.setState({ errors: extend(errors, this.validatePasswordConfirmation())})}
-            onFocus={() => this.clearValidation('passwordConfirmation')}
-            onChange={e => this.setState({ passwordConfirmation: e.target.value })}
-          />
-        </Control>
-        <Validation error={this.state.errors.passwordConfirmation} />
-      </Field>
-      <Button
-        isPrimary={true}
-        onClick={this.submit}
-        isLoading={this.state.loading}
-        disabled={this.state.loading}
-      >
-        Submit
-      </Button>
-    </form>
+      <Form onSubmit={this.submit}>
+        <span>Create an account</span>
+        <Field>
+          <Label htmlFor="name">Name</Label>
+          <Control>
+            <TextInput
+              id="name"
+              isDanger={this.state.errors.name != null}
+              disabled={this.state.loading}
+              onBlur={() => this.setState({ errors: extend(errors, this.validateName())})}
+              onFocus={() => this.clearValidation('name')}
+              onChange={e => this.setState({ name: e.target.value })}
+            />
+          </Control>
+          <Validation error={this.state.errors.name} />
+        </Field>
+        <Field>
+          <Label htmlFor="email">Email</Label>
+          <Control>
+            <TextInput
+              id="email"
+              isDanger={this.state.errors.email != null}
+              disabled={this.state.loading}
+              onBlur={() => this.setState({ errors: extend(errors, this.validateEmail())})}
+              onFocus={() => this.clearValidation('email')}
+              onChange={e => this.setState({ email: e.target.value })}
+            />
+          </Control>
+          <Validation error={this.state.errors.email} />
+        </Field>
+        <Field>
+          <Label htmlFor="password">Password</Label>
+          <Control>
+            <PasswordInput
+              id="password"
+              isDanger={this.state.errors.password != null}
+              disabled={this.state.loading}
+              onBlur={() => this.setState({ errors: extend(errors, this.validatePassword())})}
+              onFocus={() => this.clearValidation('password')}
+              onChange={e => this.setState({ password: e.target.value })}
+            />
+          </Control>
+          <Validation error={this.state.errors.password} />
+        </Field>
+        <Field>
+          <Label htmlFor="confirm-password">Confirm Password</Label>
+          <Control>
+            <PasswordInput
+              id="confirm-password"
+              isDanger={this.state.errors.passwordConfirmation != null}
+              disabled={this.state.loading}
+              onBlur={() => this.setState({ errors: extend(errors, this.validatePasswordConfirmation())})}
+              onFocus={() => this.clearValidation('passwordConfirmation')}
+              onChange={e => this.setState({ passwordConfirmation: e.target.value })}
+            />
+          </Control>
+          <Validation error={this.state.errors.passwordConfirmation} />
+        </Field>
+        <SubmitButton
+          isPrimary={true}
+          onClick={this.submit}
+          isLoading={this.state.loading}
+          disabled={this.state.loading}
+        >
+          Submit
+        </SubmitButton>
+      </Form>
     )
   }
 
