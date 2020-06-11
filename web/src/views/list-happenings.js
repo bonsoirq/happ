@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
 import Table from 'components/table/table';
 import Button from 'components/button';
-import ModalCard from 'components/modal/modal-card';
-import ModalCardHead from 'components/modal/modal-card-head';
-import ModalCardContent from 'components/modal/modal-card-content';
-import ModalCardFoot from 'components/modal/modal-card-foot';
+import HappeningDetailsView from './happening-details';
 
 export default function ListHappeningsView(props) {
-  const [showDetailsModal, setShowDetailsModal] = useState(false);
+  const [selectedDetailsHappening, selectDetailsHappening] = useState(null);
 
   return (<>
     <Table>
@@ -19,26 +16,22 @@ export default function ListHappeningsView(props) {
             <td>{x.name}</td>
             <td>{x.description}</td>
             <td>
-              <Button>TODO: Details</Button>
+              <Button
+                onClick={() => selectDetailsHappening(x)}
+              >
+                Details
+              </Button>
             </td>
           </tr>
         ))}
       </tbody>
     </Table>
-    {showDetailsModal &&
-      <ModalCard>
-        <ModalCardHead title="TODO: Title" onClose={() => setShowDetailsModal(false)} />
-        <ModalCardContent>
-          TODO: Happening details
-        </ModalCardContent>
-        <ModalCardFoot>
-          <Button
-            onClick={() => setShowDetailsModal(false)}
-          >
-            Cancel
-          </Button>
-        </ModalCardFoot>
-      </ModalCard>
+    {
+      selectedDetailsHappening != null &&
+      <HappeningDetailsView
+        happening={selectedDetailsHappening}
+        onClose={() => selectDetailsHappening(null)}
+      />
     }
   </>
   )
