@@ -2,10 +2,7 @@ import React, { useState } from 'react';
 import Table from 'components/table/table';
 import Button from 'components/button';
 import HappeningDetailsView from './happening-details';
-import ModalCard from 'components/modal/modal-card';
-import ModalCardHead from 'components/modal/modal-card-head';
-import ModalCardContent from 'components/modal/modal-card-content';
-import ModalCardFoot from 'components/modal/modal-card-foot';
+import CreateHappeningView from './create-happening';
 
 export default function ListHappeningsView(props) {
   const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(false);
@@ -40,22 +37,10 @@ export default function ListHappeningsView(props) {
     }
     {
       showCreateHappeningModal &&
-      <ModalCard>
-        <ModalCardHead
-          title="Create new happening"
-          onClose={() => setShowCreateHappeningModal(false)}
-        />
-        <ModalCardContent>
-          TODO: Form
-        </ModalCardContent>
-        <ModalCardFoot>
-          <Button
-            onClick={() => setShowCreateHappeningModal(false)}
-          >
-            Cancel
-          </Button>
-        </ModalCardFoot>
-      </ModalCard>
+      <CreateHappeningView
+        self={props.self}
+        onClose={() => setShowCreateHappeningModal(false)}
+      />
     }
   </>
   )
