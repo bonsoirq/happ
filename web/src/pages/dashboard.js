@@ -7,12 +7,14 @@ import ListHappeningsView from 'views/list-happenings';
 export default class Dashboard extends Component {
   state = {
     happenings: [],
-    name: null,
-    description: null,
-    organizerDescription: null,
-    agenda: null,
-    loading: false,
-    errors: {}
+    createHappeningState: {
+      name: null,
+      description: null,
+      organizerDescription: null,
+      agenda: null,
+      loading: false,
+      errors: {}
+    }
   }
 
   componentDidMount () {
@@ -25,7 +27,11 @@ export default class Dashboard extends Component {
   render () {
     return (
       <DashboardLayout>
-        <ListHappeningsView happenings={this.state.happenings} self={this}/>
+        <ListHappeningsView
+          happenings={this.state.happenings}
+          createHappeningState={this.state.createHappeningState}
+          setState={s => {this.setState(s)}}
+        />
       </DashboardLayout>
     )
   }

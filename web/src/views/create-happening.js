@@ -18,9 +18,9 @@ import ModalCardHead from 'components/modal/modal-card-head';
 import ModalCardContent from 'components/modal/modal-card-content';
 import ModalCardFoot from 'components/modal/modal-card-foot';
 
-export default function CreateHappeningView ({self, onClose}) {
+export default function CreateHappeningView ({state, setState, onClose}) {
   var validateName = () => {
-    const { name } = self.state
+    const { name } = state
     const MAX_LENGTH = 255
     if (name === '' || name == null) {
       return { name: "Must be filled" }
@@ -30,7 +30,7 @@ export default function CreateHappeningView ({self, onClose}) {
   }
 
   var validateDescription = () => {
-    const { description } = self.state
+    const { description } = state
     const MAX_LENGTH = 255
     if (description === '' || description == null) {
       return { description: "Must be filled" }
@@ -40,7 +40,7 @@ export default function CreateHappeningView ({self, onClose}) {
   }
 
   var validateOrganizerDescription = () => {
-    const { organizerDescription } = self.state
+    const { organizerDescription } = state
     const MAX_LENGTH = 255
     if (organizerDescription === '' || organizerDescription == null) {
       return { organizerDescription: "Must be filled" }
@@ -50,7 +50,7 @@ export default function CreateHappeningView ({self, onClose}) {
   }
 
   var validateAgenda = () => {
-    const { agenda } = self.state
+    const { agenda } = state
     const MAX_LENGTH = 255
     if (agenda === '' || agenda == null) {
       return { agenda: "Must be filled" }
@@ -60,7 +60,7 @@ export default function CreateHappeningView ({self, onClose}) {
   }
 
   var clearValidation = (field) => {
-    self.setState({errors: reject(self.state.errors, field)})
+    setCreateHappeningState({ errors: reject(state.errors, field) })
   }
 
   var validate = () => {
@@ -71,21 +71,27 @@ export default function CreateHappeningView ({self, onClose}) {
       x => extend(x, validateOrganizerDescription()),
       x => extend(x, validateAgenda())
     )
-    self.setState({ errors })
+    setCreateHappeningState({errors})
     return errors
   }
 
   var submit = () => {
     if (isValid()) {
-      self.setState({ loading: true })
-      const { name, description, organizerDescription, agenda } = self.state
+      setCreateHappeningState({loading: true})
+      const { name, description, organizerDescription, agenda } = state
       onClose()
     }
   }
 
+  var setCreateHappeningState = (props) => {
+    setState(prevState => ({
+      createHappeningState: extend(prevState.createHappeningState, props)
+    }))
+  }
+
   var isValid = () => isEmpty(validate())
 
-  const { errors } = self.state
+  const { errors } = state
 
   return <ModalCard>
     <ModalCardHead
@@ -99,56 +105,56 @@ export default function CreateHappeningView ({self, onClose}) {
           <Control>
             <TextInput
               id="name"
-              isDanger={self.state.errors.name != null}
-              disabled={self.state.loading}
-              onBlur={() => self.setState({ errors: extend(errors, validateName())})}
+              isDanger={state.errors.name != null}
+              disabled={state.loading}
+              onBlur={() => setCreateHappeningState({ errors: extend(errors, validateName()) })}
               onFocus={() => clearValidation('name')}
-              onChange={e => self.setState({ name: e.target.value })}
+              onChange={e => setCreateHappeningState({ name: e.target.value })}
             />
           </Control>
-          <Validation error={self.state.errors.name} />
+          <Validation error={state.errors.name} />
         </Field>
         <Field>
           <Label htmlFor="description">Description</Label>
           <Control>
             <TextInput
               id="description"
-              isDanger={self.state.errors.description != null}
-              disabled={self.state.loading}
-              onBlur={() => self.setState({ errors: extend(errors, validateDescription())})}
+              isDanger={state.errors.description != null}
+              disabled={state.loading}
+              onBlur={() => setCreateHappeningState({ errors: extend(errors, validateDescription()) })}
               onFocus={() => clearValidation('description')}
-              onChange={e => self.setState({ description: e.target.value })}
+              onChange={e => setCreateHappeningState({ description: e.target.value })}
             />
           </Control>
-          <Validation error={self.state.errors.description} />
+          <Validation error={state.errors.description} />
         </Field>
         <Field>
           <Label htmlFor="organizer-description">Organizer description</Label>
           <Control>
             <TextInput
               id="organizer-description"
-              isDanger={self.state.errors.organizerDescription != null}
-              disabled={self.state.loading}
-              onBlur={() => self.setState({ errors: extend(errors, validateOrganizerDescription())})}
+              isDanger={state.errors.organizerDescription != null}
+              disabled={state.loading}
+              onBlur={() => setCreateHappeningState({ errors: extend(errors, validateOrganizerDescription()) })}
               onFocus={() => clearValidation('organizerDescription')}
-              onChange={e => self.setState({ organizerDescription: e.target.value })}
+              onChange={e => setCreateHappeningState({ organizerDescription: e.target.value })}
             />
           </Control>
-          <Validation error={self.state.errors.organizerDescription} />
+          <Validation error={state.errors.organizerDescription} />
         </Field>
         <Field>
           <Label htmlFor="agenda">Agenda</Label>
           <Control>
             <TextInput
               id="agenda"
-              isDanger={self.state.errors.agenda != null}
-              disabled={self.state.loading}
-              onBlur={() => self.setState({ errors: extend(errors, validateAgenda())})}
+              isDanger={state.errors.agenda != null}
+              disabled={state.loading}
+              onBlur={() => setCreateHappeningState({ errors: extend(errors, validateAgenda()) })}
               onFocus={() => clearValidation('agenda')}
-              onChange={e => self.setState({ agenda: e.target.value })}
+              onChange={e => setCreateHappeningState({ agenda: e.target.value })}
             />
           </Control>
-          <Validation error={self.state.errors.agenda} />
+          <Validation error={state.errors.agenda} />
         </Field>
       </Form>
     </ModalCardContent>
@@ -161,8 +167,8 @@ export default function CreateHappeningView ({self, onClose}) {
       <SubmitButton
         isPrimary={true}
         onClick={submit}
-        isLoading={self.state.loading}
-        disabled={self.state.loading}
+        isLoading={state.loading}
+        disabled={state.loading}
       >
         Create
       </SubmitButton>

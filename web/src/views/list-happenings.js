@@ -38,7 +38,8 @@ export default function ListHappeningsView(props) {
     {
       showCreateHappeningModal &&
       <CreateHappeningView
-        self={props.self}
+        state={props.createHappeningState}
+        setState={props.setState}
         onClose={() => setShowCreateHappeningModal(false)}
       />
     }
