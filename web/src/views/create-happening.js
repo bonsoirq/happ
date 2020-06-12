@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Field from 'components/form/field';
 import Label from 'components/form/label';
 import Control from 'components/form/control';
@@ -19,9 +19,105 @@ import ModalCardContent from 'components/modal/modal-card-content';
 import ModalCardFoot from 'components/modal/modal-card-foot';
 import HappeningService from 'services/happening-service';
 
-export default function CreateHappeningView ({state, setState, onCreate, onClose}) {
-  var validateName = () => {
-    const { name } = state
+export default class CreateHappeningView extends Component {
+  state = {
+    name: null,
+    description: null,
+    organizerDescription: null,
+    agenda: null,
+    loading: false,
+    errors: {}
+  }
+
+  render() {
+    const { errors } = this.state
+    return (
+      <ModalCard>
+        <ModalCardHead
+          title="Create new happening"
+          onClose={this.props.onClose}
+        />
+        <ModalCardContent>
+          <Form onSubmit={this.submit}>
+            <Field>
+              <Label htmlFor="name">Name</Label>
+              <Control>
+                <TextInput
+                  id="name"
+                  isDanger={this.state.errors.name != null}
+                  disabled={this.state.loading}
+                  onBlur={() => this.setState({ errors: extend(errors, this.validateName()) })}
+                  onFocus={() => this.clearValidation('name')}
+                  onChange={e => this.setState({ name: e.target.value })}
+                />
+              </Control>
+              <Validation error={this.state.errors.name} />
+            </Field>
+            <Field>
+              <Label htmlFor="description">Description</Label>
+              <Control>
+                <TextInput
+                  id="description"
+                  isDanger={this.state.errors.description != null}
+                  disabled={this.state.loading}
+                  onBlur={() => this.setState({ errors: extend(errors, this.validateDescription()) })}
+                  onFocus={() => this.clearValidation('description')}
+                  onChange={e => this.setState({ description: e.target.value })}
+                />
+              </Control>
+              <Validation error={this.state.errors.description} />
+            </Field>
+            <Field>
+              <Label htmlFor="organizer-description">Organizer description</Label>
+              <Control>
+                <TextInput
+                  id="organizer-description"
+                  isDanger={this.state.errors.organizerDescription != null}
+                  disabled={this.state.loading}
+                  onBlur={() => this.setState({ errors: extend(errors, this.validateOrganizerDescription()) })}
+                  onFocus={() => this.clearValidation('organizerDescription')}
+                  onChange={e => this.setState({ organizerDescription: e.target.value })}
+                />
+              </Control>
+              <Validation error={this.state.errors.organizerDescription} />
+            </Field>
+            <Field>
+              <Label htmlFor="agenda">Agenda</Label>
+              <Control>
+                <TextInput
+                  id="agenda"
+                  isDanger={this.state.errors.agenda != null}
+                  disabled={this.state.loading}
+                  onBlur={() => this.setState({ errors: extend(errors, this.validateAgenda()) })}
+                  onFocus={() => this.clearValidation('agenda')}
+                  onChange={e => this.setState({ agenda: e.target.value })}
+                />
+              </Control>
+              <Validation error={this.state.errors.agenda} />
+            </Field>
+          </Form>
+        </ModalCardContent>
+        <ModalCardFoot>
+          <Button
+            onClick={this.props.onClose}
+          >
+            Cancel
+          </Button>
+          <SubmitButton
+            isPrimary={true}
+            onClick={this.submit}
+            isLoading={this.state.loading}
+            disabled={this.state.loading}
+          >
+            Create
+          </SubmitButton>
+        </ModalCardFoot>
+      </ModalCard>
+    )
+  }
+
+  validateName = () => {
+    const { name } = this.state
     const MAX_LENGTH = 255
     if (name === '' || name == null) {
       return { name: "Must be filled" }
@@ -30,8 +126,8 @@ export default function CreateHappeningView ({state, setState, onCreate, onClose
     }
   }
 
-  var validateDescription = () => {
-    const { description } = state
+  validateDescription = () => {
+    const { description } = this.state
     const MAX_LENGTH = 255
     if (description === '' || description == null) {
       return { description: "Must be filled" }
@@ -40,8 +136,8 @@ export default function CreateHappeningView ({state, setState, onCreate, onClose
     }
   }
 
-  var validateOrganizerDescription = () => {
-    const { organizerDescription } = state
+  validateOrganizerDescription = () => {
+    const { organizerDescription } = this.state
     const MAX_LENGTH = 255
     if (organizerDescription === '' || organizerDescription == null) {
       return { organizerDescription: "Must be filled" }
@@ -50,8 +146,8 @@ export default function CreateHappeningView ({state, setState, onCreate, onClose
     }
   }
 
-  var validateAgenda = () => {
-    const { agenda } = state
+  validateAgenda = () => {
+    const { agenda } = this.state
     const MAX_LENGTH = 255
     if (agenda === '' || agenda == null) {
       return { agenda: "Must be filled" }
@@ -60,124 +156,34 @@ export default function CreateHappeningView ({state, setState, onCreate, onClose
     }
   }
 
-  var clearValidation = (field) => {
-    setCreateHappeningState({ errors: reject(state.errors, field) })
+  clearValidation = (field) => {
+    this.setState({ errors: reject(this.state.errors, field) })
   }
 
-  var validate = () => {
+  validate = () => {
     const errors = pipe(
       {},
-      x => extend(x, validateName()),
-      x => extend(x, validateDescription()),
-      x => extend(x, validateOrganizerDescription()),
-      x => extend(x, validateAgenda())
+      x => extend(x, this.validateName()),
+      x => extend(x, this.validateDescription()),
+      x => extend(x, this.validateOrganizerDescription()),
+      x => extend(x, this.validateAgenda())
     )
-    setCreateHappeningState({errors})
+    this.setState({errors})
     return errors
   }
 
-  var submit = () => {
-    if (isValid()) {
-      setCreateHappeningState({loading: true})
-      const { name, description, organizerDescription, agenda } = state
+  submit = () => {
+    if (this.isValid()) {
+      this.setState({ loading: true })
+      const { name, description, organizerDescription, agenda } = this.state
       HappeningService
         .create({ name, description, organizerDescription, agenda })
-        .then( happening => {
-          onCreate(happening)
-          onClose()
+        .then(() => {
+          this.props.onCreate()
+          this.props.onClose()
         })
     }
   }
 
-  var setCreateHappeningState = (props) => {
-    setState(prevState => ({
-      createHappeningState: extend(prevState.createHappeningState, props)
-    }))
-  }
-
-  var isValid = () => isEmpty(validate())
-
-  const { errors } = state
-
-  return <ModalCard>
-    <ModalCardHead
-      title="Create new happening"
-      onClose={onClose}
-    />
-    <ModalCardContent>
-      <Form onSubmit={submit}>
-        <Field>
-          <Label htmlFor="name">Name</Label>
-          <Control>
-            <TextInput
-              id="name"
-              isDanger={state.errors.name != null}
-              disabled={state.loading}
-              onBlur={() => setCreateHappeningState({ errors: extend(errors, validateName()) })}
-              onFocus={() => clearValidation('name')}
-              onChange={e => setCreateHappeningState({ name: e.target.value })}
-            />
-          </Control>
-          <Validation error={state.errors.name} />
-        </Field>
-        <Field>
-          <Label htmlFor="description">Description</Label>
-          <Control>
-            <TextInput
-              id="description"
-              isDanger={state.errors.description != null}
-              disabled={state.loading}
-              onBlur={() => setCreateHappeningState({ errors: extend(errors, validateDescription()) })}
-              onFocus={() => clearValidation('description')}
-              onChange={e => setCreateHappeningState({ description: e.target.value })}
-            />
-          </Control>
-          <Validation error={state.errors.description} />
-        </Field>
-        <Field>
-          <Label htmlFor="organizer-description">Organizer description</Label>
-          <Control>
-            <TextInput
-              id="organizer-description"
-              isDanger={state.errors.organizerDescription != null}
-              disabled={state.loading}
-              onBlur={() => setCreateHappeningState({ errors: extend(errors, validateOrganizerDescription()) })}
-              onFocus={() => clearValidation('organizerDescription')}
-              onChange={e => setCreateHappeningState({ organizerDescription: e.target.value })}
-            />
-          </Control>
-          <Validation error={state.errors.organizerDescription} />
-        </Field>
-        <Field>
-          <Label htmlFor="agenda">Agenda</Label>
-          <Control>
-            <TextInput
-              id="agenda"
-              isDanger={state.errors.agenda != null}
-              disabled={state.loading}
-              onBlur={() => setCreateHappeningState({ errors: extend(errors, validateAgenda()) })}
-              onFocus={() => clearValidation('agenda')}
-              onChange={e => setCreateHappeningState({ agenda: e.target.value })}
-            />
-          </Control>
-          <Validation error={state.errors.agenda} />
-        </Field>
-      </Form>
-    </ModalCardContent>
-    <ModalCardFoot>
-      <Button
-        onClick={onClose}
-      >
-        Cancel
-      </Button>
-      <SubmitButton
-        isPrimary={true}
-        onClick={submit}
-        isLoading={state.loading}
-        disabled={state.loading}
-      >
-        Create
-      </SubmitButton>
-    </ModalCardFoot>
-  </ModalCard>
+  isValid = () => isEmpty(this.validate())
 }

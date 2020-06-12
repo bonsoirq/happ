@@ -18,6 +18,10 @@ export default class Dashboard extends Component {
   }
 
   componentDidMount () {
+    this.listHappenings()
+  }
+
+  listHappenings = () => {
     HappeningService.list()
       .then(happenings => {
         this.setState(s => extend(s, { happenings }))
@@ -29,11 +33,7 @@ export default class Dashboard extends Component {
       <DashboardLayout>
         <ListHappeningsView
           happenings={this.state.happenings}
-          createHappeningState={this.state.createHappeningState}
-          setState={s => {this.setState(s)}}
-          onCreateHappening={ happening =>
-            this.setState(s => extend(s, { happenings: this.state.happenings.concat([happening]) }))
-          }
+          onCreateHappening={this.listHappenings}
         />
       </DashboardLayout>
     )
