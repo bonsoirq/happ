@@ -230,3 +230,54 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Happening'
+  /happenings/{id}:
+    delete:
+      tags:
+        - Happening
+      summary: Removes happening.
+      security:
+        - JWT: []
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: string
+                  format: uuid
+                  example: 728f10a1-94a5-4049-b25e-4eadce9be938
+      responses:
+        200:
+          description: Happening has been removed.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+        403:
+          description: Unauthorized.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: string
+                  data:
+                    type: object
+        404:
+          description: Happening not found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  errors:
+                    type: string
+                  data:
+                    type: object
+

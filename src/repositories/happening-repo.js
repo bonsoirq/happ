@@ -14,6 +14,16 @@ class HappeningRepo {
 
     return result.rowCount > 0
   }
+  
+  static async remove (id) {
+    const result = await slonik.query(sql`
+      DELETE FROM happenings
+      WHERE
+      id=(${id});
+    `)
+
+    return result.rowCount > 0
+  }
 
   static async findByAccountId (accountId) {
     const result = await slonik.query(sql`
@@ -35,6 +45,30 @@ class HappeningRepo {
     })
 
     return happenings
+  }
+
+  static async findById (id) {
+    const result = await slonik.query(sql`
+      SELECT * FROM happenings
+      WHERE id = ${id}
+      LIMIT 1;
+    `)
+
+    if (result.rowCount === 0) {
+      return null
+    } else {
+      const [row] = result.rows
+      const {
+        id,
+        name,
+        account_id: accountId,
+        description,
+        organizer_description: organizerDescription,
+        agenda
+      } = row
+
+      return new Happening({ id, name, accountId, description, organizerDescription, agenda })
+    }
   }
 }
 

@@ -11,4 +11,8 @@ export default class HappeningService extends BaseService {
     return this.post('happenings', { name, description, organizerDescription, agenda })
       .then(attributes => new Happening(attributes))
   }
+
+  static remove(id) {
+    return this.delete(`happenings/${id}`)
+  }
 }

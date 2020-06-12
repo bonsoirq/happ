@@ -29,8 +29,11 @@ export default class Dashboard extends Component {
   }
 
   removeHappening = (happening) => {
-    console.log(happening)
-    this.listHappenings()
+    const { id } = happening
+    HappeningService.remove(id)
+      .then(() => {
+        this.listHappenings()
+      })
   }
 
   render () {

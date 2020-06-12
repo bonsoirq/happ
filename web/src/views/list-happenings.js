@@ -58,8 +58,7 @@ export default function ListHappeningsView(props) {
 function HappeningTableHeader({onClick}) {
   return <thead>
     <th>Name</th>
-    <th>Description</th>
-    <th></th>
+    <th colSpan="2">Description</th>
     <th>
       <Button
         isPrimary={true}
