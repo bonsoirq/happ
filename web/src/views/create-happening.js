@@ -17,8 +17,9 @@ import ModalCard from 'components/modal/modal-card';
 import ModalCardHead from 'components/modal/modal-card-head';
 import ModalCardContent from 'components/modal/modal-card-content';
 import ModalCardFoot from 'components/modal/modal-card-foot';
+import HappeningService from 'services/happening-service';
 
-export default function CreateHappeningView ({state, setState, onClose}) {
+export default function CreateHappeningView ({state, setState, onCreate, onClose}) {
   var validateName = () => {
     const { name } = state
     const MAX_LENGTH = 255
@@ -79,7 +80,12 @@ export default function CreateHappeningView ({state, setState, onClose}) {
     if (isValid()) {
       setCreateHappeningState({loading: true})
       const { name, description, organizerDescription, agenda } = state
-      onClose()
+      HappeningService
+        .create({ name, description, organizerDescription, agenda })
+        .then( happening => {
+          onCreate(happening)
+          onClose()
+        })
     }
   }
 

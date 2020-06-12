@@ -31,6 +31,9 @@ export default class Dashboard extends Component {
           happenings={this.state.happenings}
           createHappeningState={this.state.createHappeningState}
           setState={s => {this.setState(s)}}
+          onCreateHappening={ happening =>
+            this.setState(s => extend(s, { happenings: this.state.happenings.concat([happening]) }))
+          }
         />
       </DashboardLayout>
     )
