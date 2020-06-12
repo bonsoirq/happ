@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import Table from 'components/table/table';
 import Button from 'components/button';
 import HappeningDetailsView from './happening-details';
+import CreateHappeningView from './create-happening';
 
 export default function ListHappeningsView(props) {
+  const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(false);
   const [selectedDetailsHappening, selectDetailsHappening] = useState(null);
 
   return (<>
     <Table>
-      <HappeningTableHeader />
+      <HappeningTableHeader onClick={() => setShowCreateHappeningModal(true)} />
       <tbody>
         {/* TODO: custom row for empty array */}
         {props.happenings.map(x => (
@@ -33,14 +35,27 @@ export default function ListHappeningsView(props) {
         onClose={() => selectDetailsHappening(null)}
       />
     }
+    {
+      showCreateHappeningModal &&
+      <CreateHappeningView
+        onCreate={props.onCreateHappening}
+        onClose={() => setShowCreateHappeningModal(false)}
+      />
+    }
   </>
   )
 }
 
-function HappeningTableHeader() {
+function HappeningTableHeader({onClick}) {
   return <thead>
     <th>Name</th>
     <th>Description</th>
-    <th></th>
+    <th>
+      <Button
+        onClick={onClick}
+      >
+        Create
+      </Button>
+    </th>
   </thead>
 }

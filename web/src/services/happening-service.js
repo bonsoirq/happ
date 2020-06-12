@@ -6,4 +6,9 @@ export default class HappeningService extends BaseService {
     return this.get('happenings')
       .then(attributes => attributes.map(x => new Happening(x)))
   }
+
+  static create({ name, description, organizerDescription, agenda }) {
+    return this.post('happenings', { name, description, organizerDescription, agenda })
+      .then(attributes => new Happening(attributes))
+  }
 }
