@@ -3,6 +3,7 @@ import Table from 'components/table/table';
 import Button from 'components/button';
 import HappeningDetailsView from './happening-details';
 import CreateHappeningView from './create-happening';
+import NoHappeningsView from './no-happenings';
 
 export default function ListHappeningsView(props) {
   const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(false);
@@ -12,7 +13,10 @@ export default function ListHappeningsView(props) {
     <Table>
       <HappeningTableHeader onClick={() => setShowCreateHappeningModal(true)} />
       <tbody>
-        {/* TODO: custom row for empty array */}
+        {
+          props.happenings.length === 0 &&
+          <NoHappeningsView />
+        }
         {props.happenings.map(x => (
           <tr key={x.id}>
             <td>{x.name}</td>
