@@ -19,9 +19,18 @@ export default function ListHappeningsView(props) {
             <td>{x.description}</td>
             <td>
               <Button
+                isInfo={true}
                 onClick={() => selectDetailsHappening(x)}
               >
                 Details
+              </Button>
+            </td>
+            <td>
+              <Button
+                isDanger={true}
+                onClick={() => props.onRemoveHappening(x)}
+              >
+                Remove
               </Button>
             </td>
           </tr>
@@ -50,8 +59,10 @@ function HappeningTableHeader({onClick}) {
   return <thead>
     <th>Name</th>
     <th>Description</th>
+    <th></th>
     <th>
       <Button
+        isPrimary={true}
         onClick={onClick}
       >
         Create

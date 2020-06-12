@@ -28,12 +28,18 @@ export default class Dashboard extends Component {
       })
   }
 
+  removeHappening = (happening) => {
+    console.log(happening)
+    this.listHappenings()
+  }
+
   render () {
     return (
       <DashboardLayout>
         <ListHappeningsView
           happenings={this.state.happenings}
           onCreateHappening={this.listHappenings}
+          onRemoveHappening={this.removeHappening}
         />
       </DashboardLayout>
     )
