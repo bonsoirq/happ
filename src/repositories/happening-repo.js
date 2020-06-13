@@ -9,12 +9,12 @@ class HappeningRepo {
       INSERT INTO happenings
       (id, name, account_id, description, organizer_description, agenda)
       VALUES
-      (${id},${name},${accountId},${description},${organizerDescription}, ${agenda});
+      (${id},${name},${accountId},${description},${organizerDescription},${agenda});
     `)
 
     return result.rowCount > 0
   }
-  
+
   static async remove (id) {
     const result = await slonik.query(sql`
       DELETE FROM happenings
