@@ -12,6 +12,7 @@ test.after(async t => {
 
 test.before(t => {
   t.context.happening = new Happening({
+    id: Helper.nilUUID,
     name: 'Fantastic Event',
     accountId: Helper.nilUUID,
     description: 'The best event you are going to experience',
@@ -43,4 +44,23 @@ test.serial('#findByAccountId find nothing for other Id', async t => {
 
   t.true(Array.isArray(entities))
   t.is(entities.length, 0)
+})
+
+test.serial('#findById find happening with this Id', async t => {
+  const happening = await HappeningRepo.findById(t.context.happening.id)
+
+  t.true(happening instanceof Happening)
+  t.deepEqual(happening, t.context.happening)
+})
+
+test.serial('#findById find nothing for other Id', async t => {
+  const happening = await HappeningRepo.findById(Helper.randomUUID)
+
+  t.true(happening == null)
+})
+
+test.serial('#remove deletes data', async t => {
+  const isSuccess = await HappeningRepo.remove(t.context.happening.id)
+
+  t.true(isSuccess)
 })

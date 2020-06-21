@@ -3,6 +3,9 @@ export default function addModifiers(baseClass, props) {
   if (props.isPrimary) {
     classes.push('is-primary')
   }
+  if (props.isInfo) {
+    classes.push('is-info')
+  }
   if (props.isDanger) {
     classes.push('is-danger')
   }
@@ -20,6 +23,7 @@ export default function addModifiers(baseClass, props) {
 
 export const modifiers = Object.freeze([
   'isPrimary',
+  'isInfo',
   'isDanger',
   'isLoading',
   'is4',

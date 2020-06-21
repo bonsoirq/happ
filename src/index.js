@@ -36,6 +36,7 @@ function attachRoutes () {
   app.delete('/sessions', require('./web-controllers/sessions/destroy'))
   app.post('/happenings', authenticateAccount, require('./web-controllers/happenings/create'))
   app.get('/happenings', authenticateAccount, require('./web-controllers/happenings/index'))
+  app.delete('/happenings/:id', authenticateAccount, require('./web-controllers/happenings/remove'))
 }
 
 function attach404Middleware () {
