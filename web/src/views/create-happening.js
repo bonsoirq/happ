@@ -18,6 +18,7 @@ import ModalCardHead from 'components/modal/modal-card-head';
 import ModalCardContent from 'components/modal/modal-card-content';
 import ModalCardFoot from 'components/modal/modal-card-foot';
 import HappeningService from 'services/happening-service';
+import Textarea from 'components/form/textarea';
 
 export default class CreateHappeningView extends Component {
   state = {
@@ -56,7 +57,7 @@ export default class CreateHappeningView extends Component {
             <Field>
               <Label htmlFor="description">Description</Label>
               <Control>
-                <TextInput
+                <Textarea
                   id="description"
                   isDanger={this.state.errors.description != null}
                   disabled={this.state.loading}
@@ -70,7 +71,7 @@ export default class CreateHappeningView extends Component {
             <Field>
               <Label htmlFor="organizer-description">Organizer description</Label>
               <Control>
-                <TextInput
+                <Textarea
                   id="organizer-description"
                   isDanger={this.state.errors.organizerDescription != null}
                   disabled={this.state.loading}
@@ -84,7 +85,7 @@ export default class CreateHappeningView extends Component {
             <Field>
               <Label htmlFor="agenda">Agenda</Label>
               <Control>
-                <TextInput
+                <Textarea
                   id="agenda"
                   isDanger={this.state.errors.agenda != null}
                   disabled={this.state.loading}

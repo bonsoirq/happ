@@ -3,6 +3,7 @@ import AccountContext from 'contexts/account-context';
 import SmallTitle from 'components/small-title';
 import SmallSubtitle from 'components/small-subtitle';
 
+// TODO: Consider unifying naming convention with HappeningDetails
 export default function AccountInfoView() {
   const { currentAccount } = useContext(AccountContext);
   return (

@@ -3,7 +3,8 @@ import Table from 'components/table/table';
 import Button from 'components/button';
 import HappeningDetailsView from './happening-details';
 import CreateHappeningView from './create-happening';
-import NoHappeningsView from './no-happenings';
+import SmallTitle from 'components/small-title';
+import SmallSubtitle from 'components/small-subtitle';
 
 export default function ListHappeningsView(props) {
   const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(false);
@@ -15,7 +16,7 @@ export default function ListHappeningsView(props) {
       <tbody>
         {
           props.happenings.length === 0 &&
-          <NoHappeningsView />
+          <NoHappeningsRow />
         }
         {props.happenings.map(x => (
           <tr key={x.id}>
@@ -72,4 +73,13 @@ function HappeningTableHeader({onClick}) {
       </Button>
     </th>
   </thead>
+}
+
+function NoHappeningsRow() {
+  return (
+    <>
+      <SmallTitle>You don't have any happenings</SmallTitle>
+      <SmallSubtitle>Add your first using Create button</SmallSubtitle>
+    </>
+  )
 }
