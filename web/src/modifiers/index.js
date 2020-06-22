@@ -1,31 +1,21 @@
-export default function addModifiers(baseClass, props) {
-  const classes = [baseClass]
-  if (props.isPrimary) {
-    classes.push('is-primary')
-  }
-  if (props.isInfo) {
-    classes.push('is-info')
-  }
-  if (props.isDanger) {
-    classes.push('is-danger')
-  }
-  if (props.isLoading) {
-    classes.push('is-loading')
-  }
-  if (props.is4) {
-    classes.push('is-4')
-  }
-  if (props.is6) {
-    classes.push('is-6')
-  }
+import { withSyntax, syntaxModifiers } from 'modifiers/syntax'
+import { withTitleSize, titleSizeModifiers } from 'modifiers/title-size'
+import { withRatio, ratioModifiers } from 'modifiers/ratio'
+import pipe from 'lib/pipe'
+
+export default function withModifiers(baseClass, props) {
+  const classes = pipe(
+    [baseClass],
+    (classes) => withRatio(classes, props),
+    (classes) => withSyntax(classes, props),
+    (classes) => withTitleSize(classes, props),
+  )
+
   return classes.join(' ')
 }
 
 export const modifiers = Object.freeze([
-  'isPrimary',
-  'isInfo',
-  'isDanger',
-  'isLoading',
-  'is4',
-  'is6'
+  ...ratioModifiers,
+  ...syntaxModifiers,
+  ...titleSizeModifiers,
 ])

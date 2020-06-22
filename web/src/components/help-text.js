@@ -1,9 +1,9 @@
 import React from 'react';
-import addModifiers, { modifiers } from 'modifiers'
+import withModifiers, { modifiers } from 'modifiers'
 import reject from 'lib/reject';
 
 export default function HelpText (props) {
-  return <p className={addModifiers("help", props)} {...reject(props, ...modifiers)}>
+  return <p className={withModifiers("help", props)} {...reject(props, ...modifiers)}>
     {props.children}
   </p>
 }

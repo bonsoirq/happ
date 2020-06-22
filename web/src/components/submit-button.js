@@ -1,5 +1,5 @@
 import React from 'react';
-import addModifiers, { modifiers } from 'modifiers'
+import withModifiers, { modifiers } from 'modifiers'
 import reject from 'lib/reject';
 import Button from './button';
 
@@ -10,7 +10,7 @@ export default function SubmitButton (props) {
       e.preventDefault()
       props.onClick(e)
     }}
-    className={addModifiers("button", props)}
+    className={withModifiers("button", props)}
     {...reject(props, ...modifiers)}
   >
     {props.children}

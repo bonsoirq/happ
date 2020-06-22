@@ -5,9 +5,10 @@ import HappeningDetailsView from './happening-details';
 import CreateHappeningView from './create-happening';
 import SmallTitle from 'components/small-title';
 import SmallSubtitle from 'components/small-subtitle';
+import CreateHappeningImageView from './create-happening-image';
 
 export default function ListHappeningsView(props) {
-  const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(false);
+  const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(true);
   const [selectedDetailsHappening, selectDetailsHappening] = useState(null);
 
   return (<>
@@ -51,7 +52,7 @@ export default function ListHappeningsView(props) {
     }
     {
       showCreateHappeningModal &&
-      <CreateHappeningView
+      <CreateHappeningImageView
         onCreate={props.onCreateHappening}
         onClose={() => setShowCreateHappeningModal(false)}
       />
@@ -62,20 +63,23 @@ export default function ListHappeningsView(props) {
 
 function HappeningTableHeader({onClick}) {
   return <thead>
-    <th>Name</th>
-    <th colSpan="2">Description</th>
-    <th>
-      <Button
-        isPrimary={true}
-        onClick={onClick}
-      >
-        Create
-      </Button>
-    </th>
+    <tr>
+      <th>Name</th>
+      <th colSpan="2">Description</th>
+      <th>
+        <Button
+          isPrimary={true}
+          onClick={onClick}
+        >
+          Create
+        </Button>
+      </th>
+    </tr>
   </thead>
 }
 
 function NoHappeningsRow() {
+  // TODO: <h1> cannot appear as a child of <tbody>
   return (
     <>
       <SmallTitle>You don't have any happenings</SmallTitle>
