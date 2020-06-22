@@ -7,10 +7,10 @@
   "private": true,
   "scripts": {
     "lint": "eslint {src,test}/**/*.js",
-    "start:dev": "nodemon --watch 'src/*' ./src/index.js | yarn pino-pretty",
-    "test:all": "NODE_ENV=test yarn test:migrate && yarn lint && nyc ava test/**/*.test.js",
+    "start": "nodemon --watch 'src/*' ./src/index.js | yarn pino-pretty",
+    "test": "NODE_ENV=test yarn test:migrate && yarn lint && nyc ava test/**/*.test.js",
     "test:migrate": "NODE_ENV=test node migrate up",
-    "test:single": "NODE_ENV=test ava",
+    "test:file": "NODE_ENV=test ava",
     "test:watch": "NODE_ENV=test ava --watch test/**/*.test.js"
   },
   "devDependencies": {
