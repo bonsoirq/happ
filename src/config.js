@@ -21,6 +21,10 @@ class Environment {
     return process.env.ENABLE_LOGGER === 'true'
   }
 
+  static get uploadDirectory () {
+    return process.env.UPLOAD_DIRECTORY
+  }
+
   static get dbConnectionString () {
     const testDb = process.env.TEST_DB_CONNECTION_STRING
     const regularDb = process.env.DB_CONNECTION_STRING
