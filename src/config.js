@@ -17,6 +17,10 @@ class Environment {
     return toInt(process.env.PORT || DEFAULT_PORT)
   }
 
+  static get loggerEnabled () {
+    return process.env.ENABLE_LOGGER === 'true'
+  }
+
   static get dbConnectionString () {
     const testDb = process.env.TEST_DB_CONNECTION_STRING
     const regularDb = process.env.DB_CONNECTION_STRING

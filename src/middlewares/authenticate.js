@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const { Auth } = require('../config')
 
-function authenticateAccount (req, res, next) {
+function authenticate (req, res, next) {
   const token = req.cookies[Auth.cookieName]
   try {
     const result = jwt.verify(token, Auth.jwtSecret)
@@ -12,4 +12,4 @@ function authenticateAccount (req, res, next) {
   }
 }
 
-module.exports = { authenticateAccount }
+module.exports = { authenticate }

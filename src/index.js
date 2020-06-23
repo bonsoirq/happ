@@ -1,5 +1,6 @@
 const { Environment } = require('./config')
 const express = require('express')
+const Upload = require('./middlewares/upload')
 
 const app = express()
 
@@ -19,7 +20,9 @@ function attachMiddlewares () {
   }))
   app.use(require('body-parser').json())
   app.use(require('cookie-parser')())
-  app.use(require('pino-http')())
+  if (Environment.loggerEnabled) {
+    app.use(require('pino-http')())
+  }
 }
 
 function attachSwaggerToWebServer () {
@@ -28,15 +31,16 @@ function attachSwaggerToWebServer () {
 }
 
 function attachRoutes () {
-  const { authenticateAccount } = require('./middlewares/auth-account')
+  const { authenticate } = require('./middlewares/authenticate')
 
   app.post('/accounts', require('./web-controllers/accounts/create'))
-  app.get('/accounts/my', authenticateAccount, require('./web-controllers/accounts/my'))
+  app.get('/accounts/my', authenticate, require('./web-controllers/accounts/my'))
   app.post('/sessions', require('./web-controllers/sessions/create'))
   app.delete('/sessions', require('./web-controllers/sessions/destroy'))
-  app.post('/happenings', authenticateAccount, require('./web-controllers/happenings/create'))
-  app.get('/happenings', authenticateAccount, require('./web-controllers/happenings/index'))
-  app.delete('/happenings/:id', authenticateAccount, require('./web-controllers/happenings/remove'))
+  app.post('/happenings', authenticate, require('./web-controllers/happenings/create'))
+  app.get('/happenings', authenticate, require('./web-controllers/happenings/index'))
+  app.delete('/happenings/:id', authenticate, require('./web-controllers/happenings/remove'))
+  app.post('/happenings/:id/image', authenticate, Upload.file(), require('./web-controllers/happening-images/create'))
 }
 
 function attach404Middleware () {
