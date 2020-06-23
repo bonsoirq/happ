@@ -1,6 +1,6 @@
 const test = require('ava')
 const CreateHappening = require('../../src/interactors/create-happening')
-const Account = require('../../src/entities/account')
+const AccountMock = require('../mocks/account')
 const InMemoryRepo = require('../../src/repositories/in-memory-repo')
 const Helper = require('../helper')
 
@@ -15,7 +15,7 @@ test('creates happening when it is valid', async t => {
     agenda: '10AM to 1PM @ the library'
   }, {
     repository,
-    accountRepository: { findById: async () => new Account({}) }
+    accountRepository: { findById: async () => AccountMock() }
   }).call()
 
   t.is(1, await repository.count())

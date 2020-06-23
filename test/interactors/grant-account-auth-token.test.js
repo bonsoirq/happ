@@ -1,18 +1,13 @@
 const test = require('ava')
-const Account = require('../../src/entities/account')
+const MockAccount = require('../mocks/account')
 const GrantAccountAuthToken = require('../../src/interactors/grant-account-auth-token')
 
 test('generates JWT for valid account credentials', async t => {
-  const account = new Account({
-    name: 'John Appleseed',
-    email: 'example@example.com'
-  })
-
   const result = await GrantAccountAuthToken.call({
     email: 'example@example.com',
     password: 'valid-password'
   }, {
-    repository: { findByEmail: async () => account },
+    repository: { findByEmail: async () => MockAccount() },
     credentialsValidator: { call: async () => true }
   })
 

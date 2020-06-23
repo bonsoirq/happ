@@ -1,5 +1,6 @@
 const test = require('ava')
 const Account = require('../../src/entities/account')
+const MockAccount = require('../mocks/account')
 const AccountRepo = require('../../src/repositories/account-repo')
 const { slonik, sql } = require('../../src/db/connection-pool')
 const Helper = require('../helper')
@@ -11,12 +12,7 @@ test.after(async t => {
 })
 
 test.serial('#add inserts data', async t => {
-  const isSuccess = await AccountRepo.add(new Account({
-    id: '37ca5d2b-38ee-4cdc-9d66-d9bd4d9feb07',
-    name: 'Account Name',
-    email: 'example@example.com',
-    password: 'password'
-  }))
+  const isSuccess = await AccountRepo.add(MockAccount({ id: '37ca5d2b-38ee-4cdc-9d66-d9bd4d9feb07' }))
 
   t.true(isSuccess)
 })

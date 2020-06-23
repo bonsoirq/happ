@@ -1,5 +1,6 @@
 const test = require('ava')
 const Happening = require('../../src/entities/happening')
+const MockHappening = require('../mocks/happening')
 const HappeningRepo = require('../../src/repositories/happening-repo')
 const { slonik, sql } = require('../../src/db/connection-pool')
 const Helper = require('../helper')
@@ -11,14 +12,7 @@ test.after(async t => {
 })
 
 test.before(t => {
-  t.context.happening = new Happening({
-    id: Helper.nilUUID,
-    name: 'Fantastic Event',
-    accountId: Helper.nilUUID,
-    description: 'The best event you are going to experience',
-    organizerDescription: 'By John Appleseed',
-    agenda: '10AM to 1PM @ the library'
-  })
+  t.context.happening = MockHappening()
 })
 
 test.serial('#add inserts data', async t => {
