@@ -7,14 +7,6 @@ import ListHappeningsView from 'views/list-happenings';
 export default class Dashboard extends Component {
   state = {
     happenings: [],
-    createHappeningState: {
-      name: null,
-      description: null,
-      organizerDescription: null,
-      agenda: null,
-      loading: false,
-      errors: {}
-    }
   }
 
   componentDidMount () {

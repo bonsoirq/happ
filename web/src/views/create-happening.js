@@ -179,8 +179,8 @@ export default class CreateHappeningView extends Component {
       const { name, description, organizerDescription, agenda } = this.state
       HappeningService
         .create({ name, description, organizerDescription, agenda })
-        .then(() => {
-          this.props.onCreate()
+        .then(happening => {
+          this.props.onCreate(happening)
           this.props.onClose()
         })
     }

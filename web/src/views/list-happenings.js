@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Table from 'components/table/table';
 import Button from 'components/button';
 import HappeningDetailsView from './happening-details';
@@ -6,10 +6,17 @@ import CreateHappeningView from './create-happening';
 import SmallTitle from 'components/small-title';
 import SmallSubtitle from 'components/small-subtitle';
 import CreateHappeningImageView from './create-happening-image';
+import { noop } from 'lib/noop';
 
 export default function ListHappeningsView(props) {
-  const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(true);
-  const [selectedDetailsHappening, selectDetailsHappening] = useState(null);
+  const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(false);
+  const [detailsHappening, setDetailsHappening] = useState(null);
+  const [imageHappening, setImageHappening] = useState(null);
+
+  useEffect(() => {
+    setImageHappening(props.happenings[0])
+    return noop
+  }, [props.happenings]);
 
   return (<>
     <Table>
@@ -26,7 +33,7 @@ export default function ListHappeningsView(props) {
             <td>
               <Button
                 isInfo={true}
-                onClick={() => selectDetailsHappening(x)}
+                onClick={() => setDetailsHappening(x)}
               >
                 Details
               </Button>
@@ -44,15 +51,21 @@ export default function ListHappeningsView(props) {
       </tbody>
     </Table>
     {
-      selectedDetailsHappening != null &&
+      detailsHappening != null &&
       <HappeningDetailsView
-        happening={selectedDetailsHappening}
-        onClose={() => selectDetailsHappening(null)}
+        happening={detailsHappening}
+        onClose={() => setDetailsHappening(null)}
+      />
+    }
+    {
+      imageHappening != null &&
+      <CreateHappeningImageView
+        happeningId={imageHappening.id}
       />
     }
     {
       showCreateHappeningModal &&
-      <CreateHappeningImageView
+      <CreateHappeningView
         onCreate={props.onCreateHappening}
         onClose={() => setShowCreateHappeningModal(false)}
       />
@@ -83,6 +96,7 @@ function NoHappeningsRow() {
   return (
     <>
       <SmallTitle>You don't have any happenings</SmallTitle>
+      {/* TODO: It would be nice if we could embedd create button here as well. */}
       <SmallSubtitle>Add your first using Create button</SmallSubtitle>
     </>
   )

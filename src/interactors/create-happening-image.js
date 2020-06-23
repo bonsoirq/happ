@@ -7,6 +7,8 @@ const FileBufferRepo = require('../repositories/file-buffer-repo')
 const { Failure, Success } = require('../utils/result')
 const { UNAUTHORIZED } = require('../enums/validation-error')
 
+// TODO: Resize image to 3:1 ratio
+// TODO: Overwrite file if image for happening already exists
 class CreateHappeningImage extends Interactor {
   constructor ({ fileBuffer, extension, accountId, happeningId },
     {

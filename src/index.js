@@ -40,7 +40,7 @@ function attachRoutes () {
   app.post('/happenings', authenticate, require('./web-controllers/happenings/create'))
   app.get('/happenings', authenticate, require('./web-controllers/happenings/index'))
   app.delete('/happenings/:id', authenticate, require('./web-controllers/happenings/remove'))
-  app.post('/happenings/:id/image', authenticate, Upload.file(), require('./web-controllers/happening-images/create'))
+  app.post('/happenings/:happeningId/image', authenticate, Upload.file(), require('./web-controllers/happening-images/create'))
 }
 
 function attach404Middleware () {

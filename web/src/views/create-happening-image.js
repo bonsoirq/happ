@@ -16,13 +16,26 @@ import Validation from 'components/form/validation';
 import Image from 'components/image';
 
 import grayBackground from 'images/gray-bg.jpg';
-import { readFileAsURL } from 'lib/read-file-as-url';
+import ReadFile from 'lib/read-file/index'
+import extend from 'lib/extend';
+import HappeningImageService from 'services/happening-image-service';
 
 export default class CreateHappeningImageView extends Component {
   state = {
-    loading: false,
+    isLoading: false,
     imagePath: grayBackground,
+    file: null,
     errors: {}
+  }
+
+  submit = () => {
+    const { file } = this.state
+    const { happeningId } = this.props
+    ReadFile
+      .asFormData(file)
+      .then(data => {
+        HappeningImageService.create({ happeningId, data })
+      })
   }
 
   render () {
@@ -36,20 +49,23 @@ export default class CreateHappeningImageView extends Component {
           <Form onSubmit={this.submit}>
             <Field>
               <Label>Preview</Label>
-              <Image is3by1={true} isLoading={true} src={this.state.imagePath}/>
+              <Image is3by1={true} src={this.state.imagePath}/>
             </Field>
             <Field>
               <Label htmlFor="file">File</Label>
               <Control>
                 <FileInput
                   id="file"
+                  accept=".jpg,.jpeg,.png"
                   isDanger={this.state.errors.file != null}
+                  isLoading={this.state.isLoading}
                   onChange={e => {
                     const [file] = e.target.files
-                    readFileAsURL(file)
-                      .then(url => this.setState({ imagePath: url }))
+                    this.setState(s => extend(s, { file, isLoading: true }))
+                    ReadFile.asURL(file, { name: ''})
+                      .then(url => this.setState(s => extend(s, { imagePath: url, isLoading: false })))
                   }}
-                  disabled={this.state.loading}
+                  disabled={this.state.isLoading}
                 />
               </Control>
               <Validation error={this.state.errors.file} />
@@ -65,17 +81,13 @@ export default class CreateHappeningImageView extends Component {
           <SubmitButton
             isPrimary={true}
             onClick={this.submit}
-            isLoading={this.state.loading}
-            disabled={this.state.loading}
+            isLoading={this.state.isLoading}
+            disabled={this.state.isLoading}
           >
             Save
           </SubmitButton>
         </ModalCardFoot>
       </ModalCard>
     )
-  }
-
-  submit () {
-    //TODO: Implement upload once backend is ready
   }
 }
