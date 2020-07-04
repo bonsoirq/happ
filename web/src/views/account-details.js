@@ -3,18 +3,17 @@ import AccountContext from 'contexts/account-context';
 import SmallTitle from 'components/small-title';
 import SmallSubtitle from 'components/small-subtitle';
 
-// TODO: Consider unifying naming convention with HappeningDetails
-export default function AccountInfoView() {
+export default function AccountDetailsView() {
   const { currentAccount } = useContext(AccountContext);
   return (
     <>
-      <AccountInfoField title="Name" content={currentAccount.name} />
-      <AccountInfoField title="E-mail" content={currentAccount.email} />
+      <AccountDetailsField title="Name" content={currentAccount.name} />
+      <AccountDetailsField title="E-mail" content={currentAccount.email} />
     </>
   )
 }
 
-function AccountInfoField({ title, content }) {
+function AccountDetailsField({ title, content }) {
   return (
     <>
       <SmallTitle>{title}</SmallTitle>

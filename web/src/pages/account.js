@@ -1,11 +1,11 @@
 import React from 'react';
 import DashboardLayout from 'layouts/dashboard-layout';
-import AccountInfoView from 'views/account-info';
+import AccountDetailsView from 'views/account-details';
 
 export default function Account () {
   return (
     <DashboardLayout>
-      <AccountInfoView />
+      <AccountDetailsView />
     </DashboardLayout>
   )
 }
