@@ -2,7 +2,6 @@ const { isFileExt } = require('../../utils/is-file-ext')
 const { PNG, JPG } = require('../../enums/file-ext')
 const CreateHappeningImage = require('../../interactors/create-happening-image')
 
-// TODO: Add swagger docs
 // TODO: Discuss max accepted file size and validate it
 async function create (req, res, next) {
   const { buffer } = req.file

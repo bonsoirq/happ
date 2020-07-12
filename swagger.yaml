@@ -237,6 +237,7 @@ paths:
       summary: Removes happening.
       security:
         - JWT: []
+      # TODO: why do we document request body?
       requestBody:
         required: false
         content:
@@ -280,4 +281,34 @@ paths:
                     type: string
                   data:
                     type: object
+  /happenings/{happeningId}/image:
+    post:
+      tags:
+        - Image
+      summary: Creates happening image.
+      security:
+        - JWT: []
+      parameters:
+        - name: happeningId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+            example: 728f10a1-94a5-4049-b25e-4eadce9be938
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      responses:
+        201:
+          description: Image has been uploaded.
+        422:
+          description: Invalid file format.
 
