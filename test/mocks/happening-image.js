@@ -6,7 +6,6 @@ const Helper = require('../helper')
 const defaults = {
   id: Helper.nilUUID,
   happeningId: Helper.nilUUID,
-  accountId: Helper.nilUUID,
   path: `${Helper.nilUUID}.png`
 }
 

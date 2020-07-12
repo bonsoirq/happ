@@ -1,16 +1,13 @@
 const Interactor = require('./interactor')
-const HappeningImage = require('../entities/happening-image')
 const AccountRepo = require('../repositories/account-repo')
-const HappeningRepo = require('../repositories/happening-repo')
 const HappeningImageRepo = require('../repositories/happening-image-repo')
+const HappeningRepo = require('../repositories/happening-repo')
 const FileBufferRepo = require('../repositories/file-buffer-repo')
 const { Failure, Success } = require('../utils/result')
-const { UNAUTHORIZED } = require('../enums/validation-error')
+const { UNAUTHORIZED, NOT_FOUND } = require('../enums/validation-error')
 
-// TODO: Resize image to 3:1 ratio
-// TODO: Overwrite file if image for happening already exists
-class CreateHappeningImage extends Interactor {
-  constructor ({ fileBuffer, extension, accountId, happeningId },
+class ShowHappeningImage extends Interactor {
+  constructor ({ accountId, happeningId },
     {
       repository = HappeningImageRepo,
       happeningRepository = HappeningRepo,
@@ -19,9 +16,8 @@ class CreateHappeningImage extends Interactor {
     } = {}) {
     super()
     this.accountId = accountId
-    this.happeningImage = new HappeningImage({ happeningId })
-    this.buffer = fileBuffer
-    this.fileName = `${this.happeningImage.id}.${extension}`
+    this.happeningId = happeningId
+
     this._repo = repository
     this._accountRepo = accountRepository
     this._happeningRepo = happeningRepository
@@ -30,11 +26,12 @@ class CreateHappeningImage extends Interactor {
 
   async call () {
     if (await this.happeningBelongsToAccount()) {
-      const { fileName } = this
-      this.happeningImage.path = fileName
-      await this._fileRepo.add(fileName, this.buffer)
-      await this._repo.add(this.happeningImage)
-      return Success()
+      const happeningImage = await this._repo.findByHappeningId(this.happeningId)
+      if (happeningImage == null) {
+        return Failure(NOT_FOUND)
+      }
+      const path = this._fileRepo.path(happeningImage.path)
+      return Success(path)
     } else {
       return Failure(UNAUTHORIZED)
     }
@@ -42,7 +39,7 @@ class CreateHappeningImage extends Interactor {
 
   async happeningBelongsToAccount () {
     const [happening, account] = await Promise.all([
-      this._happeningRepo.findById(this.happeningImage.happeningId),
+      this._happeningRepo.findById(this.happeningId),
       this._accountRepo.findById(this.accountId)
     ])
 
@@ -51,4 +48,4 @@ class CreateHappeningImage extends Interactor {
   }
 }
 
-module.exports = CreateHappeningImage
+module.exports = ShowHappeningImage

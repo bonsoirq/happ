@@ -13,11 +13,15 @@ class FileBufferRepo {
   }
 
   async findByName (name) {
-    const filePath = path.join(this.root, name)
+    const filePath = this.path(name)
 
     return fs
       .readFile(filePath)
       .catch(() => null)
+  }
+
+  path (name) {
+    return path.resolve(this.root, name)
   }
 }
 
