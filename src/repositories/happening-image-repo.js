@@ -35,6 +35,15 @@ class HappeningImageRepo {
       return new HappeningImage({ id, happeningId, path })
     }
   }
+
+  static async removeByHappeningId (happeningId) {
+    const result = await slonik.query(sql`
+    DELETE FROM happening_images
+    WHERE happening_id = ${happeningId}
+    `)
+
+    return result.rowCount > 0
+  }
 }
 
 module.exports = HappeningImageRepo

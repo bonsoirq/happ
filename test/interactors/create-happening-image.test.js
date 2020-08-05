@@ -30,7 +30,10 @@ test('succeeds when account is authorized', async t => {
     accountRepository: { findById: async () => MockAccount() },
     happeningRepository: { findById: async () => MockHappening() },
     fileBufferRepository: { add: async () => null },
-    repository: { add: async () => true }
+    repository: {
+      add: async () => true,
+      removeByHappeningId: async () => true
+    }
   }).call()
 
   t.true(result.isSuccess)

@@ -33,6 +33,7 @@ class CreateHappeningImage extends Interactor {
       const { fileName } = this
       this.happeningImage.path = fileName
       await this._fileRepo.add(fileName, this.buffer)
+      await this._repo.removeByHappeningId(this.happeningImage.happeningId)
       await this._repo.add(this.happeningImage)
       return Success()
     } else {

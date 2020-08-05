@@ -31,3 +31,11 @@ test.serial('#findByHappeningId return null for invalid id', async t => {
 
   t.is(null, happeningImage)
 })
+
+test.serial('#removeByHappeningId return null for invalid id', async t => {
+  const happeningId = HappeningImageMock().happeningId
+
+  const isSuccess = await HappeningImageRepo.removeByHappeningId(happeningId)
+
+  t.true(isSuccess)
+})

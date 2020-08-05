@@ -14,7 +14,7 @@ export default function ListHappeningsView(props) {
   const [imageHappening, setImageHappening] = useState(null);
 
   useEffect(() => {
-    setImageHappening(props.happenings[0])
+    // setImageHappening(props.happenings[0])
     return noop
   }, [props.happenings]);
 
