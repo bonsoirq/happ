@@ -3,13 +3,13 @@ const Happening = require('../entities/happening')
 
 class HappeningRepo {
   static async add (happening) {
-    const { id, name, accountId, description, organizerDescription, agenda } = happening
+    const { id, name, accountId, description, organizerDescription, agenda, isPublished } = happening
 
     const result = await slonik.query(sql`
       INSERT INTO happenings
-      (id, name, account_id, description, organizer_description, agenda)
+      (id, name, account_id, description, organizer_description, agenda, is_published)
       VALUES
-      (${id},${name},${accountId},${description},${organizerDescription},${agenda});
+      (${id},${name},${accountId},${description},${organizerDescription},${agenda},${isPublished});
     `)
 
     return result.rowCount > 0
@@ -38,10 +38,11 @@ class HappeningRepo {
         account_id: accountId,
         description,
         organizer_description: organizerDescription,
-        agenda
+        agenda,
+        is_published: isPublished
       } = row
 
-      return new Happening({ id, name, accountId, description, organizerDescription, agenda })
+      return new Happening({ id, name, accountId, description, organizerDescription, agenda, isPublished })
     })
 
     return happenings
@@ -64,10 +65,11 @@ class HappeningRepo {
         account_id: accountId,
         description,
         organizer_description: organizerDescription,
-        agenda
+        agenda,
+        is_published: isPublished
       } = row
 
-      return new Happening({ id, name, accountId, description, organizerDescription, agenda })
+      return new Happening({ id, name, accountId, description, organizerDescription, agenda, isPublished })
     }
   }
 }
