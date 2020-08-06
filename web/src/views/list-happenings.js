@@ -1,22 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Table from 'components/table/table';
 import Button from 'components/button';
 import HappeningDetailsView from './happening-details';
 import CreateHappeningView from './create-happening';
 import SmallTitle from 'components/small-title';
 import SmallSubtitle from 'components/small-subtitle';
-import CreateHappeningImageView from './create-happening-image';
-import { noop } from 'lib/noop';
 
 export default function ListHappeningsView(props) {
   const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(false);
   const [detailsHappening, setDetailsHappening] = useState(null);
-  const [imageHappening, setImageHappening] = useState(null);
-
-  useEffect(() => {
-    // setImageHappening(props.happenings[0])
-    return noop
-  }, [props.happenings]);
 
   return (<>
     <Table>
@@ -55,12 +47,6 @@ export default function ListHappeningsView(props) {
       <HappeningDetailsView
         happening={detailsHappening}
         onClose={() => setDetailsHappening(null)}
-      />
-    }
-    {
-      imageHappening != null &&
-      <CreateHappeningImageView
-        happeningId={imageHappening.id}
       />
     }
     {
