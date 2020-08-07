@@ -12,6 +12,10 @@ export default class HappeningService extends BaseService {
       .then(attributes => new Happening(attributes))
   }
 
+  static save(happening) {
+    return this.put(`happenings/${happening.id}`, happening)
+  }
+
   static remove(id) {
     return this.delete(`happenings/${id}`)
   }

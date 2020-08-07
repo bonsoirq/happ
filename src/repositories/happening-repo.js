@@ -15,6 +15,23 @@ class HappeningRepo {
     return result.rowCount > 0
   }
 
+  static async update (happening) {
+    const { id, name, accountId, description, organizerDescription, agenda, isPublished } = happening
+
+    const result = await slonik.query(sql`
+      UPDATE happenings SET
+        name=${name},
+        account_id=${accountId},
+        description=${description},
+        organizer_description=${organizerDescription},
+        agenda=${agenda},
+        is_published=${isPublished}
+      WHERE id = ${id};
+    `)
+
+    return result.rowCount > 0
+  }
+
   static async remove (id) {
     const result = await slonik.query(sql`
       DELETE FROM happenings

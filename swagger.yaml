@@ -49,6 +49,9 @@ components:
         agenda:
           type: string
           example: 10AM to 1PM @ the library
+        isPublished:
+          type: boolean
+          example: false
 paths:
   /accounts:
     post:
@@ -231,6 +234,46 @@ paths:
                     items:
                       $ref: '#/components/schemas/Happening'
   /happenings/{id}:
+    put:
+      tags:
+        - Happening
+      summary: Updates happening.
+      security:
+        - JWT: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  example: Fantastic Event
+                description:
+                  type: string
+                  example: The best event you are going to experience
+                organizerDescription:
+                  type: string
+                  example: By John Appleseed
+                agenda:
+                  type: string
+                  example: 10AM to 1PM @ the library
+                isPublished:
+                  type: boolean
+                  example: true
+      responses:
+        201:
+          description: Happening has been updated.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Happening'
+        401:
+          description: Unauthorized.
     delete:
       tags:
         - Happening
@@ -311,4 +354,3 @@ paths:
           description: Image has been uploaded.
         422:
           description: Invalid file format.
-

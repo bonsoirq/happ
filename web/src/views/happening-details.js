@@ -14,12 +14,16 @@ import ReadFile from 'lib/read-file';
 import Control from 'components/form/control';
 import FileInput from 'components/form/file-input';
 import HappeningImageService from 'services/happening-image-service';
+import Label from 'components/form/label';
+import Checkbox from 'components/form/checkbox';
+import HappeningService from 'services/happening-service';
 
 export default class HappeningDetailsView extends Component {
   state = {
     isLoading: false,
     imagePath: `${process.env.REACT_APP_API_URL}/happenings/${this.props.happening.id}/image`,
     file: null,
+    happening: this.props.happening,
     errors: {}
   }
 
@@ -31,6 +35,14 @@ export default class HappeningDetailsView extends Component {
       .then(data => {
         HappeningImageService.create({ happeningId: happening.id, data })
       })
+  }
+
+  publishHeppening = (isPublished) => {
+    const { happening } = this.state
+    happening.isPublished = isPublished
+    this.setState(s => extend(s, { happening }), () => {
+      HappeningService.save(happening)
+    })
   }
 
   setDefaultPhoto = () => {
@@ -72,6 +84,17 @@ export default class HappeningDetailsView extends Component {
         <SmallTitle>{happening.agenda}</SmallTitle>
         <SmallSubtitle>{happening.description}</SmallSubtitle>
         <SmallSubtitle>{happening.organizerDescription}</SmallSubtitle>
+        <Field>
+          <Control>
+            <Label>
+              <Checkbox
+                onChange={e => this.publishHeppening(e.target.checked)}
+                checked={happening.isPublished}
+              />
+              Publish happening
+            </Label>
+          </Control>
+        </Field>
       </ModalCardContent>
       <ModalCardFoot>
         <Button
