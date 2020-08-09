@@ -25,7 +25,7 @@ class ShowHappeningImage extends Interactor {
   }
 
   async call () {
-    if (await this.happeningBelongsToAccount()) {
+    if (await this.canPerformAction()) {
       const happeningImage = await this._repo.findByHappeningId(this.happeningId)
       if (happeningImage == null) {
         return Failure(NOT_FOUND)
@@ -37,14 +37,16 @@ class ShowHappeningImage extends Interactor {
     }
   }
 
-  async happeningBelongsToAccount () {
+  async canPerformAction () {
     const [happening, account] = await Promise.all([
       this._happeningRepo.findById(this.happeningId),
       this._accountRepo.findById(this.accountId)
     ])
 
     const bothExist = happening != null && account != null
-    return bothExist && happening.accountId === account.id
+    const happeningBelongsToAccount = bothExist && happening.accountId === account.id
+
+    return happeningBelongsToAccount || happening.isPublished
   }
 }
 

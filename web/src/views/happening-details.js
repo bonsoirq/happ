@@ -37,7 +37,7 @@ export default class HappeningDetailsView extends Component {
       })
   }
 
-  publishHeppening = (isPublished) => {
+  publishHappening = (isPublished) => {
     const { happening } = this.state
     happening.isPublished = isPublished
     this.setState(s => extend(s, { happening }), () => {
@@ -88,7 +88,7 @@ export default class HappeningDetailsView extends Component {
           <Control>
             <Label>
               <Checkbox
-                onChange={e => this.publishHeppening(e.target.checked)}
+                onChange={e => this.publishHappening(e.target.checked)}
                 checked={happening.isPublished}
               />
               Publish happening

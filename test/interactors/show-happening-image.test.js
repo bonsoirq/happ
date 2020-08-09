@@ -12,7 +12,7 @@ test('fails when account is not authorized', async t => {
     accountId: Helper.nilUUID
   }, {
     accountRepository: { findById: async () => MockAccount() },
-    happeningRepository: { findById: async () => MockHappening({ accountId: Helper.randomUUID }) }
+    happeningRepository: { findById: async () => MockHappening({ accountId: Helper.randomUUID, isPublished: false }) }
   }).call()
 
   t.true(result.isFailure)

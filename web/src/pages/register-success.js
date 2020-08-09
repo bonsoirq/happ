@@ -30,7 +30,7 @@ function RegisterSuccess (props) {
           </Subtitle>
         </div>
         <div className="column">
-          <progress class="progress is-small is-primary" max="100"></progress>
+          <progress className="progress is-small is-primary" max="100"></progress>
         </div>
       </div>
     </div>
