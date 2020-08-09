@@ -40,6 +40,7 @@ function attachRoutes () {
   app.post('/happenings', authenticate, require('./web-controllers/happenings/create'))
   app.get('/happenings', authenticate, require('./web-controllers/happenings/index'))
   app.put('/happenings/:id', authenticate, require('./web-controllers/happenings/update'))
+  app.get('/happenings/:id', require('./web-controllers/happenings/show'))
   app.delete('/happenings/:id', authenticate, require('./web-controllers/happenings/remove'))
   app.get('/happenings/:happeningId/image', authenticate, require('./web-controllers/happening-images/show'))
   app.post('/happenings/:happeningId/image', authenticate, Upload.file(), require('./web-controllers/happening-images/create'))

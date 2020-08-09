@@ -234,6 +234,30 @@ paths:
                     items:
                       $ref: '#/components/schemas/Happening'
   /happenings/{id}:
+    get:
+      tags:
+        - Happening
+      summary: Finds public happening.
+      parameters:
+        - in: path
+          required: true
+          name: id
+          schema:
+            type: string
+            format: uuid
+            example: 728f10a1-94a5-4049-b25e-4eadce9be938
+      responses:
+        200:
+          description: Happening has been found.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    $ref: '#/components/schemas/Happening'
+        404:
+          description: Not found.
     put:
       tags:
         - Happening
