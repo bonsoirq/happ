@@ -1,7 +1,7 @@
 const uuid = require('../utils/uuid')
 
 class Happening {
-  constructor ({ id, name, accountId, description, organizerDescription, agenda, isPublished }) {
+  constructor ({ id, name, accountId, description, organizerDescription, agenda, isPublished = false }) {
     this.id = id || uuid.generate()
     this.name = name
     this.accountId = accountId
