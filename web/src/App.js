@@ -17,6 +17,7 @@ import Login from 'pages/login';
 import Dashboard from 'pages/dashboard';
 import RegisterSuccess from 'pages/register-success';
 import Account from 'pages/account';
+import PublishedHappening from 'pages/published-happening'
 import Paths from 'paths';
 
 function App() {
@@ -43,7 +44,8 @@ function App() {
                 <Route exact path={Paths.Root} component={Welcome} />
                 <Route path={Paths.Login} component={Login} />
                 <Route path={Paths.RegisterSuccess} component={RegisterSuccess} />
-                <Redirect to={Paths.Root} />
+                <Route path={Paths.Discover} component={PublishedHappening} />
+                {/* <Redirect to={Paths.Root} /> */}
               </>
             }
             { currentAccount != null &&
@@ -51,9 +53,10 @@ function App() {
                 <Route exact path={Paths.Root}>
                   <Redirect to={Paths.Dashboard} />
                 </Route>
+                <Route path={Paths.Discover} component={PublishedHappening} />
                 <Route path={Paths.Dashboard} component={Dashboard} />
                 <Route path={Paths.Account} component={Account} />
-                <Redirect to={Paths.Root} />
+                {/* <Redirect to={Paths.Root} /> */}
               </>
             }
           </Switch>

@@ -7,9 +7,18 @@ export default class HappeningService extends BaseService {
       .then(attributes => attributes.map(x => new Happening(x)))
   }
 
+  static find(id) {
+    return this.get(`happenings/${id}`)
+      .then(attributes => new Happening(attributes))
+  }
+
   static create({ name, description, organizerDescription, agenda }) {
     return this.post('happenings', { name, description, organizerDescription, agenda })
       .then(attributes => new Happening(attributes))
+  }
+
+  static save(happening) {
+    return this.put(`happenings/${happening.id}`, happening)
   }
 
   static remove(id) {

@@ -21,6 +21,12 @@ test.serial('#add inserts data', async t => {
   t.true(isSuccess)
 })
 
+test.serial('#update updates data', async t => {
+  const isSuccess = await HappeningRepo.update(t.context.happening)
+
+  t.true(isSuccess)
+})
+
 test.serial('#findByAccountId find entities with this Id', async t => {
   const entities = await HappeningRepo.findByAccountId(t.context.happening.accountId)
 

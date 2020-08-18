@@ -18,7 +18,8 @@ class CreateHappeningImage extends Interactor {
       fileBufferRepository = FileBufferRepo
     } = {}) {
     super()
-    this.happeningImage = new HappeningImage({ accountId, happeningId })
+    this.accountId = accountId
+    this.happeningImage = new HappeningImage({ happeningId })
     this.buffer = fileBuffer
     this.fileName = `${this.happeningImage.id}.${extension}`
     this._repo = repository
@@ -32,6 +33,7 @@ class CreateHappeningImage extends Interactor {
       const { fileName } = this
       this.happeningImage.path = fileName
       await this._fileRepo.add(fileName, this.buffer)
+      await this._repo.removeByHappeningId(this.happeningImage.happeningId)
       await this._repo.add(this.happeningImage)
       return Success()
     } else {
@@ -42,7 +44,7 @@ class CreateHappeningImage extends Interactor {
   async happeningBelongsToAccount () {
     const [happening, account] = await Promise.all([
       this._happeningRepo.findById(this.happeningImage.happeningId),
-      this._accountRepo.findById(this.happeningImage.accountId)
+      this._accountRepo.findById(this.accountId)
     ])
 
     const bothExist = happening != null && account != null

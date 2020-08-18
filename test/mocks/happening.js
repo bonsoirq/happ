@@ -9,7 +9,8 @@ const defaults = {
   accountId: Helper.nilUUID,
   description: 'The best event you are going to experience',
   organizerDescription: 'By John Appleseed',
-  agenda: '10AM to 1PM @ the library'
+  agenda: '10AM to 1PM @ the library',
+  isPublished: true
 }
 
 module.exports = function mock (attributes) {
