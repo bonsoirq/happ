@@ -3,8 +3,8 @@ import Table from 'components/table/table';
 import Button from 'components/button';
 import HappeningDetailsView from './happening-details';
 import CreateHappeningView from './create-happening';
-import SmallTitle from 'components/small-title';
-import SmallSubtitle from 'components/small-subtitle';
+import CreateHappeningImageView from './create-happening-image';
+import { noop } from 'lib/noop';
 
 export default function ListHappeningsView(props) {
   const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(false);
@@ -16,7 +16,7 @@ export default function ListHappeningsView(props) {
       <tbody>
         {
           props.happenings.length === 0 &&
-          <NoHappeningsRow />
+          <NoHappeningsRow onClick={() => setShowCreateHappeningModal(true)} />
         }
         {props.happenings.map(x => (
           <tr key={x.id}>
@@ -77,13 +77,22 @@ function HappeningTableHeader({onClick}) {
   </thead>
 }
 
-function NoHappeningsRow() {
-  // TODO: <h1> cannot appear as a child of <tbody>
+function NoHappeningsRow({onClick}) {
   return (
-    <>
-      <SmallTitle>You don't have any happenings</SmallTitle>
-      {/* TODO: It would be nice if we could embedd create button here as well. */}
-      <SmallSubtitle>Add your first using Create button</SmallSubtitle>
-    </>
+    <tr>
+      <td colSpan="4" style={{ textAlign: 'center' }}>
+        You don't have any happenings
+        <br />
+        Add your first one using Create button
+        <br />
+        <br />
+        <Button
+          isPrimary={true}
+          onClick={onClick}
+        >
+          Create
+        </Button>
+      </td>
+    </tr>
   )
 }
