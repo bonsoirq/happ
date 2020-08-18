@@ -3,8 +3,6 @@ import Table from 'components/table/table';
 import Button from 'components/button';
 import HappeningDetailsView from './happening-details';
 import CreateHappeningView from './create-happening';
-import CreateHappeningImageView from './create-happening-image';
-import { noop } from 'lib/noop';
 
 export default function ListHappeningsView(props) {
   const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(false);
