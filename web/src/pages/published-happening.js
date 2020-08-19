@@ -20,14 +20,14 @@ export default class PublishedHappening extends Component {
 
     HappeningService
       .find(params.id)
-      .catch(() => {
-        this.setState(s => extend(s, { loading: false }))
-      })
       .then(happening => {
         const imagePath = `${process.env.REACT_APP_API_URL}/happenings/${happening.id}/image`
         this.setState(s => extend(s, { happening, loading: false, imagePath }), () => {
 
         })
+      })
+      .catch(() => {
+        this.setState(s => extend(s, { loading: false }))
       })
   }
 
