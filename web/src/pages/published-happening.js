@@ -5,6 +5,7 @@ import extend from 'lib/extend';
 import Image from 'components/image';
 import SmallTitle from 'components/small-title';
 import SmallSubtitle from 'components/small-subtitle';
+import PageNotFound from 'components/page-not-found';
 
 export default class PublishedHappening extends Component {
 
@@ -52,7 +53,7 @@ export default class PublishedHappening extends Component {
         </section>
       )
     } else if (happening == null) {
-      return "TODO: Not found"
+      return <PageNotFound />
     } else {
       const { showPhoto, imagePath } = this.state
       return <section>
