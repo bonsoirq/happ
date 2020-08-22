@@ -5,6 +5,8 @@ export function withSyntax (classes, props) {
     classes.push('is-info')
   } else if (props.isDanger) {
     classes.push('is-danger')
+  } else if (props.isWarning) {
+    classes.push('is-warning')
   }
 
   if (props.isLoading) {
@@ -18,5 +20,6 @@ export const syntaxModifiers = Object.freeze([
   'isPrimary',
   'isInfo',
   'isDanger',
+  'isWarning',
   'isLoading',
 ])
