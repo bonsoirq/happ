@@ -5,6 +5,7 @@ import HappeningDetailsView from './happening-details';
 import CreateHappeningView from './create-happening';
 import { Link } from 'react-router-dom';
 import Paths from 'paths';
+import ellipsize from 'lib/ellipsize';
 
 export default function ListHappeningsView(props) {
   const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(false);
@@ -21,7 +22,7 @@ export default function ListHappeningsView(props) {
         {props.happenings.map(x => (
           <tr key={x.id}>
             <td>{x.name}</td>
-            <td>{x.description}</td>
+            <td>{ellipsize(x.description, 50)}</td>
             <td>
               <Button
                 isWarning={true}
@@ -79,7 +80,7 @@ function HappeningTableHeader({onClick}) {
       <th>Name</th>
       <th>Description</th>
       <th colSpan="2"></th>
-      <th>
+      <th align="right">
         <Button
           isPrimary={true}
           onClick={onClick}
@@ -94,7 +95,7 @@ function HappeningTableHeader({onClick}) {
 function NoHappeningsRow({onClick}) {
   return (
     <tr>
-      <td colSpan="4" style={{ textAlign: 'center' }}>
+      <td colSpan="5" style={{ textAlign: 'center' }}>
         You don't have any happenings
         <br />
         Add your first one using Create button
