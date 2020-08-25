@@ -27,7 +27,10 @@ export default function ListHappeningsView(props) {
                 isWarning={true}
                 disabled={!x.isPublished}
               >
-                <Link to={Paths.Discover(x.id)}>
+                <Link
+                  to={Paths.Discover(x.id)}
+                  style={ x.isPublished ? null : { pointerEvents: "none" } }
+                >
                   See published
                 </Link>
               </Button>

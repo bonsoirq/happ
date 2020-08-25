@@ -6,6 +6,10 @@ import Image from 'components/image';
 import SmallTitle from 'components/small-title';
 import SmallSubtitle from 'components/small-subtitle';
 import PageNotFound from 'components/page-not-found';
+import Button from 'components/button';
+import Level from 'components/level/level';
+import LevelLeft from 'components/level/level-left';
+import LevelRight from 'components/level/level-right';
 
 export default class PublishedHappening extends Component {
 
@@ -56,20 +60,41 @@ export default class PublishedHappening extends Component {
       return <PageNotFound />
     } else {
       const { showPhoto, imagePath } = this.state
-      return <section>
+      return <section style={{ whiteSpace: 'pre-line'}}>
         <div className="container">
-          <div className="columns is-vcentered">
+          <section className="hero is-primary">
+            <div className="hero-body">
+              <Level>
+                <LevelLeft>
+                  <Title>{happening.name}</Title>
+                </LevelLeft>
+                <LevelRight>
+                  <Button isInfo={true}>Share</Button>
+                </LevelRight>
+              </Level>
+            </div>
+          </section>
+          <br />
+          { showPhoto &&
+            <Image
+              is3by1={true}
+              src={imagePath}
+              onError={this.hidePhoto}
+            />
+          }
+          <br /><br />
+          <div className="columns">
+            <div className="column is-one-third">
+              <div className="notification is-primary is-light">
+                <SmallTitle>Agenda</SmallTitle>
+                <p className="is-size-6">{happening.agenda}</p>
+              </div>
+            </div>
             <div className="column">
-              { showPhoto &&
-                <Image
-                  is3by1={true}
-                  src={imagePath}
-                  onError={this.hidePhoto}
-                />
-              }
-              {/* TODO: Make it better looking and add share buttons. */}
-              <SmallTitle>{happening.agenda}</SmallTitle>
+              <SmallTitle>Description</SmallTitle>
               <SmallSubtitle>{happening.description}</SmallSubtitle>
+              <br />
+              <SmallTitle>About host</SmallTitle>
               <SmallSubtitle>{happening.organizerDescription}</SmallSubtitle>
             </div>
           </div>

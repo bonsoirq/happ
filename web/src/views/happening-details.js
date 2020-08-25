@@ -52,58 +52,66 @@ export default class HappeningDetailsView extends Component {
   render () {
     const { happening, onClose } = this.props
     return (
-    <ModalCard>
-      <ModalCardHead
-        title={happening.name}
-        onClose={onClose}
-      />
-      <ModalCardContent>
-        <Field>
-          <Image
-            is3by1={true}
-            src={this.state.imagePath}
-            onError={this.setDefaultPhoto}
+      <div  style={{ whiteSpace: 'pre-line'}}>
+        <ModalCard>
+          <ModalCardHead
+            title={happening.name}
+            onClose={onClose}
           />
-          <Control>
-            <FileInput
-              id="file"
-              accept=".jpg,.jpeg,.png"
-              isDanger={this.state.errors.file != null}
-              isLoading={this.state.isLoading}
-              onChange={e => {
-                const [file] = e.target.files
-                this.setState(s => extend(s, { file, isLoading: true }))
-                ReadFile.asURL(file, { name: ''})
-                  .then(url => this.setState(s => extend(s, { imagePath: url, isLoading: false })))
-                  .then(this.submit)
-              }}
-              disabled={this.state.isLoading}
-            />
-          </Control>
-        </Field>
-        <SmallTitle>{happening.agenda}</SmallTitle>
-        <SmallSubtitle>{happening.description}</SmallSubtitle>
-        <SmallSubtitle>{happening.organizerDescription}</SmallSubtitle>
-        <Field>
-          <Control>
-            <Label>
-              <Checkbox
-                onChange={e => this.publishHappening(e.target.checked)}
-                checked={happening.isPublished}
+          <ModalCardContent>
+            <Field>
+              <Image
+                is3by1={true}
+                src={this.state.imagePath}
+                onError={this.setDefaultPhoto}
               />
-              Publish happening
-            </Label>
-          </Control>
-        </Field>
-      </ModalCardContent>
-      <ModalCardFoot>
-        <Button
-          onClick={onClose}
-        >
-          Close
-        </Button>
-      </ModalCardFoot>
-    </ModalCard>
+              <Control>
+                <FileInput
+                  id="file"
+                  accept=".jpg,.jpeg,.png"
+                  isDanger={this.state.errors.file != null}
+                  isLoading={this.state.isLoading}
+                  onChange={e => {
+                    const [file] = e.target.files
+                    this.setState(s => extend(s, { file, isLoading: true }))
+                    ReadFile.asURL(file, { name: ''})
+                      .then(url => this.setState(s => extend(s, { imagePath: url, isLoading: false })))
+                      .then(this.submit)
+                  }}
+                  disabled={this.state.isLoading}
+                />
+              </Control>
+            </Field>
+            <SmallTitle>Agenda</SmallTitle>
+            <SmallSubtitle>{happening.agenda}</SmallSubtitle>
+            <br />
+            <SmallTitle>Description</SmallTitle>
+            <SmallSubtitle>{happening.description}</SmallSubtitle>
+            <br />
+            <SmallTitle>Organizer description</SmallTitle>
+            <SmallSubtitle>{happening.organizerDescription}</SmallSubtitle>
+            <br />
+            <Field>
+              <Control>
+                <Label>
+                  <Checkbox
+                    onChange={e => this.publishHappening(e.target.checked)}
+                    checked={happening.isPublished}
+                  />
+                  Publish happening
+                </Label>
+              </Control>
+            </Field>
+          </ModalCardContent>
+          <ModalCardFoot>
+            <Button
+              onClick={onClose}
+            >
+              Close
+            </Button>
+          </ModalCardFoot>
+        </ModalCard>
+      </div>
     )
   }
 }
