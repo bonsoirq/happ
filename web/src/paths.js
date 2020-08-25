@@ -4,5 +4,5 @@ export default class Paths {
   static get RegisterSuccess () { return '/register/success' }
   static get Dashboard () { return '/dashboard' }
   static get Account () { return '/account' }
-  static get Discover () { return '/discover/:id' }
+  static Discover (id) { return `/discover/${id ? id : ':id'}` }
 }

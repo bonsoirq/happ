@@ -44,7 +44,7 @@ function App() {
                 <Route exact path={Paths.Root} component={Welcome} />
                 <Route path={Paths.Login} component={Login} />
                 <Route path={Paths.RegisterSuccess} component={RegisterSuccess} />
-                <Route path={Paths.Discover} component={PublishedHappening} />
+                <Route path={Paths.Discover()} component={PublishedHappening} />
                 {/* <Redirect to={Paths.Root} /> */}
               </>
             }
@@ -53,7 +53,7 @@ function App() {
                 <Route exact path={Paths.Root}>
                   <Redirect to={Paths.Dashboard} />
                 </Route>
-                <Route path={Paths.Discover} component={PublishedHappening} />
+                <Route path={Paths.Discover()} component={PublishedHappening} />
                 <Route path={Paths.Dashboard} component={Dashboard} />
                 <Route path={Paths.Account} component={Account} />
                 {/* <Redirect to={Paths.Root} /> */}

@@ -78,7 +78,7 @@ export default class PublishedHappening extends Component {
     }
   }
 
-  hidePhoto() {
+  hidePhoto = () => {
     this.setState(s => extend(s, { showPhoto: false }))
   }
 }

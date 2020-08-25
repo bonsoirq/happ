@@ -3,6 +3,8 @@ import Table from 'components/table/table';
 import Button from 'components/button';
 import HappeningDetailsView from './happening-details';
 import CreateHappeningView from './create-happening';
+import { Link } from 'react-router-dom';
+import Paths from 'paths';
 
 export default function ListHappeningsView(props) {
   const [showCreateHappeningModal, setShowCreateHappeningModal] = useState(false);
@@ -20,6 +22,16 @@ export default function ListHappeningsView(props) {
           <tr key={x.id}>
             <td>{x.name}</td>
             <td>{x.description}</td>
+            <td>
+              <Button
+                isWarning={true}
+                disabled={!x.isPublished}
+              >
+                <Link to={Paths.Discover(x.id)}>
+                  See published
+                </Link>
+              </Button>
+            </td>
             <td>
               <Button
                 isInfo={true}
@@ -62,7 +74,8 @@ function HappeningTableHeader({onClick}) {
   return <thead>
     <tr>
       <th>Name</th>
-      <th colSpan="2">Description</th>
+      <th>Description</th>
+      <th colSpan="2"></th>
       <th>
         <Button
           isPrimary={true}
