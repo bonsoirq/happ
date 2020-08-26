@@ -6,10 +6,10 @@ import Image from 'components/image';
 import SmallTitle from 'components/small-title';
 import SmallSubtitle from 'components/small-subtitle';
 import PageNotFound from 'components/page-not-found';
-import Button from 'components/button';
 import Level from 'components/level/level';
 import LevelLeft from 'components/level/level-left';
 import LevelRight from 'components/level/level-right';
+import ShareButtons from 'components/share-buttons';
 
 export default class PublishedHappening extends Component {
 
@@ -66,10 +66,15 @@ export default class PublishedHappening extends Component {
             <div className="hero-body">
               <Level>
                 <LevelLeft>
-                  <Title>{happening.name}</Title>
+                  <SmallTitle>{happening.name}</SmallTitle>
                 </LevelLeft>
                 <LevelRight>
-                  <Button isInfo={true}>Share</Button>
+                  <ShareButtons
+                    subject='Great event for you'
+                    title='Hey, check out this event!'
+                    size={40}
+                    url={window.location.href}
+                  />
                 </LevelRight>
               </Level>
             </div>
