@@ -129,31 +129,31 @@ export default class CreateHappeningView extends Component {
 
   validateDescription = () => {
     const { description } = this.state
-    const MAX_LENGTH = 255
+    const MAX_LENGTH = 2047
     if (description === '' || description == null) {
       return { description: "Must be filled" }
     } else if (description.length > MAX_LENGTH) {
-      return { description: "Description may be max 255 characters long" }
+      return { description: "Description may be max 2047 characters long" }
     }
   }
 
   validateOrganizerDescription = () => {
     const { organizerDescription } = this.state
-    const MAX_LENGTH = 255
+    const MAX_LENGTH = 2047
     if (organizerDescription === '' || organizerDescription == null) {
       return { organizerDescription: "Must be filled" }
     } else if (organizerDescription.length > MAX_LENGTH) {
-      return { organizerDescription: "Organizer description may be max 255 characters long" }
+      return { organizerDescription: "Organizer description may be max 2047 characters long" }
     }
   }
 
   validateAgenda = () => {
     const { agenda } = this.state
-    const MAX_LENGTH = 255
+    const MAX_LENGTH = 2047
     if (agenda === '' || agenda == null) {
       return { agenda: "Must be filled" }
     } else if (agenda.length > MAX_LENGTH) {
-      return { agenda: "Agenda may be max 255 characters long" }
+      return { agenda: "Agenda may be max 2047 characters long" }
     }
   }
 
