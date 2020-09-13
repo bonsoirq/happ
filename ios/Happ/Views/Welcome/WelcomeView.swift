@@ -54,6 +54,7 @@ struct WelcomeView: View {
             .padding()
         }
         .padding()
+        .keyboardAdaptive()
     }
 }
 
