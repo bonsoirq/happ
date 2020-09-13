@@ -10,16 +10,30 @@ import SwiftUI
 
 struct RootView: View {
 
+    // MARK: Properties
+
+    @EnvironmentObject var coordinator: Coordinator
+    let apiRequest: APIRequestable
+
     // MARK: Views
 
     var body: some View {
-        WelcomeView(viewModel: WelcomeViewModel())
+        ZStack {
+            if apiRequest.tokens == nil {
+                WelcomeView(viewModel: WelcomeViewModel(apiRequest: apiRequest))
+                    .environmentObject(coordinator)
+                    .transition(.move(edge: .bottom))
+            } else {
+                Text("Happ")
+            }
+        }
     }
     
 }
 
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        RootView()
+        RootView(apiRequest: APIRequestMock())
+            .environmentObject(Coordinator())
     }
 }

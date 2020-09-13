@@ -17,7 +17,6 @@ final class APIRequest: APIRequestable {
     }
     
     private let tokensKey = "Tokens"
-    private let pushTokenKey = "PushToken"
     
     private(set) var tokens: Tokens? {
         get {
@@ -32,28 +31,14 @@ final class APIRequest: APIRequestable {
             }
         }
     }
-    
-    private var pushToken: String? {
-        get {
-            UserDefaults.standard.string(forKey: pushTokenKey)
-        }
-        set {
-            if let pushToken = newValue {
-                UserDefaults.standard.set(pushToken, forKey: pushTokenKey)
-            } else {
-                UserDefaults.standard.removeObject(forKey: pushTokenKey)
-            }
-        }
-    }
-    
+
     private var downloadRequests = [Route : Requestable]()
-    private var refreshTokenRequest: Requestable?
+    private var signInRequest: Requestable?
     
     // MARK: Methods
     
     func clearTokens() {
         tokens = nil
-        pushToken = nil
     }
     
     private func createRequest(for endpoint: Endpointable, forceQueryItemsUse: Bool = false, shouldRefreshToken: Bool = false) -> Requestable {
@@ -69,12 +54,18 @@ final class APIRequest: APIRequestable {
     // MARK: General
     
     func signIn(data: SignInData, onSuccess: @escaping () -> Void, onError: @escaping (Error) -> Void) {
-        createRequest(for: Endpoint.signIn(data: data))
+        signInRequest = createRequest(for: Endpoint.signIn(data: data))
             .onError(onError)
             .onDataSuccess { [weak self] (tokens: Tokens?) in
                 self?.tokens = tokens
+                self?.signInRequest = nil
                 onSuccess()
-            }.make()
+            }
+        signInRequest?.make()
+    }
+
+    func signOut() -> Requestable {
+        createRequest(for: Endpoint.signOut)
     }
     
 }

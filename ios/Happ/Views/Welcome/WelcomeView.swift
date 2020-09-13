@@ -8,11 +8,14 @@
 
 import SwiftUI
 
-struct WelcomeView: View {
+struct WelcomeView: View, Errorable {
 
     // MARK: Properties
 
+    @EnvironmentObject var coordinator: Coordinator
     @ObservedObject var viewModel: WelcomeViewModel
+    @State private var _error: IdentifableError?
+    var error: Binding<IdentifableError?> { $_error }
 
     // MARK: Views
 
@@ -35,6 +38,7 @@ struct WelcomeView: View {
 
             TextField(Translation.Welcome.email.localized, text: $viewModel.email)
                 .defaultStyle()
+                .autocapitalization(.none)
                 .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
             SecureField(Translation.Welcome.password.localized, text: $viewModel.password)
@@ -42,7 +46,7 @@ struct WelcomeView: View {
 
             Spacer()
 
-            Button(action: {}) {
+            Button(action: signIn) {
                 Spacer()
                 Text(Translation.Welcome.signIn.localized)
                     .font(.headline)
@@ -60,10 +64,17 @@ struct WelcomeView: View {
         .padding()
         .keyboardAdaptive()
     }
+
+    // MARK: Methods
+
+    private func signIn() {
+        viewModel.signIn(onSuccess: coordinator.refresh, onError: onError)
+    }
 }
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView(viewModel: WelcomeViewModel())
+        WelcomeView(viewModel: WelcomeViewModel(apiRequest: APIRequestMock()))
+            .environmentObject(Coordinator())
     }
 }

@@ -9,7 +9,7 @@
 import SwiftUI
 import Combine
 
-final class WelcomeViewModel: ObservableObject {
+final class WelcomeViewModel: ViewModel, ObservableObject {
 
     // MARK: Properties
 
@@ -18,6 +18,9 @@ final class WelcomeViewModel: ObservableObject {
 
     // MARK: Methods
 
-    func login(onSuccess: @escaping () -> Void, onError: @escaping (Error) -> Void) { }
+    func signIn(onSuccess: @escaping () -> Void, onError: @escaping (Error) -> Void) {
+        let data = SignInData(email: email, password: password)
+        apiRequest.signIn(data: data, onSuccess: onSuccess, onError: onError)
+    }
 
 }

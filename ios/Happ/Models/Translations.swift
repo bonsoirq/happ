@@ -4,6 +4,10 @@
 
 final class Translation {
 
+   enum Alert: String {
+      case confirm = "alert.confirm"
+   }
+
    enum Error: String {
       case accessTokenExpired = "error.access_token_expired"
       case `default` = "error.default"

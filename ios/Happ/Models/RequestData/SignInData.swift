@@ -9,6 +9,6 @@
 import Foundation
 
 struct SignInData: RequestData {
-    let username: String
+    let email: String
     let password: String
 }
