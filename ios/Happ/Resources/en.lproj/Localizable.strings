@@ -5,3 +5,12 @@
   Created by Maksymilian Galas on 12/09/2020.
   Copyright © 2020 Infinity Pi Ltd. All rights reserved.
 */
+
+// Welcome
+
+"welcome.title" = "Welcome to happ";
+"welcome.subtitle" = "A tool for event organization";
+"welcome.email" = "E-mail address";
+"welcome.password" = "Password";
+"welcome.sign_in" = "Sign In";
+"welcome.sign_up" = "Sign Up";

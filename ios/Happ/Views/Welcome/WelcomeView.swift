@@ -21,33 +21,33 @@ struct WelcomeView: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(maxHeight: 160)
                 .padding()
-            Text("Welcome to happ")
+            Text(Translation.Welcome.title.localized)
                 .font(.title)
                 .fontWeight(.bold)
-            Text("A tool for event organization")
+            Text(Translation.Welcome.subtitle.localized)
                 .font(.body)
 
             Spacer().frame(maxHeight: 50)
 
-            TextField("Email", text: $viewModel.email)
+            TextField(Translation.Welcome.email.localized, text: $viewModel.email)
                 .defaultStyle()
                 .textContentType(.emailAddress)
                 .keyboardType(.emailAddress)
-            SecureField("Password", text: $viewModel.password)
+            SecureField(Translation.Welcome.password.localized, text: $viewModel.password)
                 .defaultStyle()
 
             Spacer()
 
             Button(action: {}) {
                 Spacer()
-                Text("Sign In")
+                Text(Translation.Welcome.signIn.localized)
                     .font(.headline)
                 Spacer()
             }
             .defaultStyle(foregroundColor: .white, backgroundColor: .main)
 
             Button(action: {}) {
-                Text("Sign Up")
+                Text(Translation.Welcome.signUp.localized)
                     .font(.body)
             }
             .foregroundColor(.main)
