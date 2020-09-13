@@ -6,6 +6,12 @@
   Copyright © 2020 Infinity Pi Ltd. All rights reserved.
 */
 
+// Error
+
+"error.title" = "Error";
+"error.default" = "Something happened";
+"error.access_token_expired" = "Your session expired. Please sign in again.";
+
 // Welcome
 
 "welcome.title" = "Welcome to happ";

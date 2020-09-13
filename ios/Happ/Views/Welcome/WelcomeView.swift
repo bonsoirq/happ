@@ -10,7 +10,11 @@ import SwiftUI
 
 struct WelcomeView: View {
 
+    // MARK: Properties
+
     @ObservedObject var viewModel: WelcomeViewModel
+
+    // MARK: Views
 
     var body: some View {
         VStack {

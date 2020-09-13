@@ -9,9 +9,13 @@
 import SwiftUI
 
 struct RootView: View {
+
+    // MARK: Views
+
     var body: some View {
         WelcomeView(viewModel: WelcomeViewModel())
     }
+    
 }
 
 struct RootView_Previews: PreviewProvider {
