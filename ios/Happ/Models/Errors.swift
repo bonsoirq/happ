@@ -26,16 +26,14 @@ enum ResponseError: Error, LocalizedError, Equatable {
     case somethingHappened(errorCode: Int)
     case accessTokenExpired
     
-    public var errorDescription: String? {
-        get {
-            switch self {
-            case .other(let content):
-                return content
-            case .somethingHappened(let errorCode):
-                return "\(Translation.Error.default.localized) (\(errorCode))"
-            case .accessTokenExpired:
-                return Translation.Error.accessTokenExpired.localized
-            }
+    var errorDescription: String? {
+        switch self {
+        case .other(let content):
+            return content
+        case .somethingHappened(let errorCode):
+            return "\(Translation.Error.default.localized) (\(errorCode))"
+        case .accessTokenExpired:
+            return Translation.Error.accessTokenExpired.localized
         }
     }
 }

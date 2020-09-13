@@ -44,6 +44,7 @@
 		50051857250E882B00081E79 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50051855250E882B00081E79 /* ViewModel.swift */; };
 		50051858250E882B00081E79 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50051856250E882B00081E79 /* Coordinator.swift */; };
 		5005185A250E8A5E00081E79 /* Errorable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50051859250E8A5E00081E79 /* Errorable.swift */; };
+		5005185E250E981600081E79 /* WelcomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5005185D250E981600081E79 /* WelcomeViewModelTests.swift */; };
 		502F8744250D45E100CBC4B8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 502F8743250D45E100CBC4B8 /* Colors.xcassets */; };
 		502F8747250D46ED00CBC4B8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 502F8749250D46ED00CBC4B8 /* Localizable.strings */; };
 		502F874E250D47D200CBC4B8 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502F874D250D47D200CBC4B8 /* WelcomeView.swift */; };
@@ -57,7 +58,6 @@
 		504569FE250D32BF0049BBC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 504569FD250D32BF0049BBC1 /* Assets.xcassets */; };
 		50456A01250D32BF0049BBC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50456A00250D32BF0049BBC1 /* Preview Assets.xcassets */; };
 		50456A04250D32BF0049BBC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50456A02250D32BF0049BBC1 /* LaunchScreen.storyboard */; };
-		50456A0F250D32BF0049BBC1 /* HappTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50456A0E250D32BF0049BBC1 /* HappTests.swift */; };
 		50456A1A250D32BF0049BBC1 /* HappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50456A19250D32BF0049BBC1 /* HappUITests.swift */; };
 /* End PBXBuildFile section */
 
@@ -117,6 +117,7 @@
 		50051855250E882B00081E79 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		50051856250E882B00081E79 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		50051859250E8A5E00081E79 /* Errorable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errorable.swift; sourceTree = "<group>"; };
+		5005185D250E981600081E79 /* WelcomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModelTests.swift; sourceTree = "<group>"; };
 		502F8743250D45E100CBC4B8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		502F8748250D46ED00CBC4B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		502F874D250D47D200CBC4B8 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -133,7 +134,6 @@
 		50456A03250D32BF0049BBC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50456A05250D32BF0049BBC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50456A0A250D32BF0049BBC1 /* HappTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		50456A0E250D32BF0049BBC1 /* HappTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappTests.swift; sourceTree = "<group>"; };
 		50456A10250D32BF0049BBC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50456A15250D32BF0049BBC1 /* HappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50456A19250D32BF0049BBC1 /* HappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappUITests.swift; sourceTree = "<group>"; };
@@ -279,6 +279,22 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		5005185B250E97EC00081E79 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5005185C250E97FB00081E79 /* Welcome */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5005185C250E97FB00081E79 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				5005185D250E981600081E79 /* WelcomeViewModelTests.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
 		502F8741250D459900CBC4B8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -383,7 +399,7 @@
 		50456A0D250D32BF0049BBC1 /* HappTests */ = {
 			isa = PBXGroup;
 			children = (
-				50456A0E250D32BF0049BBC1 /* HappTests.swift */,
+				5005185B250E97EC00081E79 /* View */,
 				50456A10250D32BF0049BBC1 /* Info.plist */,
 			);
 			path = HappTests;
@@ -607,7 +623,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				50456A0F250D32BF0049BBC1 /* HappTests.swift in Sources */,
+				5005185E250E981600081E79 /* WelcomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

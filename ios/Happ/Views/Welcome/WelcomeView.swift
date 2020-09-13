@@ -63,6 +63,7 @@ struct WelcomeView: View, Errorable {
         }
         .padding()
         .keyboardAdaptive()
+        .error(error)
     }
 
     // MARK: Methods
