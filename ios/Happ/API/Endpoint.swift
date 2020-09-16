@@ -11,6 +11,17 @@ import Foundation
 typealias Endpointable = (Routable&ResponseErrorable)
 
 enum Endpoint: Endpointable {
+
+    enum Account: Endpointable {
+        case details
+
+        var route: Route {
+            switch self {
+            case .details:
+                return Route(path: "accounts/my/", method: .get)
+            }
+        }
+    }
     
     case signIn(data: SignInData)
     

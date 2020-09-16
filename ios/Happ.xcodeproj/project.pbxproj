@@ -50,6 +50,7 @@
 		5005186425129AA600081E79 /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5005186325129AA600081E79 /* MainTabViewModel.swift */; };
 		5005186725129CF800081E79 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5005186625129CF800081E79 /* AccountView.swift */; };
 		5005186925129D1200081E79 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5005186825129D1200081E79 /* AccountViewModel.swift */; };
+		5005186C2512A2A200081E79 /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5005186B2512A2A200081E79 /* AccountDetails.swift */; };
 		502F8744250D45E100CBC4B8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 502F8743250D45E100CBC4B8 /* Colors.xcassets */; };
 		502F8747250D46ED00CBC4B8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 502F8749250D46ED00CBC4B8 /* Localizable.strings */; };
 		502F874E250D47D200CBC4B8 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502F874D250D47D200CBC4B8 /* WelcomeView.swift */; };
@@ -128,6 +129,7 @@
 		5005186325129AA600081E79 /* MainTabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
 		5005186625129CF800081E79 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		5005186825129D1200081E79 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		5005186B2512A2A200081E79 /* AccountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetails.swift; sourceTree = "<group>"; };
 		502F8743250D45E100CBC4B8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		502F8748250D46ED00CBC4B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		502F874D250D47D200CBC4B8 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -214,10 +216,10 @@
 			isa = PBXGroup;
 			children = (
 				5005181C250E50E500081E79 /* HTTPMethod.swift */,
-				5005181D250E50E500081E79 /* Request.swift */,
-				5005181E250E50E500081E79 /* APIRequest.swift */,
 				5005181F250E50E500081E79 /* Route.swift */,
 				50051820250E50E500081E79 /* Endpoint.swift */,
+				5005181D250E50E500081E79 /* Request.swift */,
+				5005181E250E50E500081E79 /* APIRequest.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -226,8 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				50051828250E50F800081E79 /* MockData.swift */,
-				50051829250E50F800081E79 /* APIRequestMock.swift */,
 				5005182A250E50F800081E79 /* RequestMock.swift */,
+				50051829250E50F800081E79 /* APIRequestMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -252,6 +254,7 @@
 			children = (
 				50051849250E7E2D00081E79 /* DecodedError.swift */,
 				5005183B250E7AFB00081E79 /* Tokens.swift */,
+				5005186A2512A28300081E79 /* Account */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -311,6 +314,14 @@
 			children = (
 				5005186825129D1200081E79 /* AccountViewModel.swift */,
 				5005186625129CF800081E79 /* AccountView.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		5005186A2512A28300081E79 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				5005186B2512A2A200081E79 /* AccountDetails.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -623,6 +634,7 @@
 				502F8753250D495900CBC4B8 /* Color+Named.swift in Sources */,
 				50051839250E7A9500081E79 /* Routable.swift in Sources */,
 				50051824250E50E500081E79 /* Route.swift in Sources */,
+				5005186C2512A2A200081E79 /* AccountDetails.swift in Sources */,
 				5005182C250E50F800081E79 /* MockData.swift in Sources */,
 				50051816250E46DC00081E79 /* KeyboardObservable.swift in Sources */,
 				50051858250E882B00081E79 /* Coordinator.swift in Sources */,

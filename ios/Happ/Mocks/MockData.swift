@@ -13,5 +13,9 @@ enum MockData {
     // MARK: Tokens
     
     static let tokens = Tokens(auth: "token", refresh: "refreshToken")
+
+    // MARK: Account
+
+    static let accountDetails = AccountDetails(id: "1", name: "John Appleseed", email: "john@apple.com")
     
 }

@@ -9,6 +9,10 @@
 import Foundation
 
 final class Request: Requestable {
+
+    private struct Response<T: Codable>: Codable {
+        let data: T
+    }
     
     // MARK: Properties
     
@@ -96,7 +100,7 @@ final class Request: Requestable {
                     decoder.dateDecodingStrategy = .formatted(FullDateFormatter())
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     
-                    let responseData = try decoder.decode(RD.self, from: data)
+                    let responseData = try decoder.decode(Response<RD>.self, from: data).data
                     DispatchQueue.main.async {
                         callback(responseData)
                     }

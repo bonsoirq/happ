@@ -32,8 +32,7 @@ final class APIRequest: APIRequestable {
         }
     }
 
-    private var downloadRequests = [Route : Requestable]()
-    private var signInRequest: Requestable?
+    private var requests = [Route : Requestable]()
     
     // MARK: Methods
     
@@ -47,21 +46,29 @@ final class APIRequest: APIRequestable {
     }
     
     func cancelDownload(for endpoint: Routable) {
-        downloadRequests[endpoint.route]?.cancel()
-        downloadRequests[endpoint.route] = nil
+        requests[endpoint.route]?.cancel()
+        requests[endpoint.route] = nil
     }
     
     // MARK: General
     
     func signIn(data: SignInData, onSuccess: @escaping () -> Void, onError: @escaping (Error) -> Void) {
-        signInRequest = createRequest(for: Endpoint.signIn(data: data))
+        let endpoint = Endpoint.signIn(data: data)
+        requests[endpoint.route] = createRequest(for: endpoint)
             .onError(onError)
             .onDataSuccess { [weak self] (tokens: Tokens?) in
                 self?.tokens = tokens
-                self?.signInRequest = nil
+                self?.requests[endpoint.route] = nil
                 onSuccess()
             }
-        signInRequest?.make()
+        requests[endpoint.route]?.make()
+    }
+
+    // MARK: Account
+
+    func account(_ endpoint: Endpoint.Account) -> Requestable {
+        requests[endpoint.route] = createRequest(for: endpoint)
+        return requests[endpoint.route]!
     }
     
 }

@@ -22,10 +22,10 @@ struct AccountView: View, ViewModelable, Errorable {
     var body: some View {
         List {
             Section(header: Text(Translation.Account.name.localized)) {
-                Text("Maksymilian Galas")
+                Text(viewModel.name)
             }
             Section(header: Text(Translation.Account.email.localized)) {
-                Text("maksg@onet.eu")
+                Text(viewModel.email)
             }
             Button(action: signOut) {
                 Text(Translation.Account.signOut.localized)
@@ -34,7 +34,14 @@ struct AccountView: View, ViewModelable, Errorable {
         .listStyle(GroupedListStyle())
         .environment(\.horizontalSizeClass, .regular)
         .navigationBarTitle(Tab.account.title)
-        .error(error)
+        .onAppear(perform: downloadData)
+        .error(error, onDismiss: onErrorDismiss)
+    }
+
+    // MARK: Methods
+
+    private func downloadData() {
+        viewModel.downloadData(onError)
     }
     
 }

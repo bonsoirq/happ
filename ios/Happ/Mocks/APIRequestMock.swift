@@ -30,6 +30,10 @@ final class APIRequestMock: APIRequestable {
             onSuccess()
         }
     }
+
+    func account(_ endpoint: Endpoint.Account) -> Requestable {
+        RequestMock(responseData: MockData.accountDetails)
+    }
     
 }
 
