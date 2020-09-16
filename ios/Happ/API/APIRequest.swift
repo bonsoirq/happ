@@ -63,9 +63,5 @@ final class APIRequest: APIRequestable {
             }
         signInRequest?.make()
     }
-
-    func signOut() -> Requestable {
-        createRequest(for: Endpoint.signOut)
-    }
     
 }

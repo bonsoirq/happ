@@ -16,17 +16,6 @@ class ViewModel {
     }
     
     func signOut(onSignOut: @escaping () -> Void) {
-        apiRequest.signOut()
-            .onSuccess { [weak self] in
-                self?.onSignOut(onSignOut)
-            }
-            .onError { [weak self] _ in
-                self?.onSignOut(onSignOut)
-            }
-            .make()
-    }
-    
-    private func onSignOut(_ onSignOut: @escaping () -> Void) {
         apiRequest.clearTokens()
         onSignOut()
     }

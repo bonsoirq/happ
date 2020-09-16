@@ -5,6 +5,9 @@
 final class Translation {
 
    enum Account: String {
+      case email = "account.email"
+      case name = "account.name"
+      case signOut = "account.sign_out"
       case title = "account.title"
    }
 

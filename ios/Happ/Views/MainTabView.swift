@@ -19,7 +19,7 @@ struct MainTabView: View {
                     Text(Tab.home.title)
             }
             .tag(Tab.home)
-            NavigationView { Text("Account") }
+            NavigationView { AccountView(viewModel: viewModel.accountViewModel) }
                 .tabItem {
                     Tab.account.image
                     Text(Tab.account.title)

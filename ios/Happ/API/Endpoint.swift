@@ -13,14 +13,11 @@ typealias Endpointable = (Routable&ResponseErrorable)
 enum Endpoint: Endpointable {
     
     case signIn(data: SignInData)
-    case signOut
     
     var route: Route {
         switch self {
         case .signIn(let data):
             return Route(path: "sessions/", method: .post, parameters: data.dictionary)
-        case .signOut:
-            return Route(path: "sessions/", method: .delete)
         }
     }
     

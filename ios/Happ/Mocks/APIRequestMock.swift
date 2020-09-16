@@ -30,10 +30,6 @@ final class APIRequestMock: APIRequestable {
             onSuccess()
         }
     }
-
-    func signOut() -> Requestable {
-        RequestMock(responseData: nil)
-    }
     
 }
 
