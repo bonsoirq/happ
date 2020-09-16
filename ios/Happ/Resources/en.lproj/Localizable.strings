@@ -24,3 +24,11 @@
 "welcome.password" = "Password";
 "welcome.sign_in" = "Sign In";
 "welcome.sign_up" = "Sign Up";
+
+// MARK: Home
+
+"home.title" = "Home";
+
+// MARK: Account
+
+"account.title" = "Account";

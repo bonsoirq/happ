@@ -4,6 +4,10 @@
 
 final class Translation {
 
+   enum Account: String {
+      case title = "account.title"
+   }
+
    enum Alert: String {
       case confirm = "alert.confirm"
    }
@@ -12,6 +16,10 @@ final class Translation {
       case accessTokenExpired = "error.access_token_expired"
       case `default` = "error.default"
       case title = "error.title"
+   }
+
+   enum Home: String {
+      case title = "home.title"
    }
 
    enum Welcome: String {

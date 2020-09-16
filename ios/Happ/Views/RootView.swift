@@ -24,7 +24,7 @@ struct RootView: View {
                     .environmentObject(coordinator)
                     .transition(.move(edge: .bottom))
             } else {
-                Text("Happ")
+                MainTabView(viewModel: MainTabViewModel(apiRequest: apiRequest))
             }
         }
     }
