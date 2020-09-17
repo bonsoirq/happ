@@ -17,7 +17,12 @@ final class HomeViewModel: ViewModel, ObservableObject {
     // MARK: Methods
 
     func downloadData(_ onError: @escaping (Error) -> Void) {
-        happenings = [MockData.happening]
+        apiRequest.happenings(.get)
+            .onError(onError)
+            .onDataSuccess { [weak self] (happenings: [Happening]?) in
+                self?.happenings = happenings ?? []
+            }
+            .make()
     }
 
 }

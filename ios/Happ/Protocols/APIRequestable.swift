@@ -17,6 +17,7 @@ protocol APIRequestable: class {
     func cancelDownload(for endpoint: Routable)
     
     func signIn(data: SignInData, onSuccess: @escaping () -> Void, onError: @escaping (Error) -> Void)
+    func happenings(_ endpoint: Endpoint.Happenings) -> Requestable
     func account(_ endpoint: Endpoint.Account) -> Requestable
     
 }

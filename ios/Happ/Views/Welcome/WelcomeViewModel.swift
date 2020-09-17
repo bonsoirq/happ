@@ -13,8 +13,8 @@ final class WelcomeViewModel: ViewModel, ObservableObject {
 
     // MARK: Properties
 
-    @Published var email: String = "maksg@onet.eu"
-    @Published var password: String = "wocxoz-qitduG-5kyzdu"
+    @Published var email: String = ""
+    @Published var password: String = ""
 
     // MARK: Methods
 

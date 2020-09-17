@@ -65,6 +65,13 @@ final class APIRequest: APIRequestable {
         requests[endpoint.route]?.make()
     }
 
+    // MARK: Happenings
+
+    func happenings(_ endpoint: Endpoint.Happenings) -> Requestable {
+        requests[endpoint.route] = createRequest(for: endpoint)
+        return requests[endpoint.route]!
+    }
+
     // MARK: Account
 
     func account(_ endpoint: Endpoint.Account) -> Requestable {

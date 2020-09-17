@@ -12,6 +12,17 @@ typealias Endpointable = (Routable&ResponseErrorable)
 
 enum Endpoint: Endpointable {
 
+    enum Happenings: Endpointable {
+        case get
+
+        var route: Route {
+            switch self {
+            case .get:
+                return Route(path: "happenings/", method: .get)
+            }
+        }
+    }
+
     enum Account: Endpointable {
         case details
 

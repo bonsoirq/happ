@@ -14,16 +14,17 @@ struct HappeningRow: View {
     let onDelete: (Happening) -> Void = { _ in }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
+        VStack(alignment: .leading, spacing: 20) {
             Text(happening.name)
                 .font(.headline)
                 .lineLimit(3)
 
             Text(happening.description)
-                .lineLimit(1)
+                .lineLimit(4)
                 .font(.body)
                 .foregroundColor(.secondary)
         }
+        .padding()
         .foregroundColor(.primary)
         .contextMenu {
             ContextMenuButton(.edit, action: onHappeningEdit)
