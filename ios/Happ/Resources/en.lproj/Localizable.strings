@@ -39,6 +39,12 @@
 
 "home.title" = "Home";
 
+// Happening
+
+"happening.agenda" = "Agenda";
+"happening.description" = "Description";
+"happening.organizerDescription" = "About host";
+
 // MARK: Account
 
 "account.title" = "Account";

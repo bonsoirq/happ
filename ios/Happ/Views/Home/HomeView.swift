@@ -19,8 +19,14 @@ struct HomeView: View, ViewModelable, Errorable {
 
     // MARK: Views
 
+    private func row(_ happening: Happening) -> some View {
+        NavigationLink(destination: HappeningDetailsView(happening: happening)) {
+            HappeningRow(happening: happening)
+        }
+    }
+
     var body: some View {
-        List(viewModel.happenings, rowContent: HappeningRow.init)
+        List(viewModel.happenings, rowContent: row)
             .listStyle(GroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle(Tab.home.title)

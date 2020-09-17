@@ -9,9 +9,17 @@
 import SwiftUI
 
 extension Color {
-    
+
     static var main: Color {
         Color("Main")
+    }
+
+    static var secondaryMain: Color {
+        Color("SecondaryMain")
+    }
+
+    static var secondaryText: Color {
+        Color("SecondaryText")
     }
 
     static var tertiary: Color {

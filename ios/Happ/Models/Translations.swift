@@ -31,6 +31,12 @@ final class Translation {
       case title = "error.title"
    }
 
+   enum Happening: String {
+      case agenda = "happening.agenda"
+      case description = "happening.description"
+      case organizerdescription = "happening.organizerDescription"
+   }
+
    enum Home: String {
       case title = "home.title"
    }
