@@ -19,7 +19,8 @@ final class Request: Requestable {
     private var endpoint: Endpointable
     private var request: URLRequest
     private var task: URLSessionTask?
-    var canRefreshToken: Bool = true
+    private var canRefreshToken: Bool = true
+    private var isDataAtRoot: Bool = false
     
     private var tokenExpiredCallback: (() -> Void)? = nil
     private var successCallback: (() -> Void)? = nil
@@ -68,6 +69,11 @@ final class Request: Requestable {
     }
     
     // MARK: Methods
+
+    func dataAtRoot() -> Self {
+        isDataAtRoot = true
+        return self
+    }
     
     @discardableResult
     func onTokenExpired(_ callback: @escaping () -> Void) -> Self {
@@ -99,8 +105,14 @@ final class Request: Requestable {
                     let decoder = JSONDecoder()
                     decoder.dateDecodingStrategy = .formatted(FullDateFormatter())
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    
-                    let responseData = try decoder.decode(Response<RD>.self, from: data).data
+
+                    let responseData: RD
+                    if self?.isDataAtRoot == true {
+                        responseData = try decoder.decode(RD.self, from: data)
+                    } else {
+                        responseData = try decoder.decode(Response<RD>.self, from: data).data
+                    }
+
                     DispatchQueue.main.async {
                         callback(responseData)
                     }

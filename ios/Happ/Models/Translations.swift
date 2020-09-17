@@ -15,6 +15,16 @@ final class Translation {
       case confirm = "alert.confirm"
    }
 
+   enum ContextMenu: String {
+      case close = "context_menu.close"
+      case copy = "context_menu.copy"
+      case delete = "context_menu.delete"
+      case edit = "context_menu.edit"
+      case move = "context_menu.move"
+      case rename = "context_menu.rename"
+      case share = "context_menu.share"
+   }
+
    enum Error: String {
       case accessTokenExpired = "error.access_token_expired"
       case `default` = "error.default"

@@ -14,9 +14,11 @@ final class MainTabViewModel: ViewModel, ObservableObject {
 
     @Published var selectedTab: Tab = .home
 
+    let homeViewModel: HomeViewModel
     let accountViewModel: AccountViewModel
 
     override init(apiRequest: APIRequestable) {
+        homeViewModel = HomeViewModel(apiRequest: apiRequest)
         accountViewModel = AccountViewModel(apiRequest: apiRequest)
         
         super.init(apiRequest: apiRequest)

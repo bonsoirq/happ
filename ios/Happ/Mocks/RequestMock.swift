@@ -19,6 +19,10 @@ final class RequestMock: Requestable {
     }
     
     init(url: URL, endpoint: Endpointable, tokens: Tokens?, forceQueryItemsUse: Bool, shouldRefreshToken: Bool) { }
+
+    func dataAtRoot() -> Self {
+        return self
+    }
     
     func onTokenExpired(_ callback: @escaping () -> Void) -> Self {
         return self

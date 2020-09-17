@@ -55,6 +55,7 @@ final class APIRequest: APIRequestable {
     func signIn(data: SignInData, onSuccess: @escaping () -> Void, onError: @escaping (Error) -> Void) {
         let endpoint = Endpoint.signIn(data: data)
         requests[endpoint.route] = createRequest(for: endpoint)
+            .dataAtRoot()
             .onError(onError)
             .onDataSuccess { [weak self] (tokens: Tokens?) in
                 self?.tokens = tokens

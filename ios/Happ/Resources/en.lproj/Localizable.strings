@@ -16,6 +16,16 @@
 "error.default" = "Something happened";
 "error.access_token_expired" = "Your session expired. Please sign in again.";
 
+// Context Menu
+
+"context_menu.copy" = "Copy";
+"context_menu.move" = "Move";
+"context_menu.rename" = "Rename";
+"context_menu.edit" = "Edit";
+"context_menu.close" = "Close";
+"context_menu.delete" = "Delete";
+"context_menu.share" = "Share";
+
 // Welcome
 
 "welcome.title" = "Welcome to happ";

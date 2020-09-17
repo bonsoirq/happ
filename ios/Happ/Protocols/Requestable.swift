@@ -15,7 +15,8 @@ protocol Requestable {
     init(url: URL, endpoint: Endpointable, tokens: Tokens?, forceQueryItemsUse: Bool, shouldRefreshToken: Bool)
     
     // MARK: Methods
-    
+
+    func dataAtRoot() -> Self
     func onSuccess(_ callback: @escaping () -> Void) -> Self
     func onDataSuccess<RD: ResponseData>(_ callback: @escaping (RD?) -> Void) -> Self
     func onError(_ callback: @escaping (Error) -> Void) -> Self

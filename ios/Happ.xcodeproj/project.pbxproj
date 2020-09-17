@@ -51,6 +51,12 @@
 		5005186725129CF800081E79 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5005186625129CF800081E79 /* AccountView.swift */; };
 		5005186925129D1200081E79 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5005186825129D1200081E79 /* AccountViewModel.swift */; };
 		5005186C2512A2A200081E79 /* AccountDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5005186B2512A2A200081E79 /* AccountDetails.swift */; };
+		500518712513DF4100081E79 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500518702513DF4100081E79 /* HomeView.swift */; };
+		500518732513E14100081E79 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500518722513E14100081E79 /* HomeViewModel.swift */; };
+		500518762513E19F00081E79 /* HappeningRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500518752513E19F00081E79 /* HappeningRow.swift */; };
+		500518782513E4DB00081E79 /* Happening.swift in Sources */ = {isa = PBXBuildFile; fileRef = 500518772513E4DB00081E79 /* Happening.swift */; };
+		5005187C2513E66A00081E79 /* ContextMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5005187B2513E66A00081E79 /* ContextMenuButton.swift */; };
+		5005187E2513E68F00081E79 /* CustomMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5005187D2513E68F00081E79 /* CustomMenuItem.swift */; };
 		502F8744250D45E100CBC4B8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 502F8743250D45E100CBC4B8 /* Colors.xcassets */; };
 		502F8747250D46ED00CBC4B8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 502F8749250D46ED00CBC4B8 /* Localizable.strings */; };
 		502F874E250D47D200CBC4B8 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 502F874D250D47D200CBC4B8 /* WelcomeView.swift */; };
@@ -130,6 +136,12 @@
 		5005186625129CF800081E79 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		5005186825129D1200081E79 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		5005186B2512A2A200081E79 /* AccountDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetails.swift; sourceTree = "<group>"; };
+		500518702513DF4100081E79 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		500518722513E14100081E79 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		500518752513E19F00081E79 /* HappeningRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappeningRow.swift; sourceTree = "<group>"; };
+		500518772513E4DB00081E79 /* Happening.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Happening.swift; sourceTree = "<group>"; };
+		5005187B2513E66A00081E79 /* ContextMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuButton.swift; sourceTree = "<group>"; };
+		5005187D2513E68F00081E79 /* CustomMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuItem.swift; sourceTree = "<group>"; };
 		502F8743250D45E100CBC4B8 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		502F8748250D46ED00CBC4B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		502F874D250D47D200CBC4B8 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
@@ -182,6 +194,7 @@
 			children = (
 				500518612512998900081E79 /* Tab.swift */,
 				50051803250E436C00081E79 /* Translations.swift */,
+				5005187D2513E68F00081E79 /* CustomMenuItem.swift */,
 				50051845250E7C5300081E79 /* Errors.swift */,
 				5005183A250E7AEC00081E79 /* Components */,
 				5005183D250E7B8500081E79 /* RequestData */,
@@ -254,6 +267,7 @@
 			children = (
 				50051849250E7E2D00081E79 /* DecodedError.swift */,
 				5005183B250E7AFB00081E79 /* Tokens.swift */,
+				500518792513E4E900081E79 /* Happening */,
 				5005186A2512A28300081E79 /* Account */,
 			);
 			path = Components;
@@ -326,9 +340,44 @@
 			path = Account;
 			sourceTree = "<group>";
 		};
+		5005186F2513DF2700081E79 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				500518742513E18600081E79 /* Rows */,
+				500518722513E14100081E79 /* HomeViewModel.swift */,
+				500518702513DF4100081E79 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		500518742513E18600081E79 /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				500518752513E19F00081E79 /* HappeningRow.swift */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
+		500518792513E4E900081E79 /* Happening */ = {
+			isa = PBXGroup;
+			children = (
+				500518772513E4DB00081E79 /* Happening.swift */,
+			);
+			path = Happening;
+			sourceTree = "<group>";
+		};
+		5005187A2513E64000081E79 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				5005187B2513E66A00081E79 /* ContextMenuButton.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		502F8741250D459900CBC4B8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5005186F2513DF2700081E79 /* Home */,
 				502F874C250D47B900CBC4B8 /* Welcome */,
 				5005186525129CE400081E79 /* Account */,
 				5005186325129AA600081E79 /* MainTabViewModel.swift */,
@@ -414,6 +463,7 @@
 				50051854250E881600081E79 /* Utils */,
 				50051802250E436C00081E79 /* Models */,
 				502F8756250D4B9700CBC4B8 /* Modifiers */,
+				5005187A2513E64000081E79 /* CustomViews */,
 				502F8741250D459900CBC4B8 /* Views */,
 				502F8742250D45AD00CBC4B8 /* Resources */,
 				50456A05250D32BF0049BBC1 /* Info.plist */,
@@ -609,6 +659,7 @@
 				50051836250E7A9500081E79 /* Requestable.swift in Sources */,
 				50051823250E50E500081E79 /* APIRequest.swift in Sources */,
 				5005184A250E7E2D00081E79 /* DecodedError.swift in Sources */,
+				500518782513E4DB00081E79 /* Happening.swift in Sources */,
 				5005181A250E477400081E79 /* UIViewAnimationCurve+Animation.swift in Sources */,
 				50051848250E7D4900081E79 /* ResponseErrorable.swift in Sources */,
 				5005186925129D1200081E79 /* AccountViewModel.swift in Sources */,
@@ -621,6 +672,7 @@
 				50051812250E46A400081E79 /* Publishers+Keyboard.swift in Sources */,
 				50051804250E436C00081E79 /* Translations.swift in Sources */,
 				50051857250E882B00081E79 /* ViewModel.swift in Sources */,
+				500518732513E14100081E79 /* HomeViewModel.swift in Sources */,
 				5005185A250E8A5E00081E79 /* Errorable.swift in Sources */,
 				5005182D250E50F800081E79 /* APIRequestMock.swift in Sources */,
 				50051818250E472A00081E79 /* KeyboardAdaptive.swift in Sources */,
@@ -629,6 +681,7 @@
 				504569FC250D32BE0049BBC1 /* RootView.swift in Sources */,
 				500517FD250D585F00081E79 /* DefaultTextFieldStyle.swift in Sources */,
 				502F8755250D4A3600CBC4B8 /* WelcomeViewModel.swift in Sources */,
+				500518762513E19F00081E79 /* HappeningRow.swift in Sources */,
 				50051846250E7C5400081E79 /* Errors.swift in Sources */,
 				5005184C250E7F8700081E79 /* Error+RefreshToken.swift in Sources */,
 				502F8753250D495900CBC4B8 /* Color+Named.swift in Sources */,
@@ -642,10 +695,12 @@
 				502F874E250D47D200CBC4B8 /* WelcomeView.swift in Sources */,
 				50051825250E50E500081E79 /* Endpoint.swift in Sources */,
 				5005180C250E45D600081E79 /* String+Localized.swift in Sources */,
+				5005187C2513E66A00081E79 /* ContextMenuButton.swift in Sources */,
 				50051841250E7BB500081E79 /* RequestData+Dictionary.swift in Sources */,
 				5005180D250E45D600081E79 /* RawRepresentable+Localized.swift in Sources */,
 				500518622512998900081E79 /* Tab.swift in Sources */,
 				50051822250E50E500081E79 /* Request.swift in Sources */,
+				500518712513DF4100081E79 /* HomeView.swift in Sources */,
 				5005186725129CF800081E79 /* AccountView.swift in Sources */,
 				5005183C250E7AFB00081E79 /* Tokens.swift in Sources */,
 				502F8751250D492B00CBC4B8 /* Image+Named.swift in Sources */,
@@ -654,6 +709,7 @@
 				50051844250E7C0800081E79 /* FullDateFormatter.swift in Sources */,
 				5005182E250E50F800081E79 /* RequestMock.swift in Sources */,
 				50051838250E7A9500081E79 /* APIRequestable.swift in Sources */,
+				5005187E2513E68F00081E79 /* CustomMenuItem.swift in Sources */,
 				50051814250E46BD00081E79 /* KeyboardInfo.swift in Sources */,
 				5005183F250E7B9200081E79 /* SignInData.swift in Sources */,
 			);

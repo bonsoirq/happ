@@ -13,7 +13,7 @@ struct MainTabView: View {
 
     var body: some View {
         TabView(selection: $viewModel.selectedTab) {
-            NavigationView { Text("Home") }
+            NavigationView { HomeView(viewModel: viewModel.homeViewModel) }
                 .tabItem {
                     Tab.home.image
                     Text(Tab.home.title)
