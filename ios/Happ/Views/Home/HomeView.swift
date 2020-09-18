@@ -23,7 +23,7 @@ struct HomeView: View, ViewModelable, Errorable {
     private func row(_ happening: Happening) -> some View {
         Section {
             NavigationLink(destination: HappeningDetailsView(happening: happening)) {
-                HappeningRow(happening: happening)
+                HappeningRow(happening: happening, onDelete: onHappeningDelete)
             }
         }
     }
@@ -49,6 +49,10 @@ struct HomeView: View, ViewModelable, Errorable {
 
     private func downloadData() {
         viewModel.downloadData(onError)
+    }
+
+    private func onHappeningDelete(_ happening: Happening) {
+        viewModel.deleteHappening(happening, onError: onError)
     }
 
     private func createHappening() {

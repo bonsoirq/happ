@@ -29,4 +29,10 @@ final class HomeViewModel: ViewModel, ObservableObject {
             .make()
     }
 
+    func deleteHappening(_ happening: Happening, onError: @escaping (Error) -> Void) {
+        apiRequest.happenings(.delete(id: happening.id)).onSuccess { [weak self] in
+            self?.downloadData(onError)
+        }.onError(onError).make()
+    }
+
 }

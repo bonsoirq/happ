@@ -9,9 +9,14 @@
 import SwiftUI
 
 struct HappeningRow: View {
+
+    // MARK: Properties
+
     let happening: Happening
-    let onEdit: (Happening) -> Void = { _ in }
-    let onDelete: (Happening) -> Void = { _ in }
+    var onEdit: (Happening) -> Void = { _ in }
+    var onDelete: (Happening) -> Void = { _ in }
+
+    // MARK: Views
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -27,10 +32,12 @@ struct HappeningRow: View {
         .padding()
         .foregroundColor(.primary)
         .contextMenu {
-            ContextMenuButton(.edit, action: onHappeningEdit)
+//            ContextMenuButton(.edit, action: onHappeningEdit)
             ContextMenuButton(.delete, action: onHappeningDelete)
         }
     }
+
+    // MARK: Methods
 
     private func onHappeningEdit() {
         onEdit(happening)
