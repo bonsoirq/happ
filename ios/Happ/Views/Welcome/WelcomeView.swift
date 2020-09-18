@@ -18,6 +18,7 @@ struct WelcomeView: View, Errorable {
     var error: Binding<IdentifableError?> { $_error }
 
     @State var isSignUpViewPresented: Bool = false
+    @State var isLoading: Bool = false
 
     // MARK: Views
 
@@ -57,6 +58,9 @@ struct WelcomeView: View, Errorable {
                 Spacer()
                 Text(Translation.Welcome.signIn.localized)
                     .font(.headline)
+                if isLoading {
+                    ActivityIndicator(isAnimating: .constant(true), style: .medium, color: .white)
+                }
                 Spacer()
             }
             .defaultStyle(foregroundColor: .white, backgroundColor: .main)
@@ -77,7 +81,11 @@ struct WelcomeView: View, Errorable {
     // MARK: Methods
 
     private func signIn() {
-        viewModel.signIn(onSuccess: coordinator.refresh, onError: onError)
+        isLoading = true
+        viewModel.signIn(onSuccess: coordinator.refresh, onError: { error in
+            self.isLoading = false
+            self.onError(error)
+        })
     }
 
     private func signUp() {

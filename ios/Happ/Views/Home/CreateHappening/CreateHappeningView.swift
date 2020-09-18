@@ -42,8 +42,10 @@ struct CreateHappeningView: View, ViewModelable, Errorable {
             .keyboardAdaptive()
             .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle(Text(Translation.CreateHappening.title.localized), displayMode: .inline)
-            .navigationBarItems(leading: CancelButton(action: onCancel),
-                                trailing: CreateButton(action: createHappening))
+            .navigationBarItems(
+                leading: CancelButton(action: onCancel).foregroundColor(.main),
+                trailing: CreateButton(action: createHappening).foregroundColor(.main)
+            )
         }
         .error(error, onDismiss: onErrorDismiss)
     }
