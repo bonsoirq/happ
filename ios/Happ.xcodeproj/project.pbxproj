@@ -81,6 +81,7 @@
 		5081533F2515324800638C4E /* ConfirmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153372515324800638C4E /* ConfirmButton.swift */; };
 		508153412515324800638C4E /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153392515324800638C4E /* CancelButton.swift */; };
 		50815344251537C100638C4E /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50815343251537C100638C4E /* TextView.swift */; };
+		5081534625153F4F00638C4E /* HappeningData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081534525153F4F00638C4E /* HappeningData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -182,6 +183,7 @@
 		508153372515324800638C4E /* ConfirmButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmButton.swift; sourceTree = "<group>"; };
 		508153392515324800638C4E /* CancelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		50815343251537C100638C4E /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
+		5081534525153F4F00638C4E /* HappeningData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappeningData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				5005183E250E7B9200081E79 /* SignInData.swift */,
+				5081534525153F4F00638C4E /* HappeningData.swift */,
 			);
 			path = RequestData;
 			sourceTree = "<group>";
@@ -751,6 +754,7 @@
 				500518762513E19F00081E79 /* HappeningRow.swift in Sources */,
 				50051846250E7C5400081E79 /* Errors.swift in Sources */,
 				5005184C250E7F8700081E79 /* Error+RefreshToken.swift in Sources */,
+				5081534625153F4F00638C4E /* HappeningData.swift in Sources */,
 				502F8753250D495900CBC4B8 /* Color+Named.swift in Sources */,
 				50051839250E7A9500081E79 /* Routable.swift in Sources */,
 				50051824250E50E500081E79 /* Route.swift in Sources */,

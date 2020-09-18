@@ -12,7 +12,6 @@ extension RequestData {
     
     var dictionary: [String : AnyHashable] {
         let encoder = JSONEncoder()
-        encoder.keyEncodingStrategy = .convertToSnakeCase
         encoder.dateEncodingStrategy = .formatted(FullDateFormatter())
         
         guard let data = try? encoder.encode(self) else { return [:] }

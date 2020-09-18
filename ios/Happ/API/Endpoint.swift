@@ -14,11 +14,14 @@ enum Endpoint: Endpointable {
 
     enum Happenings: Endpointable {
         case get
+        case create(data: HappeningData)
 
         var route: Route {
             switch self {
             case .get:
                 return Route(path: "happenings/", method: .get)
+            case .create(let data):
+                return Route(path: "happenings/", method: .post, parameters: data.dictionary)
             }
         }
     }

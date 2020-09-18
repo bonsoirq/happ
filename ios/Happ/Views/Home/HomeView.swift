@@ -21,8 +21,10 @@ struct HomeView: View, ViewModelable, Errorable {
     // MARK: Views
 
     private func row(_ happening: Happening) -> some View {
-        NavigationLink(destination: HappeningDetailsView(happening: happening)) {
-            HappeningRow(happening: happening)
+        Section {
+            NavigationLink(destination: HappeningDetailsView(happening: happening)) {
+                HappeningRow(happening: happening)
+            }
         }
     }
 
@@ -31,14 +33,16 @@ struct HomeView: View, ViewModelable, Errorable {
     }
 
     var body: some View {
-        List(viewModel.happenings, rowContent: row)
-            .listStyle(GroupedListStyle())
-            .environment(\.horizontalSizeClass, .regular)
-            .navigationBarTitle(Tab.home.title)
-            .navigationBarItems(trailing: AddButton(action: createHappening).frame(width: 26, height: 26))
-            .sheet(isPresented: $isCreateHappeningViewPresented, content: createHappeningView)
-            .onAppear(perform: downloadData)
-            .error(error, onDismiss: onErrorDismiss)
+        List {
+            ForEach(viewModel.happenings, content: row)
+        }
+        .listStyle(GroupedListStyle())
+        .environment(\.horizontalSizeClass, .regular)
+        .navigationBarTitle(Tab.home.title)
+        .navigationBarItems(trailing: AddButton(action: createHappening).frame(width: 26, height: 26))
+        .sheet(isPresented: $isCreateHappeningViewPresented, content: createHappeningView)
+        .onAppear(perform: downloadData)
+        .error(error, onDismiss: onErrorDismiss)
     }
 
     // MARK: Methods
@@ -52,6 +56,7 @@ struct HomeView: View, ViewModelable, Errorable {
     }
 
     private func onCreateHappeningViewDismiss() {
+        downloadData()
         isCreateHappeningViewPresented = false
     }
     

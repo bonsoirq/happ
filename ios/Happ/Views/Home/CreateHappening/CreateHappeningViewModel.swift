@@ -20,6 +20,11 @@ final class CreateHappeningViewModel: ViewModel, ObservableObject {
     // MARK: Methods
 
     func createHappening(onSuccess: @escaping () -> Void, onError: @escaping (Error) -> Void) {
+        let data = HappeningData(name: name, description: description, organizerDescription: organizerDescription, agenda: agenda)
+        apiRequest.happenings(.create(data: data))
+            .onSuccess(onSuccess)
+            .onError(onError)
+            .make()
     }
 
 }
