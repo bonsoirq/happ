@@ -16,6 +16,10 @@ final class WelcomeViewModel: ViewModel, ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
 
+    var signUpViewModel: SignUpViewModel {
+        SignUpViewModel(apiRequest: apiRequest)
+    }
+
     // MARK: Methods
 
     func signIn(onSuccess: @escaping () -> Void, onError: @escaping (Error) -> Void) {

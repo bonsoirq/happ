@@ -17,7 +17,13 @@ struct WelcomeView: View, Errorable {
     @State private var _error: IdentifableError?
     var error: Binding<IdentifableError?> { $_error }
 
+    @State var isSignUpViewPresented: Bool = false
+
     // MARK: Views
+
+    private func signUpView() -> some View {
+        SignUpView(viewModel: viewModel.signUpViewModel)
+    }
 
     var body: some View {
         VStack {
@@ -54,7 +60,7 @@ struct WelcomeView: View, Errorable {
             }
             .defaultStyle(foregroundColor: .white, backgroundColor: .main)
 
-            Button(action: {}) {
+            Button(action: signUp) {
                 Text(Translation.Welcome.signUp.localized)
                     .font(.body)
             }
@@ -63,6 +69,7 @@ struct WelcomeView: View, Errorable {
         }
         .padding()
         .keyboardAdaptive()
+        .sheet(isPresented: $isSignUpViewPresented, content: signUpView)
         .error(error)
     }
 
@@ -70,6 +77,10 @@ struct WelcomeView: View, Errorable {
 
     private func signIn() {
         viewModel.signIn(onSuccess: coordinator.refresh, onError: onError)
+    }
+
+    private func signUp() {
+        isSignUpViewPresented = true
     }
 }
 

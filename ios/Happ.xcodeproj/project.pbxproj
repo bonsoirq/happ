@@ -90,6 +90,8 @@
 		5081535225155CF000638C4E /* ImageRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081535125155CF000638C4E /* ImageRetriever.swift */; };
 		5081535425155D0D00638C4E /* CachedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081535325155D0C00638C4E /* CachedImage.swift */; };
 		5081535625155E9900638C4E /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081535525155E9900638C4E /* URLImage.swift */; };
+		508153592515628500638C4E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153582515628500638C4E /* SignUpView.swift */; };
+		5081535B2515629000638C4E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081535A2515629000638C4E /* SignUpViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +202,8 @@
 		5081535125155CF000638C4E /* ImageRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRetriever.swift; sourceTree = "<group>"; };
 		5081535325155D0C00638C4E /* CachedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImage.swift; sourceTree = "<group>"; };
 		5081535525155E9900638C4E /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
+		508153582515628500638C4E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		5081535A2515629000638C4E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -457,6 +461,7 @@
 		502F874C250D47B900CBC4B8 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				508153572515625F00638C4E /* SignUp */,
 				502F8754250D4A3600CBC4B8 /* WelcomeViewModel.swift */,
 				502F874D250D47D200CBC4B8 /* WelcomeView.swift */,
 			);
@@ -585,6 +590,15 @@
 				50815343251537C100638C4E /* TextView.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		508153572515625F00638C4E /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				5081535A2515629000638C4E /* SignUpViewModel.swift */,
+				508153582515628500638C4E /* SignUpView.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -782,7 +796,9 @@
 				500518762513E19F00081E79 /* HappeningRow.swift in Sources */,
 				50051846250E7C5400081E79 /* Errors.swift in Sources */,
 				5005184C250E7F8700081E79 /* Error+RefreshToken.swift in Sources */,
+				508153592515628500638C4E /* SignUpView.swift in Sources */,
 				5081534625153F4F00638C4E /* HappeningData.swift in Sources */,
+				5081535B2515629000638C4E /* SignUpViewModel.swift in Sources */,
 				502F8753250D495900CBC4B8 /* Color+Named.swift in Sources */,
 				50051839250E7A9500081E79 /* Routable.swift in Sources */,
 				50051824250E50E500081E79 /* Route.swift in Sources */,

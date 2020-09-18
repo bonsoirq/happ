@@ -56,6 +56,14 @@ final class Translation {
       case title = "home.title"
    }
 
+   enum SignUp: String {
+      case email = "sign_up.email"
+      case name = "sign_up.name"
+      case password = "sign_up.password"
+      case signUp = "sign_up.sign_up"
+      case title = "sign_up.title"
+   }
+
    enum Welcome: String {
       case email = "welcome.email"
       case password = "welcome.password"
