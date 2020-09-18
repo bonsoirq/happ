@@ -9,20 +9,33 @@
 import SwiftUI
 
 struct MainTabView: View {
+
+    // MARK: Properties
+
+    @EnvironmentObject var coordinator: Coordinator
     @ObservedObject var viewModel: MainTabViewModel
+
+    // MARK: Views
 
     var body: some View {
         TabView(selection: $viewModel.selectedTab) {
-            NavigationView { HomeView(viewModel: viewModel.homeViewModel) }
-                .tabItem {
-                    Tab.home.image
-                    Text(Tab.home.title)
+            NavigationView {
+                HomeView(viewModel: viewModel.homeViewModel)
+                    .environmentObject(coordinator)
+            }
+            .tabItem {
+                Tab.home.image
+                Text(Tab.home.title)
             }
             .tag(Tab.home)
-            NavigationView { AccountView(viewModel: viewModel.accountViewModel) }
-                .tabItem {
-                    Tab.account.image
-                    Text(Tab.account.title)
+
+            NavigationView {
+                AccountView(viewModel: viewModel.accountViewModel)
+                    .environmentObject(coordinator)
+            }
+            .tabItem {
+                Tab.account.image
+                Text(Tab.account.title)
             }
             .tag(Tab.account)
         }

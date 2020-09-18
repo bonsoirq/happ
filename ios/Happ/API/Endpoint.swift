@@ -42,13 +42,16 @@ enum Endpoint: Endpointable {
             }
         }
     }
-    
+
     case signIn(data: SignInData)
+    case signUp(data: SignUpData)
     
     var route: Route {
         switch self {
         case .signIn(let data):
             return Route(path: "sessions/", method: .post, parameters: data.dictionary)
+        case .signUp(let data):
+            return Route(path: "accounts/", method: .post, parameters: data.dictionary)
         }
     }
     

@@ -23,6 +23,7 @@ struct WelcomeView: View, Errorable {
 
     private func signUpView() -> some View {
         SignUpView(viewModel: viewModel.signUpViewModel)
+            .environmentObject(coordinator)
     }
 
     var body: some View {

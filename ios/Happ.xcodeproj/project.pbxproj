@@ -92,6 +92,7 @@
 		5081535625155E9900638C4E /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081535525155E9900638C4E /* URLImage.swift */; };
 		508153592515628500638C4E /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153582515628500638C4E /* SignUpView.swift */; };
 		5081535B2515629000638C4E /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081535A2515629000638C4E /* SignUpViewModel.swift */; };
+		5081535D2515670600638C4E /* SignUpData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081535C2515670600638C4E /* SignUpData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +205,7 @@
 		5081535525155E9900638C4E /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 		508153582515628500638C4E /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		5081535A2515629000638C4E /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		5081535C2515670600638C4E /* SignUpData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				5005183E250E7B9200081E79 /* SignInData.swift */,
+				5081535C2515670600638C4E /* SignUpData.swift */,
 				5081534525153F4F00638C4E /* HappeningData.swift */,
 			);
 			path = RequestData;
@@ -802,6 +805,7 @@
 				502F8753250D495900CBC4B8 /* Color+Named.swift in Sources */,
 				50051839250E7A9500081E79 /* Routable.swift in Sources */,
 				50051824250E50E500081E79 /* Route.swift in Sources */,
+				5081535D2515670600638C4E /* SignUpData.swift in Sources */,
 				5005186C2512A2A200081E79 /* AccountDetails.swift in Sources */,
 				5005182C250E50F800081E79 /* MockData.swift in Sources */,
 				50051816250E46DC00081E79 /* KeyboardObservable.swift in Sources */,

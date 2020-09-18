@@ -26,6 +26,7 @@ struct RootView: View {
                     .transition(.move(edge: .bottom))
             } else {
                 MainTabView(viewModel: MainTabViewModel(apiRequest: apiRequest, imageRetriever: imageRetriever))
+                    .environmentObject(coordinator)
             }
         }
     }

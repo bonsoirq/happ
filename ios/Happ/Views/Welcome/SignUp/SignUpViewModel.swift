@@ -15,11 +15,22 @@ final class SignUpViewModel: ViewModel, ObservableObject {
     @Published var name: String = ""
     @Published var email: String = ""
     @Published var password: String = ""
-    @Published var confirmPassword: String = ""
 
     // MARK: Methods
 
     func signUp(onSuccess: @escaping () -> Void, onError: @escaping (Error) -> Void) {
+        let data = SignUpData(name: name, email: email, password: password)
+        apiRequest.signUp(data: data)
+            .onError(onError)
+            .onSuccess { [weak self] in
+                self?.signIn(onSuccess: onSuccess, onError: onError)
+            }
+            .make()
+    }
+
+    func signIn(onSuccess: @escaping () -> Void, onError: @escaping (Error) -> Void) {
+        let data = SignInData(email: email, password: password)
+        apiRequest.signIn(data: data, onSuccess: onSuccess, onError: onError)
     }
 
 }

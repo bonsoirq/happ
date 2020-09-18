@@ -31,6 +31,10 @@ final class APIRequestMock: APIRequestable {
         }
     }
 
+    func signUp(data: SignUpData) -> Requestable {
+        RequestMock(responseData: nil)
+    }
+
     // MARK: Happenings
 
     func happenings(_ endpoint: Endpoint.Happenings) -> Requestable {

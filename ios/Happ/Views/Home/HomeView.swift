@@ -26,6 +26,7 @@ struct HomeView: View, ViewModelable, Errorable {
                 destination: HappeningDetailsView(
                     viewModel: viewModel.happeningDetailsViewModel(happening)
                 )
+                .environmentObject(coordinator)
             ) {
                 HappeningRow(happening: happening, onDelete: onHappeningDelete)
             }
@@ -34,6 +35,7 @@ struct HomeView: View, ViewModelable, Errorable {
 
     private func createHappeningView() -> some View {
         CreateHappeningView(viewModel: viewModel.createHappeningViewModel, onDismiss: onCreateHappeningViewDismiss)
+            .environmentObject(coordinator)
     }
 
     var body: some View {
