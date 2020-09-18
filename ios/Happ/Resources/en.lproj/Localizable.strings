@@ -9,6 +9,11 @@
 // Alert
 
 "alert.confirm" = "OK";
+"alert.cancel" = "Cancel";
+
+// Common
+
+"common.create" = "Create";
 
 // Error
 
@@ -44,6 +49,15 @@
 "happening.agenda" = "Agenda";
 "happening.description" = "Description";
 "happening.organizerDescription" = "About host";
+
+// Create Happening
+
+"create_happening.title" = "New Happening";
+
+"create_happening.name" = "Name";
+"create_happening.agenda" = "Agenda";
+"create_happening.description" = "Description";
+"create_happening.organizerDescription" = "Organizer description";
 
 // MARK: Account
 

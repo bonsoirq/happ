@@ -16,6 +16,7 @@ struct HomeView: View, ViewModelable, Errorable {
     @ObservedObject var viewModel: HomeViewModel
     @State private var _error: IdentifableError?
     var error: Binding<IdentifableError?> { $_error }
+    @State private var isCreateHappeningViewPresented: Bool = false
 
     // MARK: Views
 
@@ -25,11 +26,17 @@ struct HomeView: View, ViewModelable, Errorable {
         }
     }
 
+    private func createHappeningView() -> some View {
+        CreateHappeningView(viewModel: viewModel.createHappeningViewModel, onDismiss: onCreateHappeningViewDismiss)
+    }
+
     var body: some View {
         List(viewModel.happenings, rowContent: row)
             .listStyle(GroupedListStyle())
             .environment(\.horizontalSizeClass, .regular)
             .navigationBarTitle(Tab.home.title)
+            .navigationBarItems(trailing: AddButton(action: createHappening).frame(width: 26, height: 26))
+            .sheet(isPresented: $isCreateHappeningViewPresented, content: createHappeningView)
             .onAppear(perform: downloadData)
             .error(error, onDismiss: onErrorDismiss)
     }
@@ -38,6 +45,14 @@ struct HomeView: View, ViewModelable, Errorable {
 
     private func downloadData() {
         viewModel.downloadData(onError)
+    }
+
+    private func createHappening() {
+        isCreateHappeningViewPresented = true
+    }
+
+    private func onCreateHappeningViewDismiss() {
+        isCreateHappeningViewPresented = false
     }
     
 }

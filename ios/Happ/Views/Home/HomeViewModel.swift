@@ -14,6 +14,10 @@ final class HomeViewModel: ViewModel, ObservableObject {
 
     @Published var happenings: [Happening] = []
 
+    var createHappeningViewModel: CreateHappeningViewModel {
+        CreateHappeningViewModel(apiRequest: apiRequest)
+    }
+
     // MARK: Methods
 
     func downloadData(_ onError: @escaping (Error) -> Void) {

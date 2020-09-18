@@ -12,7 +12,12 @@ final class Translation {
    }
 
    enum Alert: String {
+      case cancel = "alert.cancel"
       case confirm = "alert.confirm"
+   }
+
+   enum Common: String {
+      case create = "common.create"
    }
 
    enum ContextMenu: String {
@@ -23,6 +28,14 @@ final class Translation {
       case move = "context_menu.move"
       case rename = "context_menu.rename"
       case share = "context_menu.share"
+   }
+
+   enum CreateHappening: String {
+      case agenda = "create_happening.agenda"
+      case description = "create_happening.description"
+      case name = "create_happening.name"
+      case organizerdescription = "create_happening.organizerDescription"
+      case title = "create_happening.title"
    }
 
    enum Error: String {

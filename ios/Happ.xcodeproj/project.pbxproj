@@ -73,6 +73,14 @@
 		50456A01250D32BF0049BBC1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50456A00250D32BF0049BBC1 /* Preview Assets.xcassets */; };
 		50456A04250D32BF0049BBC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50456A02250D32BF0049BBC1 /* LaunchScreen.storyboard */; };
 		50456A1A250D32BF0049BBC1 /* HappUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50456A19250D32BF0049BBC1 /* HappUITests.swift */; };
+		5081532E2515293500638C4E /* CreateHappeningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081532D2515293500638C4E /* CreateHappeningView.swift */; };
+		508153302515293E00638C4E /* CreateHappeningViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081532F2515293E00638C4E /* CreateHappeningViewModel.swift */; };
+		5081533C2515324800638C4E /* CreateButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153342515324800638C4E /* CreateButton.swift */; };
+		5081533D2515324800638C4E /* EditButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153352515324800638C4E /* EditButton.swift */; };
+		5081533E2515324800638C4E /* AddButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153362515324800638C4E /* AddButton.swift */; };
+		5081533F2515324800638C4E /* ConfirmButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153372515324800638C4E /* ConfirmButton.swift */; };
+		508153412515324800638C4E /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153392515324800638C4E /* CancelButton.swift */; };
+		50815344251537C100638C4E /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50815343251537C100638C4E /* TextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,6 +174,14 @@
 		50456A15250D32BF0049BBC1 /* HappUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50456A19250D32BF0049BBC1 /* HappUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappUITests.swift; sourceTree = "<group>"; };
 		50456A1B250D32BF0049BBC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5081532D2515293500638C4E /* CreateHappeningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHappeningView.swift; sourceTree = "<group>"; };
+		5081532F2515293E00638C4E /* CreateHappeningViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateHappeningViewModel.swift; sourceTree = "<group>"; };
+		508153342515324800638C4E /* CreateButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateButton.swift; sourceTree = "<group>"; };
+		508153352515324800638C4E /* EditButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditButton.swift; sourceTree = "<group>"; };
+		508153362515324800638C4E /* AddButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddButton.swift; sourceTree = "<group>"; };
+		508153372515324800638C4E /* ConfirmButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmButton.swift; sourceTree = "<group>"; };
+		508153392515324800638C4E /* CancelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
+		50815343251537C100638C4E /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,6 +363,7 @@
 		5005186F2513DF2700081E79 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				5081532C2515291D00638C4E /* CreateHappening */,
 				500518812513F3B300081E79 /* HappeningDetails */,
 				500518742513E18600081E79 /* Rows */,
 				500518722513E14100081E79 /* HomeViewModel.swift */,
@@ -374,7 +391,8 @@
 		5005187A2513E64000081E79 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
-				5005187B2513E66A00081E79 /* ContextMenuButton.swift */,
+				50815342251537B200638C4E /* UIKit */,
+				508153312515323100638C4E /* Buttons */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -510,6 +528,36 @@
 				50456A1B250D32BF0049BBC1 /* Info.plist */,
 			);
 			path = HappUITests;
+			sourceTree = "<group>";
+		};
+		5081532C2515291D00638C4E /* CreateHappening */ = {
+			isa = PBXGroup;
+			children = (
+				5081532F2515293E00638C4E /* CreateHappeningViewModel.swift */,
+				5081532D2515293500638C4E /* CreateHappeningView.swift */,
+			);
+			path = CreateHappening;
+			sourceTree = "<group>";
+		};
+		508153312515323100638C4E /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				5005187B2513E66A00081E79 /* ContextMenuButton.swift */,
+				508153362515324800638C4E /* AddButton.swift */,
+				508153392515324800638C4E /* CancelButton.swift */,
+				508153372515324800638C4E /* ConfirmButton.swift */,
+				508153342515324800638C4E /* CreateButton.swift */,
+				508153352515324800638C4E /* EditButton.swift */,
+			);
+			path = Buttons;
+			sourceTree = "<group>";
+		};
+		50815342251537B200638C4E /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				50815343251537C100638C4E /* TextView.swift */,
+			);
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -674,14 +722,18 @@
 				50051823250E50E500081E79 /* APIRequest.swift in Sources */,
 				5005184A250E7E2D00081E79 /* DecodedError.swift in Sources */,
 				500518782513E4DB00081E79 /* Happening.swift in Sources */,
+				5081533D2515324800638C4E /* EditButton.swift in Sources */,
+				5081533F2515324800638C4E /* ConfirmButton.swift in Sources */,
 				5005181A250E477400081E79 /* UIViewAnimationCurve+Animation.swift in Sources */,
 				50051848250E7D4900081E79 /* ResponseErrorable.swift in Sources */,
 				5005186925129D1200081E79 /* AccountViewModel.swift in Sources */,
 				504569F8250D32BE0049BBC1 /* AppDelegate.swift in Sources */,
+				508153412515324800638C4E /* CancelButton.swift in Sources */,
 				50051837250E7A9500081E79 /* RequestData.swift in Sources */,
 				50051835250E7A9500081E79 /* ResponseData.swift in Sources */,
 				500518602512904600081E79 /* MainTabView.swift in Sources */,
 				5005184F250E87DD00081E79 /* View+ViewModelable.swift in Sources */,
+				5081532E2515293500638C4E /* CreateHappeningView.swift in Sources */,
 				50051851250E87E800081E79 /* View+Error.swift in Sources */,
 				50051812250E46A400081E79 /* Publishers+Keyboard.swift in Sources */,
 				50051804250E436C00081E79 /* Translations.swift in Sources */,
@@ -705,6 +757,7 @@
 				5005186C2512A2A200081E79 /* AccountDetails.swift in Sources */,
 				5005182C250E50F800081E79 /* MockData.swift in Sources */,
 				50051816250E46DC00081E79 /* KeyboardObservable.swift in Sources */,
+				5081533E2515324800638C4E /* AddButton.swift in Sources */,
 				50051858250E882B00081E79 /* Coordinator.swift in Sources */,
 				502F8758250D4C4000CBC4B8 /* DefaultButtonStyle.swift in Sources */,
 				502F874E250D47D200CBC4B8 /* WelcomeView.swift in Sources */,
@@ -717,15 +770,18 @@
 				50051822250E50E500081E79 /* Request.swift in Sources */,
 				500518832513F43100081E79 /* HappeningDetailsView.swift in Sources */,
 				500518712513DF4100081E79 /* HomeView.swift in Sources */,
+				508153302515293E00638C4E /* CreateHappeningViewModel.swift in Sources */,
 				5005186725129CF800081E79 /* AccountView.swift in Sources */,
 				5005183C250E7AFB00081E79 /* Tokens.swift in Sources */,
 				502F8751250D492B00CBC4B8 /* Image+Named.swift in Sources */,
 				5005186425129AA600081E79 /* MainTabViewModel.swift in Sources */,
+				50815344251537C100638C4E /* TextView.swift in Sources */,
 				50051853250E87F700081E79 /* ViewModelable.swift in Sources */,
 				50051844250E7C0800081E79 /* FullDateFormatter.swift in Sources */,
 				5005182E250E50F800081E79 /* RequestMock.swift in Sources */,
 				50051838250E7A9500081E79 /* APIRequestable.swift in Sources */,
 				5005187E2513E68F00081E79 /* CustomMenuItem.swift in Sources */,
+				5081533C2515324800638C4E /* CreateButton.swift in Sources */,
 				50051814250E46BD00081E79 /* KeyboardInfo.swift in Sources */,
 				5005183F250E7B9200081E79 /* SignInData.swift in Sources */,
 			);
