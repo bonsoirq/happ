@@ -30,6 +30,9 @@ struct HappeningDetailsView: View, ViewModelable, Errorable {
 
     var body: some View {
         ScrollView {
+            URLImage(url: viewModel.imageUrl, imageRetriever: viewModel.imageRetriever)
+                .frame(maxHeight: 200)
+
             VStack(spacing: 30) {
                 Text(viewModel.name)
                     .font(.title)
@@ -88,7 +91,7 @@ struct HappeningDetailsView: View, ViewModelable, Errorable {
 
 struct HappeningDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        HappeningDetailsView(viewModel: HappeningDetailsViewModel(apiRequest: APIRequestMock(), happening: MockData.happening))
+        HappeningDetailsView(viewModel: HappeningDetailsViewModel(apiRequest: APIRequestMock(), imageRetriever: ImageRetrieverMock(), happening: MockData.happening))
             .environmentObject(Coordinator())
     }
 }

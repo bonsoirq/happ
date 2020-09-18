@@ -12,12 +12,16 @@ final class HappeningDetailsViewModel: ViewModel, ObservableObject {
 
     // MARK: Properties
 
+    let imageRetriever: ImageRetrievable
+
     @Published private var happening: Happening
 
     var name: String { happening.name }
     var description: String { happening.description }
     var organizerDescription: String { happening.organizerDescription }
     var agenda: String { happening.agenda }
+
+    var imageUrl: URL? { apiRequest.happeningImage(id: happening.id) }
 
     var shareDescription: String {
         let title = Translation.Happening.shareDescription.localized
@@ -30,7 +34,8 @@ final class HappeningDetailsViewModel: ViewModel, ObservableObject {
 
     // MARK: Initialization
 
-    init(apiRequest: APIRequestable, happening: Happening) {
+    init(apiRequest: APIRequestable, imageRetriever: ImageRetrievable, happening: Happening) {
+        self.imageRetriever = imageRetriever
         self.happening = happening
         self.isPublished = happening.isPublished
         

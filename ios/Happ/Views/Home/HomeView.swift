@@ -72,7 +72,7 @@ struct HomeView: View, ViewModelable, Errorable {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(viewModel: HomeViewModel(apiRequest: APIRequestMock()))
+        HomeView(viewModel: HomeViewModel(apiRequest: APIRequestMock(), imageRetriever: ImageRetrieverMock()))
             .environmentObject(Coordinator())
     }
 }

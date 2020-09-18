@@ -17,8 +17,10 @@ final class MainTabViewModel: ViewModel, ObservableObject {
     let homeViewModel: HomeViewModel
     let accountViewModel: AccountViewModel
 
-    override init(apiRequest: APIRequestable) {
-        homeViewModel = HomeViewModel(apiRequest: apiRequest)
+    // MARK: Initialization
+
+    init(apiRequest: APIRequestable, imageRetriever: ImageRetrievable) {
+        homeViewModel = HomeViewModel(apiRequest: apiRequest, imageRetriever: imageRetriever)
         accountViewModel = AccountViewModel(apiRequest: apiRequest)
         
         super.init(apiRequest: apiRequest)

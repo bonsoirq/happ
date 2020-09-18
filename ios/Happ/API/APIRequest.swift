@@ -72,6 +72,10 @@ final class APIRequest: APIRequestable {
         return requests[endpoint.route]!
     }
 
+    func happeningImage(id: String) -> URL? {
+        URL(string: "\(apiUrl)happenings/\(id)/image/")
+    }
+
     // MARK: Account
 
     func account(_ endpoint: Endpoint.Account) -> Requestable {

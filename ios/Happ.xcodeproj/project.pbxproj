@@ -85,6 +85,11 @@
 		508153482515478D00638C4E /* HappeningDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153472515478D00638C4E /* HappeningDetailsViewModel.swift */; };
 		5081534A2515530500638C4E /* Binding+DidSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153492515530500638C4E /* Binding+DidSet.swift */; };
 		5081534C2515553B00638C4E /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081534B2515553B00638C4E /* ShareButton.swift */; };
+		5081534E25155CB500638C4E /* ImageRetrieverMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081534D25155CB500638C4E /* ImageRetrieverMock.swift */; };
+		5081535025155CD600638C4E /* ImageRetrievable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081534F25155CD600638C4E /* ImageRetrievable.swift */; };
+		5081535225155CF000638C4E /* ImageRetriever.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081535125155CF000638C4E /* ImageRetriever.swift */; };
+		5081535425155D0D00638C4E /* CachedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081535325155D0C00638C4E /* CachedImage.swift */; };
+		5081535625155E9900638C4E /* URLImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081535525155E9900638C4E /* URLImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +195,11 @@
 		508153472515478D00638C4E /* HappeningDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappeningDetailsViewModel.swift; sourceTree = "<group>"; };
 		508153492515530500638C4E /* Binding+DidSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+DidSet.swift"; sourceTree = "<group>"; };
 		5081534B2515553B00638C4E /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
+		5081534D25155CB500638C4E /* ImageRetrieverMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRetrieverMock.swift; sourceTree = "<group>"; };
+		5081534F25155CD600638C4E /* ImageRetrievable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRetrievable.swift; sourceTree = "<group>"; };
+		5081535125155CF000638C4E /* ImageRetriever.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRetriever.swift; sourceTree = "<group>"; };
+		5081535325155D0C00638C4E /* CachedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachedImage.swift; sourceTree = "<group>"; };
+		5081535525155E9900638C4E /* URLImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +281,7 @@
 				50051828250E50F800081E79 /* MockData.swift */,
 				5005182A250E50F800081E79 /* RequestMock.swift */,
 				50051829250E50F800081E79 /* APIRequestMock.swift */,
+				5081534D25155CB500638C4E /* ImageRetrieverMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -286,6 +297,7 @@
 				50051834250E7A9500081E79 /* Routable.swift */,
 				50051852250E87F700081E79 /* ViewModelable.swift */,
 				50051859250E8A5E00081E79 /* Errorable.swift */,
+				5081534F25155CD600638C4E /* ImageRetrievable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -332,6 +344,8 @@
 			children = (
 				50051856250E882B00081E79 /* Coordinator.swift */,
 				50051855250E882B00081E79 /* ViewModel.swift */,
+				5081535325155D0C00638C4E /* CachedImage.swift */,
+				5081535125155CF000638C4E /* ImageRetriever.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -402,6 +416,7 @@
 			children = (
 				50815342251537B200638C4E /* UIKit */,
 				508153312515323100638C4E /* Buttons */,
+				5081535525155E9900638C4E /* URLImage.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -740,11 +755,13 @@
 				50051848250E7D4900081E79 /* ResponseErrorable.swift in Sources */,
 				5005186925129D1200081E79 /* AccountViewModel.swift in Sources */,
 				504569F8250D32BE0049BBC1 /* AppDelegate.swift in Sources */,
+				5081535425155D0D00638C4E /* CachedImage.swift in Sources */,
 				508153412515324800638C4E /* CancelButton.swift in Sources */,
 				5081534A2515530500638C4E /* Binding+DidSet.swift in Sources */,
 				508153482515478D00638C4E /* HappeningDetailsViewModel.swift in Sources */,
 				50051837250E7A9500081E79 /* RequestData.swift in Sources */,
 				50051835250E7A9500081E79 /* ResponseData.swift in Sources */,
+				5081534E25155CB500638C4E /* ImageRetrieverMock.swift in Sources */,
 				500518602512904600081E79 /* MainTabView.swift in Sources */,
 				5005184F250E87DD00081E79 /* View+ViewModelable.swift in Sources */,
 				5081532E2515293500638C4E /* CreateHappeningView.swift in Sources */,
@@ -777,6 +794,7 @@
 				502F8758250D4C4000CBC4B8 /* DefaultButtonStyle.swift in Sources */,
 				502F874E250D47D200CBC4B8 /* WelcomeView.swift in Sources */,
 				50051825250E50E500081E79 /* Endpoint.swift in Sources */,
+				5081535025155CD600638C4E /* ImageRetrievable.swift in Sources */,
 				5005180C250E45D600081E79 /* String+Localized.swift in Sources */,
 				5005187C2513E66A00081E79 /* ContextMenuButton.swift in Sources */,
 				50051841250E7BB500081E79 /* RequestData+Dictionary.swift in Sources */,
@@ -789,6 +807,7 @@
 				5081534C2515553B00638C4E /* ShareButton.swift in Sources */,
 				5005186725129CF800081E79 /* AccountView.swift in Sources */,
 				5005183C250E7AFB00081E79 /* Tokens.swift in Sources */,
+				5081535225155CF000638C4E /* ImageRetriever.swift in Sources */,
 				502F8751250D492B00CBC4B8 /* Image+Named.swift in Sources */,
 				5005186425129AA600081E79 /* MainTabViewModel.swift in Sources */,
 				50815344251537C100638C4E /* TextView.swift in Sources */,
@@ -800,6 +819,7 @@
 				5081533C2515324800638C4E /* CreateButton.swift in Sources */,
 				50051814250E46BD00081E79 /* KeyboardInfo.swift in Sources */,
 				5005183F250E7B9200081E79 /* SignInData.swift in Sources */,
+				5081535625155E9900638C4E /* URLImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

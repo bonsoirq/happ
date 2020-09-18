@@ -12,14 +12,23 @@ final class HomeViewModel: ViewModel, ObservableObject {
 
     // MARK: Properties
 
+    let imageRetriever: ImageRetrievable
+
     @Published var happenings: [Happening] = []
 
     func happeningDetailsViewModel(_ happening: Happening) -> HappeningDetailsViewModel {
-        HappeningDetailsViewModel(apiRequest: apiRequest, happening: happening)
+        HappeningDetailsViewModel(apiRequest: apiRequest, imageRetriever: imageRetriever, happening: happening)
     }
 
     var createHappeningViewModel: CreateHappeningViewModel {
         CreateHappeningViewModel(apiRequest: apiRequest)
+    }
+    
+    // MARK: Initialization
+
+    init(apiRequest: APIRequestable, imageRetriever: ImageRetrievable) {
+        self.imageRetriever = imageRetriever
+        super.init(apiRequest: apiRequest)
     }
 
     // MARK: Methods

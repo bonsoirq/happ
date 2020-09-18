@@ -25,11 +25,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             #if MOCK
             let apiRequest = APIRequestMock()
+            let imageRetriever = ImageRetrieverMock()
             #else
             let apiRequest = APIRequest()
+            let imageRetriever = ImageRetriever()
             #endif
 
-            let rootView = RootView(apiRequest: apiRequest)
+            let rootView = RootView(apiRequest: apiRequest, imageRetriever: imageRetriever)
                 .environmentObject(Coordinator())
             window.rootViewController = UIHostingController(rootView: rootView)
             self.window = window

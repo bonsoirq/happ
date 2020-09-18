@@ -14,6 +14,7 @@ struct RootView: View {
 
     @EnvironmentObject var coordinator: Coordinator
     let apiRequest: APIRequestable
+    let imageRetriever: ImageRetrievable
 
     // MARK: Views
 
@@ -24,7 +25,7 @@ struct RootView: View {
                     .environmentObject(coordinator)
                     .transition(.move(edge: .bottom))
             } else {
-                MainTabView(viewModel: MainTabViewModel(apiRequest: apiRequest))
+                MainTabView(viewModel: MainTabViewModel(apiRequest: apiRequest, imageRetriever: imageRetriever))
             }
         }
     }
@@ -33,7 +34,7 @@ struct RootView: View {
 
 struct RootView_Previews: PreviewProvider {
     static var previews: some View {
-        RootView(apiRequest: APIRequestMock())
+        RootView(apiRequest: APIRequestMock(), imageRetriever: ImageRetrieverMock())
             .environmentObject(Coordinator())
     }
 }

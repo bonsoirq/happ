@@ -37,6 +37,10 @@ final class APIRequestMock: APIRequestable {
         RequestMock(responseData: [MockData.happening])
     }
 
+    func happeningImage(id: String) -> URL? {
+        URL(string: "")
+    }
+
     // MARK: Account
 
     func account(_ endpoint: Endpoint.Account) -> Requestable {

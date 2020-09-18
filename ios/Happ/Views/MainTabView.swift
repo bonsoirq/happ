@@ -32,6 +32,6 @@ struct MainTabView: View {
 
 struct TabView_Previews: PreviewProvider {
     static var previews: some View {
-        MainTabView(viewModel: MainTabViewModel(apiRequest: APIRequestMock()))
+        MainTabView(viewModel: MainTabViewModel(apiRequest: APIRequestMock(), imageRetriever: ImageRetrieverMock()))
     }
 }
