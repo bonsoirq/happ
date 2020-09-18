@@ -48,7 +48,9 @@
 
 "happening.agenda" = "Agenda";
 "happening.description" = "Description";
-"happening.organizerDescription" = "About host";
+"happening.organizer_description" = "About host";
+"happening.published" = "Published";
+"happening.share_description" = "Hey, check out this event!";
 
 // Create Happening
 
@@ -57,7 +59,7 @@
 "create_happening.name" = "Name";
 "create_happening.agenda" = "Agenda";
 "create_happening.description" = "Description";
-"create_happening.organizerDescription" = "Organizer description";
+"create_happening.organizer_description" = "Organizer description";
 
 // MARK: Account
 

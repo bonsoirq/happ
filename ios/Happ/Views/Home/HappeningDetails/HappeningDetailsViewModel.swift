@@ -19,6 +19,13 @@ final class HappeningDetailsViewModel: ViewModel, ObservableObject {
     var organizerDescription: String { happening.organizerDescription }
     var agenda: String { happening.agenda }
 
+    var shareDescription: String {
+        let title = Translation.Happening.shareDescription.localized
+        let url = "http://jbak.hopto.org:5000/discover/"
+        let id = happening.id
+        return "\(title)\n\(url)\(id)"
+    }
+
     @Published var isPublished: Bool
 
     // MARK: Initialization

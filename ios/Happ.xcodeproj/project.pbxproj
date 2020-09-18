@@ -84,6 +84,7 @@
 		5081534625153F4F00638C4E /* HappeningData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081534525153F4F00638C4E /* HappeningData.swift */; };
 		508153482515478D00638C4E /* HappeningDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153472515478D00638C4E /* HappeningDetailsViewModel.swift */; };
 		5081534A2515530500638C4E /* Binding+DidSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153492515530500638C4E /* Binding+DidSet.swift */; };
+		5081534C2515553B00638C4E /* ShareButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081534B2515553B00638C4E /* ShareButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -188,6 +189,7 @@
 		5081534525153F4F00638C4E /* HappeningData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappeningData.swift; sourceTree = "<group>"; };
 		508153472515478D00638C4E /* HappeningDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappeningDetailsViewModel.swift; sourceTree = "<group>"; };
 		508153492515530500638C4E /* Binding+DidSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+DidSet.swift"; sourceTree = "<group>"; };
+		5081534B2515553B00638C4E /* ShareButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -557,6 +559,7 @@
 				508153372515324800638C4E /* ConfirmButton.swift */,
 				508153342515324800638C4E /* CreateButton.swift */,
 				508153352515324800638C4E /* EditButton.swift */,
+				5081534B2515553B00638C4E /* ShareButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -783,6 +786,7 @@
 				500518832513F43100081E79 /* HappeningDetailsView.swift in Sources */,
 				500518712513DF4100081E79 /* HomeView.swift in Sources */,
 				508153302515293E00638C4E /* CreateHappeningViewModel.swift in Sources */,
+				5081534C2515553B00638C4E /* ShareButton.swift in Sources */,
 				5005186725129CF800081E79 /* AccountView.swift in Sources */,
 				5005183C250E7AFB00081E79 /* Tokens.swift in Sources */,
 				502F8751250D492B00CBC4B8 /* Image+Named.swift in Sources */,

@@ -34,7 +34,7 @@ final class Translation {
       case agenda = "create_happening.agenda"
       case description = "create_happening.description"
       case name = "create_happening.name"
-      case organizerdescription = "create_happening.organizerDescription"
+      case organizerDescription = "create_happening.organizer_description"
       case title = "create_happening.title"
    }
 
@@ -47,7 +47,9 @@ final class Translation {
    enum Happening: String {
       case agenda = "happening.agenda"
       case description = "happening.description"
-      case organizerdescription = "happening.organizerDescription"
+      case organizerDescription = "happening.organizer_description"
+      case published = "happening.published"
+      case shareDescription = "happening.share_description"
    }
 
    enum Home: String {

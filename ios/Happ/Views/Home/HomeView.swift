@@ -43,7 +43,7 @@ struct HomeView: View, ViewModelable, Errorable {
         .listStyle(GroupedListStyle())
         .environment(\.horizontalSizeClass, .regular)
         .navigationBarTitle(Tab.home.title)
-        .navigationBarItems(trailing: AddButton(action: createHappening).frame(width: 26, height: 26))
+        .navigationBarItems(trailing: AddButton(action: createHappening))
         .sheet(isPresented: $isCreateHappeningViewPresented, content: createHappeningView)
         .onAppear(perform: downloadData)
         .error(error, onDismiss: onErrorDismiss)

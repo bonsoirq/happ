@@ -21,6 +21,13 @@ struct HappeningDetailsView: View, ViewModelable, Errorable {
 
     // MARK: Views
 
+    @ViewBuilder
+    private var shareButton: some View {
+        if viewModel.isPublished {
+            ShareButton(action: shareHappening)
+        }
+    }
+
     var body: some View {
         ScrollView {
             VStack(spacing: 30) {
@@ -49,19 +56,20 @@ struct HappeningDetailsView: View, ViewModelable, Errorable {
                 }
 
                 VStack(spacing: 10) {
-                    Text(Translation.Happening.organizerdescription.localized)
+                    Text(Translation.Happening.organizerDescription.localized)
                         .fontWeight(.bold)
                     Text(viewModel.organizerDescription)
                 }
 
                 Toggle(isOn: $viewModel.isPublished.didSet(execute: setPublished)) {
-                    Text("Published")
+                    Text(Translation.Happening.published.localized)
                 }
             }
             .font(.body)
             .padding()
         }
         .navigationBarTitle("", displayMode: .inline)
+        .navigationBarItems(trailing: shareButton)
         .error(error, onDismiss: onErrorDismiss)
     }
 
@@ -69,6 +77,11 @@ struct HappeningDetailsView: View, ViewModelable, Errorable {
 
     private func setPublished(_ isPublished: Bool) {
         viewModel.setPublished(isPublished, onError: onError)
+    }
+
+    private func shareHappening() {
+        let activityViewController = UIActivityViewController(activityItems: [viewModel.shareDescription], applicationActivities: nil)
+        UIApplication.shared.windows.first?.rootViewController?.present(activityViewController, animated: true, completion: nil)
     }
 
 }

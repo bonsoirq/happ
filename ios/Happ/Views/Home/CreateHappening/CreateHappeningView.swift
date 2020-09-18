@@ -30,7 +30,7 @@ struct CreateHappeningView: View, ViewModelable, Errorable {
                     TextView(text: $viewModel.description)
                         .frame(height: 200)
                 }
-                Section(header: Text(Translation.CreateHappening.organizerdescription.localized)) {
+                Section(header: Text(Translation.CreateHappening.organizerDescription.localized)) {
                     TextView(text: $viewModel.organizerDescription)
                         .frame(height: 200)
                 }

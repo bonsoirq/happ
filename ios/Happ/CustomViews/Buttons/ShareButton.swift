@@ -1,5 +1,5 @@
 //
-//  AddButton.swift
+//  ShareButton.swift
 //  Happ
 //
 //  Created by Maksymilian Galas on 18/09/2020.
@@ -8,20 +8,20 @@
 
 import SwiftUI
 
-struct AddButton: View {
+struct ShareButton: View {
     var action: () -> Void
-    
+
     var body: some View {
         Button(action: action, label: {
-            Image(systemName: "plus.circle.fill")
+            Image(systemName: "square.and.arrow.up")
                 .imageScale(.large)
                 .foregroundColor(.main)
         })
     }
 }
 
-struct AddButton_Previews: PreviewProvider {
+struct ShareButton_Previews: PreviewProvider {
     static var previews: some View {
-        AddButton(action: {})
+        ShareButton(action: {})
     }
 }
