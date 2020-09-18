@@ -20,7 +20,7 @@ test('fails when happening uuid is not valid', async t => {
 })
 
 test('fails when happening is not public', async t => {
-  const happening = HappeningMock({ isPublished: false })
+  const happening = HappeningMock({ id: Helper.randomUUID, isPublished: false })
 
   const result = await new FindPublicHappening({
     happeningId: happening.id
