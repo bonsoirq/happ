@@ -82,6 +82,8 @@
 		508153412515324800638C4E /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153392515324800638C4E /* CancelButton.swift */; };
 		50815344251537C100638C4E /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50815343251537C100638C4E /* TextView.swift */; };
 		5081534625153F4F00638C4E /* HappeningData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5081534525153F4F00638C4E /* HappeningData.swift */; };
+		508153482515478D00638C4E /* HappeningDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153472515478D00638C4E /* HappeningDetailsViewModel.swift */; };
+		5081534A2515530500638C4E /* Binding+DidSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508153492515530500638C4E /* Binding+DidSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +186,8 @@
 		508153392515324800638C4E /* CancelButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CancelButton.swift; sourceTree = "<group>"; };
 		50815343251537C100638C4E /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		5081534525153F4F00638C4E /* HappeningData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappeningData.swift; sourceTree = "<group>"; };
+		508153472515478D00638C4E /* HappeningDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappeningDetailsViewModel.swift; sourceTree = "<group>"; };
+		508153492515530500638C4E /* Binding+DidSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+DidSet.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -403,6 +407,7 @@
 		500518812513F3B300081E79 /* HappeningDetails */ = {
 			isa = PBXGroup;
 			children = (
+				508153472515478D00638C4E /* HappeningDetailsViewModel.swift */,
 				500518822513F43100081E79 /* HappeningDetailsView.swift */,
 			);
 			path = HappeningDetails;
@@ -451,6 +456,7 @@
 				502F8752250D495900CBC4B8 /* Color+Named.swift */,
 				502F8750250D492B00CBC4B8 /* Image+Named.swift */,
 				5005187F2513F07800081E79 /* Array+ResponseData.swift */,
+				508153492515530500638C4E /* Binding+DidSet.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -732,6 +738,8 @@
 				5005186925129D1200081E79 /* AccountViewModel.swift in Sources */,
 				504569F8250D32BE0049BBC1 /* AppDelegate.swift in Sources */,
 				508153412515324800638C4E /* CancelButton.swift in Sources */,
+				5081534A2515530500638C4E /* Binding+DidSet.swift in Sources */,
+				508153482515478D00638C4E /* HappeningDetailsViewModel.swift in Sources */,
 				50051837250E7A9500081E79 /* RequestData.swift in Sources */,
 				50051835250E7A9500081E79 /* ResponseData.swift in Sources */,
 				500518602512904600081E79 /* MainTabView.swift in Sources */,

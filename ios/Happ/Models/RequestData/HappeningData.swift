@@ -13,4 +13,5 @@ struct HappeningData: RequestData {
     let description: String
     let organizerDescription: String
     let agenda: String
+    var isPublished: Bool? = nil
 }

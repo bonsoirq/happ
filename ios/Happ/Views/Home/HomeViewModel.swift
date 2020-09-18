@@ -14,6 +14,10 @@ final class HomeViewModel: ViewModel, ObservableObject {
 
     @Published var happenings: [Happening] = []
 
+    func happeningDetailsViewModel(_ happening: Happening) -> HappeningDetailsViewModel {
+        HappeningDetailsViewModel(apiRequest: apiRequest, happening: happening)
+    }
+
     var createHappeningViewModel: CreateHappeningViewModel {
         CreateHappeningViewModel(apiRequest: apiRequest)
     }

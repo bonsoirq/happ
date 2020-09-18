@@ -15,6 +15,7 @@ enum Endpoint: Endpointable {
     enum Happenings: Endpointable {
         case get
         case create(data: HappeningData)
+        case edit(id: String, data: HappeningData)
         case delete(id: String)
 
         var route: Route {
@@ -23,6 +24,8 @@ enum Endpoint: Endpointable {
                 return Route(path: "happenings/", method: .get)
             case .create(let data):
                 return Route(path: "happenings/", method: .post, parameters: data.dictionary)
+            case .edit(let id, let data):
+                return Route(path: "happenings/\(id)/", method: .put, parameters: data.dictionary)
             case .delete(let id):
                 return Route(path: "happenings/\(id)/", method: .delete)
             }

@@ -22,7 +22,11 @@ struct HomeView: View, ViewModelable, Errorable {
 
     private func row(_ happening: Happening) -> some View {
         Section {
-            NavigationLink(destination: HappeningDetailsView(happening: happening)) {
+            NavigationLink(
+                destination: HappeningDetailsView(
+                    viewModel: viewModel.happeningDetailsViewModel(happening)
+                )
+            ) {
                 HappeningRow(happening: happening, onDelete: onHappeningDelete)
             }
         }
