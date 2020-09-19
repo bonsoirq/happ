@@ -1,0 +1,78 @@
+/* 
+  Localizable.strings
+  Happ
+
+  Created by Maksymilian Galas on 12/09/2020.
+  Copyright © 2020 Infinity Pi Ltd. All rights reserved.
+*/
+
+// Alert
+
+"alert.confirm" = "OK";
+"alert.cancel" = "Cancel";
+
+// Common
+
+"common.create" = "Create";
+
+// Error
+
+"error.title" = "Error";
+"error.default" = "Something happened";
+"error.access_token_expired" = "Your session expired. Please sign in again.";
+
+// Context Menu
+
+"context_menu.copy" = "Copy";
+"context_menu.move" = "Move";
+"context_menu.rename" = "Rename";
+"context_menu.edit" = "Edit";
+"context_menu.close" = "Close";
+"context_menu.delete" = "Delete";
+"context_menu.share" = "Share";
+
+// Welcome
+
+"welcome.title" = "Welcome to happ";
+"welcome.subtitle" = "A tool for event organization";
+"welcome.email" = "E-mail address";
+"welcome.password" = "Password";
+"welcome.sign_in" = "Sign In";
+"welcome.sign_up" = "Sign Up";
+
+// Sign Up
+
+"sign_up.title" = "Create an account";
+"sign_up.name" = "Name";
+"sign_up.email" = "E-mail address";
+"sign_up.password" = "Password";
+"sign_up.sign_up" = "Sign Up";
+
+// MARK: Home
+
+"home.title" = "Home";
+
+// Happening
+
+"happening.agenda" = "Agenda";
+"happening.description" = "Description";
+"happening.organizer_description" = "About host";
+"happening.published" = "Published";
+"happening.share_description" = "Hey, check out this event!";
+
+// Create Happening
+
+"create_happening.title" = "New Happening";
+
+"create_happening.name" = "Name";
+"create_happening.agenda" = "Agenda";
+"create_happening.description" = "Description";
+"create_happening.organizer_description" = "Organizer description";
+
+// MARK: Account
+
+"account.title" = "Account";
+
+"account.name" = "Name";
+"account.email" = "E-mail address";
+"account.sign_out" = "Sign out";
