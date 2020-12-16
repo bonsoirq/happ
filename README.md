@@ -13,7 +13,7 @@ create user happ;
 ### Configure environment
 As a next step you have to create `.env` files in main directory and in `web`
 
-### Confiugre project
+### Configure project
 For a final step run the following commands:
 ```
 yarn install && cd web && yarn install
