@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 
 import 'bulma/css/bulma.min.css';
+import 'bulma-prefers-dark/css/bulma-prefers-dark.min.css';
 
 import Navbar from './components/navbar'
 import Welcome from './pages/welcome'
